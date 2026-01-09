@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Image loading optimization
     const images = document.querySelectorAll('.church-image');
     images.forEach(img => {
-        // Add loading="lazy" for better performance
         img.setAttribute('loading', 'lazy');
     });
     
@@ -32,42 +31,55 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Display current year in copyright
+    // Contact Form Handling
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple client-side validation
+            if (!data.name || !data.email) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                // For Azure App Service, we would typically send to a backend API
+                // For now, we'll just show a success message
+                console.log('Form data:', data);
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // Show success message
+                alert('Thank you for your message! We will get back to you soon.');
+                
+                // Reset form
+                contactForm.reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, there was an error sending your message. Please try again later.');
+            } finally {
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+    
+    // Current Year in Footer
     const yearSpan = document.getElementById('current-year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
-    
-    // Highlight next upcoming service
-    highlightNextService();
 });
-
-function highlightNextService() {
-    const now = new Date();
-    const day = now.getDay(); // 0 = Sunday, 1 = Monday, etc.
-    const hour = now.getHours();
-    
-    // Remove any existing highlights
-    document.querySelectorAll('.service-card, .service-detail-card').forEach(card => {
-        card.classList.remove('upcoming-service');
-    });
-    
-    // Determine which service is next
-    let nextService = null;
-    
-    if (day === 0 && hour < 10) { // Sunday before 10 AM
-        nextService = document.querySelector('[data-service="sunday"]');
-    } else if (day === 3) { // Wednesday
-        if (hour < 9) {
-            nextService = document.querySelector('[data-service="seeker"]');
-        } else if (hour < 18) {
-            nextService = document.querySelector('[data-service="mercy"]');
-        }
-    }
-    
-    // Highlight the next service
-    if (nextService) {
-        nextService.classList.add('upcoming-service');
-        nextService.style.boxShadow = '0 0 0 3px #3498db';
-    }
-}

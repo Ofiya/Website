@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "Celestial Church of Christ Redemption Parish Winnipeg Website",
   "scripts": {
-    "build": "echo 'No build step required for static site'"
+    "build": "echo 'No build step required for static site'",
+    "start": "echo 'Starting static site'"
   },
   "keywords": ["church", "celestial", "winnipeg", "website"],
   "author": "Celestial Church of Christ Redemption Parish",
   "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {},
   "devDependencies": {}
 }

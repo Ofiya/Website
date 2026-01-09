@@ -1,116 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - CCC Redemption Parish Winnipeg | cccredemptionwpg.org</title>
-    <meta name="description" content="Contact Celestial Church of Christ Redemption Parish Winnipeg. Visit us at 787 Toronto Street, Winnipeg.">
-    <link rel="canonical" href="https://cccredemptionwpg.org/contact.html">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <h1>CCC Redemption Parish</h1>
-                <p class="subtitle">Winnipeg, Manitoba</p>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<div class="form-group">
+    <label for="subject">Subject</label>
+    <select id="subject" name="subject">
+        <option value="">Select a subject</option>
+        <option value="general">General Inquiry</option>
+        <option value="prayer">Prayer Request</option>
+        <option value="visitation">Request Visitation</option>
+        <option value="membership">Membership Information</option>
+        <option value="donation">Donation Inquiry</option>
+    </select>
+</div>
 
-    <header class="page-header">
-        <div class="container">
-            <h1>Contact Us</h1>
-            <p>Get in touch with our parish</p>
-        </div>
-    </header>
+<div class="form-group">
+    <label for="message">Message *</label>
+    <textarea id="message" name="message" required placeholder="Your message..."></textarea>
+</div>
 
-    <main class="container">
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h2>Visit Us</h2>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h3>Address</h3>
-                        <p>787 Toronto Street<br>Winnipeg, Manitoba<br>R3E 1Z6 Canada</p>
-                        <a href="https://maps.google.com/?q=787+Toronto+Street+Winnipeg+Manitoba+R3E+1Z6" target="_blank" class="btn btn-small">Open in Maps</a>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h3>Service Times</h3>
-                        <p><strong>Sunday Service:</strong> 10:00 AM</p>
-                        <p><strong>Wednesday Seeker Service:</strong> 9:00 AM</p>
-                        <p><strong>Wednesday Mercy Service:</strong> 6:00 PM</p>
-                        <p><strong>New Moon Service:</strong> First Thursday, 11:00 PM</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h3>Phone</h3>
-                        <p>(204) XXX-XXXX</p>
-                        <small>Available during church hours</small>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h3>Email</h3>
-                        <p>info@cccredemptionwpg.org</p>
-                        <small>We'll respond within 24-48 hours</small>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <i class="fas fa-share-alt"></i>
-                    <div>
-                        <h3>Social Media</h3>
-                        <div class="social-links">
-                            <a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank" class="social-link">
-                                <i class="fab fa-youtube"></i> YouTube
-                            </a>
-                            <a href="https://linktr.ee/redemptionparish" target="_blank" class="social-link">
-                                <i class="fas fa-tree"></i> Linktree
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <h2>Send us a Message</h2>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required placeholder="Your full name">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="(204) 555-1234">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject">
-                            <option value="">Select a subject</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="prayer">Prayer Request
+<button type="submit" class="btn">Send Message</button>
