@@ -1,0 +1,58 @@
+name: Deploy to Azure App Service
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  AZURE_WEBAPP_NAME: 'RedemptionApp'  # Change to your Azure app name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # Location of your code
+  NODE_VERSION: '20.x'                # Node version
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        npm install
+    
+    - name: Create server.js for Azure
+      run: |
+        cat > server.js << 'EOF'
+        const express = require('express');
+        const path = require('path');
+        const app = express();
+        const port = process.env.PORT || 3000;
+        
+        // Serve static files
+        app.use(express.static(__dirname));
+        
+        // Handle SPA routing
+        app.get('*', (req, res) => {
+          res.sendFile(path.join(__dirname, 'index.html'));
+        });
+        
+        app.listen(port, () => {
+          console.log(`Server running on port ${port}`);
+        });
+        EOF
+    
+    - name: Deploy to Azure WebApp
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
