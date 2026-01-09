@@ -1,0 +1,13 @@
+{
+  "name": "ccc-redemption-parish-website",
+  "version": "1.0.0",
+  "description": "Celestial Church of Christ Redemption Parish Winnipeg Website",
+  "scripts": {
+    "build": "echo 'No build step required for static site'"
+  },
+  "keywords": ["church", "celestial", "winnipeg", "website"],
+  "author": "Celestial Church of Christ Redemption Parish",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
