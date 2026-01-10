@@ -1,4 +1,5 @@
-
+# Create package.json if it doesn't exist
+cat > package.json << 'EOF'
 {
   "name": "ccc-redemption-parish",
   "version": "1.0.0",
@@ -11,3 +12,4 @@
   "author": "CCC Redemption Parish",
   "license": "MIT"
 }
+EOF
