@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Project - CCC Redemption Parish Winnipeg | cccredemptionwpg.org</title>
+    <meta name="description" content="Support our Building Project. Help us build a better worship space for our community. Donate today to support the Celestial Church of Christ Redemption Parish Winnipeg.">
+    <link rel="canonical" href="https://cccredemptionwpg.org/projects.html">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)),
+                        url('https://drive.google.com/uc?export=view&id=YOUR_BUILDING_IMAGE_ID');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .donation-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .donation-card:hover {
+            transform: translateY(-5px);
+            border-color: #3498db;
+        }
+        
+        .donation-card.featured {
+            border-color: #2ecc71;
+            position: relative;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2ecc71;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .donation-icon {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+        
+        .donation-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 1rem 0;
+        }
+        
+        .donation-features {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+        
+        .donation-features li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .donation-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        
+        .prayer-box {
+            background: #fff9e6;
+            border-left: 4px solid #f39c12;
+            padding: 2rem;
+            border-radius: 5px;
+            margin: 3rem 0;
+        }
+        
+        .progress-container {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            width: 45%; /* Example: 45% funded */
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>CCC Redemption Parish</h1>
+                <p class="subtitle">Winnipeg, Manitoba</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container">
+            <h1>Building Project</h1>
+            <p>Building a Better Worship Space for Our Community</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="project-intro">
+            <h2>Support Our Church Building Project</h2>
+            <p>Our church is currently undertaking an important building project to create a better worship space for our growing community. This project will provide:</p>
+            
+            <ul class="donation-features">
+                <li>Expanded seating capacity for our congregation</li>
+                <li>Modern facilities for youth programs</li>
+                <li>Improved accessibility for all members</li>
+                <li>Enhanced audio-visual equipment for services</li>
+                <li>Community meeting spaces</li>
+                <li>Parking facilities for visitors</li>
+            </ul>
+            
+            <p>We need the support of our members and well-wishers to make this vision a reality. Every contribution brings us closer to completing this important project.</p>
+        </section>
+
+        <!-- Progress Tracker -->
+        <section class="progress-container">
+            <h3>Project Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-stats">
+                <span>Raised: $45,000</span>
+                <span>Goal: $100,000</span>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; color: #666;">45% of our goal achieved!</p>
+        </section>
+
+        <!-- Donation Options -->
+        <section class="donation-section">
+            <h2>Support Our Building Fund</h2>
+            <p>Choose a donation option that works for you. All contributions are greatly appreciated and will be used directly for the building project.</p>
+            
+            <div class="donation-options">
+                <!-- One-time Donation -->
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>One-Time Donation</h3>
+                    <p>Make a single contribution to support our building project.</p>
+                    <div class="donation-features">
+                        <li>Any amount welcome</li>
+                        <li>Secure online payment</li>
+                        <li>Instant receipt provided</li>
+                        <li>Tax deductible</li>
+                    </div>
+                    <a href="https://buy.stripe.com/7sIcN340e9il4Bq000" target="_blank" class="btn">Donate Now</a>
+                </div>
+                
+                <!-- Weekly Donation -->
+                <div class="donation-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="donation-icon">
+                        <i class="fas fa-calendar-week"></i>
+                    </div>
+                    <h3>Weekly Support</h3>
+                    <p>Ongoing weekly support (multiples of $10)</p>
+                    <div class="donation-amount">$10+ / week</div>
+                    <div class="donation-features">
+                        <li>Consistent support</li>
+                        <li>Flexible amount</li>
+                        <li>Easy to manage</li>
+                        <li>Cancel anytime</li>
+                    </div>
+                    <a href="https://buy.stripe.com/dR6bIZfIW7ad5Fu4gl" target="_blank" class="btn">Support Weekly</a>
+                </div>
+                
+                <!-- Monthly Donation -->
+                <div class="donation-card">
+                    <div class="donation-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Monthly Partnership</h3>
+                    <p>Monthly commitment (multiples of $50)</p>
+                    <div class="donation-amount">$50+ / month</div>
+                    <div class="donation-features">
+                        <li>Sustained impact</li>
+                        <li>Larger projects possible</li>
+                        <li>Regular updates</li>
+                        <li>Priority recognition</li>
+                    </div>
+                    <a href="https://buy.stripe.com/3cs28pcwK9ild7W8wy" target="_blank" class="btn">Partner Monthly</a>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 2rem;">
+                <p><strong>Other ways to give:</strong> You can also donate via e-transfer to: <strong>info@cccredemptionwpg.org</strong></p>
+            </div>
+        </section>
+
+        <!-- Prayer Section -->
+        <section class="prayer-box">
+            <h3><i class="fas fa-pray"></i> Prayer for Our Supporters</h3>
+            <p>"God will continue to bless the works of our hands in Jesus name! Amen 🙏"</p>
+            <p>We pray that God blesses each and every contributor abundantly for their generosity and support of His work.</p>
+        </section>
+
+        <!-- Project Updates -->
+        <section class="updates-section">
+            <h2>Project Updates</h2>
+            <div class="updates-timeline">
+                <div class="update-item">
+                    <div class="update-date">March 2024</div>
+                    <div class="update-content">
+                        <h4>Architectural Plans Approved</h4>
+                        <p>Final architectural plans have been approved by the city council. Construction permits are being processed.</p>
+                    </div>
+                </div>
+                <div class="update-item">
+                    <div class="update-date">January 2024</div>
+                    <div class="update-content">
+                        <h4>Fundraising Launch</h4>
+                        <p>Officially launched our building fund campaign. Initial contributions have been very encouraging.</p>
+                    </div>
+                </div>
+                <div class="update-item">
+                    <div class="update-date">November 2023</div>
+                    <div class="update-content">
+                        <h4>Groundbreaking Ceremony</h4>
+                        <p>Held a special groundbreaking ceremony to mark the beginning of our building project.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact for Questions -->
+        <section class="contact-cta">
+            <div class="cta-content">
+                <h2>Questions About the Project?</h2>
+                <p>If you have any questions about our building project or would like to discuss other ways to contribute, please contact us.</p>
+                <a href="contact.html" class="btn">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 787 Toronto Street</p>
+                    <p>Winnipeg, Manitoba R3E 1Z6</p>
+                    <p><i class="fas fa-phone"></i> (204) 979-6644</p>
+                    <p><i class="fas fa-envelope"></i> info@cccredemptionwpg.org</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Service Times</h3>
+                    <ul>
+                        <li><strong>Sunday:</strong> 10:00 AM</li>
+                        <li><strong>Wednesday (Seeker):</strong> 9:00 AM</li>
+                        <li><strong>Wednesday (Mercy):</strong> 6:00 PM</li>
+                        <li><strong>New Moon:</strong> First Thursday, 11:00 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Building Fund</h3>
+                    <p>Support our building project:</p>
+                    <a href="https://buy.stripe.com/7sIcN340e9il4Bq000" target="_blank" class="btn btn-small" style="margin: 0.5rem 0;">One-Time Gift</a>
+                    <a href="https://buy.stripe.com/dR6bIZfIW7ad5Fu4gl" target="_blank" class="btn btn-small">Weekly Support</a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2024 Celestial Church of Christ Redemption Parish Winnipeg. All Rights Reserved. | cccredemptionwpg.org</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

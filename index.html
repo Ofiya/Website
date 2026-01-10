@@ -3,57 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
     <title>Celestial Church of Christ - Redemption Parish Winnipeg | cccredemptionwpg.org</title>
     <meta name="description" content="Welcome to Celestial Church of Christ Redemption Parish Winnipeg. Join us for worship at 787 Toronto Street, Winnipeg. Sunday Service: 10:00 AM">
-    <meta name="keywords" content="Celestial Church of Christ, Winnipeg, Redemption Parish, Christian worship, Manitoba church, cccredemptionwpg.org">
-    <meta name="author" content="Celestial Church of Christ Redemption Parish">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://cccredemptionwpg.org">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cccredemptionwpg.org">
-    <meta property="og:title" content="Celestial Church of Christ - Redemption Parish Winnipeg">
-    <meta property="og:description" content="Welcome to Celestial Church of Christ Redemption Parish Winnipeg. Join us for worship at 787 Toronto Street">
-    <meta property="og:image" content="https://cccredemptionwpg.org/images/church-exterior.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://cccredemptionwpg.org">
-    <meta property="twitter:title" content="Celestial Church of Christ - Redemption Parish Winnipeg">
-    <meta property="twitter:description" content="Welcome to Celestial Church of Christ Redemption Parish Winnipeg">
-    <meta property="twitter:image" content="https://cccredemptionwpg.org/images/church-exterior.jpg">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "PlaceOfWorship",
-        "@id": "https://cccredemptionwpg.org",
-        "name": "Celestial Church of Christ Redemption Parish Winnipeg",
-        "url": "https://cccredemptionwpg.org",
-        "description": "Celestial Church of Christ Redemption Parish in Winnipeg, Manitoba",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "787 Toronto Street",
-            "addressLocality": "Winnipeg",
-            "addressRegion": "Manitoba",
-            "postalCode": "R3E 1Z6",
-            "addressCountry": "Canada"
-        },
-        "telephone": "(204) 979-6644",
-        "email": "info@cccredemptionwpg.org",
-        "openingHours": "Su 10:00-12:00",
-        "priceRange": "Free",
-        "sameAs": [
-            "https://youtube.com/@cccrpwpg",
-            "https://linktr.ee/redemptionparish"
-        ]
-    }
-    </script>
+    <!-- ... keep all existing meta tags ... -->
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css">
@@ -61,6 +13,59 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Add CSS for background carousel -->
+    <style>
+        .hero-carousel {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .carousel-slides {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -74,13 +79,20 @@
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="events.html">Events</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
+    <!-- Dynamic Background Carousel -->
+    <header class="hero-carousel">
+        <div class="carousel-slides" id="carouselSlides">
+            <!-- Slides will be added dynamically by JavaScript -->
+        </div>
+        <div class="overlay"></div>
+        
         <div class="hero-content">
             <h1>Welcome to Celestial Church of Christ</h1>
             <h2>Redemption Parish, Winnipeg</h2>
@@ -121,93 +133,96 @@
             </div>
         </section>
 
-        <!-- Service Times Highlight -->
-        <section class="service-highlight">
-            <h2>Weekly Service Schedule</h2>
-            <div class="service-cards">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-sun"></i>
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <h2>Our Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://drive.google.com/open?id=1pP8lWHS2pD04-rnL3eziF_0Zo1MOAszk&usp=drive_fs" alt="Community Outreach">
                     </div>
-                    <h3>Sunday Service</h3>
-                    <p class="service-time">10:00 AM</p>
-                    <p>Weekly worship and sermon</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-hands-praying"></i>
+                    <div class="project-content">
+                        <h3>Community Outreach</h3>
+                        <p>Engaging with the local community through various outreach programs and charitable activities.</p>
+                        <a href="projects.html" class="btn btn-small">Learn More</a>
                     </div>
-                    <h3>Mercy Day Service</h3>
-                    <p class="service-time">Wednesday 6:00 PM</p>
-                    <p>Mid-week spiritual renewal</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-search"></i>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://drive.google.com/file/d/1XpP9t_oEViSXNmwW-VTonPZsOg3HQI4N/view?usp=drive_link" alt="Youth Ministry">
                     </div>
-                    <h3>Seeker Service</h3>
-                    <p class="service-time">Wednesday 9:00 AM</p>
-                    <p>Morning devotion and prayer</p>
+                    <div class="project-content">
+                        <h3>Youth Ministry</h3>
+                        <p>Nurturing the spiritual growth of our youth through dedicated programs and activities.</p>
+                        <a href="projects.html" class="btn btn-small">Learn More</a>
+                    </div>
                 </div>
-            </div>
-            <a href="services.html" class="btn">Full Service Schedule</a>
-        </section>
-
-        <!-- Church Images Gallery -->
-        <section class="gallery-section">
-            <h2>Our Church</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://drive.google.com/uc?export=view&id=1b_izRww8RUFWbs_eSfFJNnL3oiDe5hrh" 
-                         alt="Celestial Church of Christ Redemption Parish Exterior" 
-                         class="church-image">
-                    <p class="image-caption">Our Church Building</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://drive.google.com/uc?export=view&id=1CPLpvz_mTySALPcRW8VXJTS5XNN4yGJy" 
-                         alt="Worship Service at Redemption Parish" 
-                         class="church-image">
-                    <p class="image-caption">Worship Service</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://drive.google.com/uc?export=view&id=1MhJlAA-kwToyqnqCmL-q4CsBqIyLhUCr" 
-                         alt="Church Community Gathering" 
-                         class="church-image">
-                    <p class="image-caption">Community Fellowship</p>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://drive.google.com/file/d/12WoWQjJ1VQ-zv8O4ZFA2UAslhSZpSbqS/view?usp=drive_link" alt="Building Fund">
+                    </div>
+                    <div class="project-content">
+                        <h3>Building Fund</h3>
+                        <p>Supporting the maintenance and improvement of our church facilities.</p>
+                        <a href="projects.html" class="btn btn-small">Learn More</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="features">
-            <div class="feature-card">
-                <i class="fas fa-church"></i>
-                <h3>Weekly Services</h3>
-                <p>Join us for our regular worship services and spiritual gatherings every Sunday and special services throughout the week.</p>
+        <!-- Events Section -->
+        <section class="events-section">
+            <h2>Upcoming Events</h2>
+            <div class="events-list">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="month">MAR</span>
+                        <span class="day">15</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Community Prayer Breakfast</h3>
+                        <p><i class="fas fa-clock"></i> Saturday, 9:00 AM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Church Hall</p>
+                        <p>Join us for fellowship and prayer over breakfast.</p>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="month">MAR</span>
+                        <span class="day">22</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Youth Bible Study</h3>
+                        <p><i class="fas fa-clock"></i> Friday, 6:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Youth Center</p>
+                        <p>Special Bible study session for youth members.</p>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="month">APR</span>
+                        <span class="day">05</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Easter Sunday Service</h3>
+                        <p><i class="fas fa-clock"></i> Sunday, 9:00 AM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
+                        <p>Special Easter celebration service with Holy Communion.</p>
+                    </div>
+                </div>
             </div>
-            <div class="feature-card">
-                <i class="fas fa-moon"></i>
-                <h3>New Moon Service</h3>
-                <p>Monthly New Moon service held on the first Thursday of every month at 11:00 PM for spiritual cleansing and renewal.</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-users"></i>
-                <h3>Community</h3>
-                <p>Become part of our growing spiritual family in Winnipeg. We welcome all who seek fellowship in Christ.</p>
+            <div class="text-center">
+                <a href="events.html" class="btn">View All Events</a>
             </div>
         </section>
 
-        <!-- Call to Action -->
-        <section class="cta-section">
-            <div class="cta-content">
-                <h2>Join Us This Week</h2>
-                <p>Experience the love and fellowship of our community. All are welcome to worship with us at our Toronto Street location.</p>
-                <div class="cta-buttons">
-                    <a href="services.html" class="btn">Service Times</a>
-                    <a href="contact.html" class="btn btn-secondary">Get Directions</a>
-                </div>
-            </div>
-        </section>
+        <!-- Rest of your existing sections (Service Times, Gallery, Features, CTA) -->
+        <!-- ... keep your existing service times, gallery, features, and CTA sections ... -->
+        
     </main>
 
     <!-- Footer -->
@@ -222,21 +237,23 @@
                     <p><i class="fas fa-envelope"></i> info@cccredemptionwpg.org</p>
                 </div>
                 <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
                     <h3>Service Times</h3>
                     <ul>
                         <li><strong>Sunday:</strong> 10:00 AM</li>
                         <li><strong>Wednesday (Seeker):</strong> 9:00 AM</li>
                         <li><strong>Wednesday (Mercy):</strong> 6:00 PM</li>
                         <li><strong>New Moon:</strong> First Thursday, 11:00 PM</li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -255,6 +272,40 @@
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script src="js/main.js"></script>
+    
+    <!-- Add this script for dynamic background -->
+    <script>
+        // Dynamic Background Carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            // Array of your Google Drive image URLs
+            const backgroundImages = [
+                'https://drive.google.com/file/d/1P_SBt63Vv29UZLHGz7uPDKalwP3V-mNB/view?usp=drive_link',
+                'https://drive.google.com/file/d/1sjao-RrJnDIoo4v_4k76QgzIgH-TOSQG/view?usp=drive_link',
+                'https://drive.google.com/file/d/1MhJlAA-kwToyqnqCmL-q4CsBqIyLhUCr/view?usp=drive_link',
+                'https://drive.google.com/file/d/1w3qAfC69nwEdy4ZHiOG1h-BpATVxSfOg/view?usp=drive_link'
+            ];
+            
+            const carouselSlides = document.getElementById('carouselSlides');
+            let currentSlide = 0;
+            
+            // Create slides
+            backgroundImages.forEach((imageUrl, index) => {
+                const slide = document.createElement('div');
+                slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+                slide.style.backgroundImage = `url('${imageUrl}')`;
+                carouselSlides.appendChild(slide);
+            });
+            
+            // Rotate slides every 5 seconds
+            setInterval(() => {
+                const slides = document.querySelectorAll('.carousel-slide');
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
