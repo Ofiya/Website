@@ -4,12 +4,9 @@
   "description": "Celestial Church of Christ Redemption Parish Winnipeg",
   "main": "index.html",
   "scripts": {
-    "start": "echo 'Starting static site' && exit 0"
+    "test": "echo \"No tests specified\""
   },
   "keywords": ["church", "celestial", "winnipeg"],
   "author": "CCC Redemption Parish",
-  "license": "MIT",
-  "engines": {
-    "node": ">=14.0.0"
-  }
+  "license": "MIT"
 }
