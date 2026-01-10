@@ -2,9 +2,9 @@
   "name": "ccc-redemption-parish",
   "version": "1.0.0",
   "description": "Celestial Church of Christ Redemption Parish Winnipeg",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"No tests specified\""
+    "start": "node server.js"
   },
   "keywords": ["church", "celestial", "winnipeg"],
   "author": "CCC Redemption Parish",
