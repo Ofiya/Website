@@ -17,4 +17,8 @@ jobs:
         with:
           app-name: 'RedWeb01'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+<<<<<<< HEAD
           package: .
+=======
+          package: .
+>>>>>>> c94b0b711c3454e654259e3c8ebdfc6fdfe4c711
