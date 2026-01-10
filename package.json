@@ -1,0 +1,47 @@
+{
+  "name": "ccc-redemption-parish",
+  "version": "2.0.0",
+  "description": "Celestial Church of Christ Redemption Parish Winnipeg - Modern Website",
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "watch": "nodemon server.js",
+    "images:download": "node scripts/download-images.js",
+    "images:optimize": "node scripts/image-pipeline.js",
+    "images:process": "npm run images:download && npm run images:optimize",
+    "build": "npm run images:process && echo 'Images processed'",
+    "test": "echo \"No tests specified\" && exit 0",
+    "build:icons": "icon-font-generator ./assets/icons/svg/*.svg -o ./assets/fonts/ -n ccc-icons --css-selector .icon- --css-template ./templates/icon-css.hbs --html-template ./templates/icon-html.hbs",
+    "deploy": "npm run build:icons && git add . && git commit -m 'Build icons' && git push"
+  },
+  "keywords": [
+    "church",
+    "celestial",
+    "winnipeg",
+    "christian",
+    "community"
+  ],
+  "author": "Celestial Church of Christ Redemption Parish",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ofiya/website"
+  },
+  "bugs": {
+    "url": "https://github.com/ofiya/website/issues"
+  },
+  "homepage": "https://cccredemptionwpg.org",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "fs-extra": "^11.1.1",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "icon-font-generator": "^2.1.11",
+    "nodemon": "^3.0.1"
+  }
+}

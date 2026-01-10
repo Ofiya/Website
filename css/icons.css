@@ -1,0 +1,357 @@
+/* ===== CUSTOM ICON FONT ===== */
+@font-face {
+    font-family: 'CCC-Icons';
+    src: url('../assets/fonts/ccc-icons.woff2') format('woff2'),
+         url('../assets/fonts/ccc-icons.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+/* ===== ICON BASE CLASS ===== */
+.icon {
+    font-family: 'CCC-Icons' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== CUSTOM CHURCH ICONS ===== */
+.icon-cross:before { content: "\\e900"; }
+.icon-church:before { content: "\\e901"; }
+.icon-bible:before { content: "\\e902"; }
+.icon-prayer:before { content: "\\e903"; }
+.icon-candle:before { content: "\\e904"; }
+.icon-dove:before { content: "\\e905"; }
+.icon-star:before { content: "\\e906"; }
+.icon-moon:before { content: "\\e907"; }
+.icon-sun:before { content: "\\e908"; }
+.icon-water:before { content: "\\e909"; }
+.icon-trumpet:before { content: "\\e90a"; }
+.icon-harp:before { content: "\\e90b"; }
+.icon-crown:before { content: "\\e90c"; }
+.icon-angel:before { content: "\\e90d"; }
+.icon-cloud:before { content: "\\e90e"; }
+.icon-heart:before { content: "\\e90f"; }
+.icon-hands:before { content: "\\e910"; }
+.icon-family:before { content: "\\e911"; }
+.icon-youth:before { content: "\\e912"; }
+.icon-community:before { content: "\\e913"; }
+.icon-offering:before { content: "\\e914"; }
+.icon-bell:before { content: "\\e915"; }
+.icon-door:before { content: "\\e916"; }
+.icon-window:before { content: "\\e917"; }
+.icon-ark:before { content: "\\e918"; }
+.icon-lamp:before { content: "\\e919"; }
+.icon-bread:before { content: "\\e91a"; }
+.icon-wine:before { content: "\\e91b"; }
+.icon-olive:before { content: "\\e91c"; }
+.icon-palm:before { content: "\\e91d"; }
+.icon-fish:before { content: "\\e91e"; }
+.icon-lily:before { content: "\\e91f"; }
+.icon-vine:before { content: "\\e920"; }
+.icon-wheat:before { content: "\\e921"; }
+.icon-rock:before { content: "\\e922"; }
+.icon-mountain:before { content: "\\e923"; }
+.icon-river:before { content: "\\e924"; }
+.icon-fire:before { content: "\\e925"; }
+.icon-wind:before { content: "\\e926"; }
+.icon-rainbow:before { content: "\\e927"; }
+.icon-compass:before { content: "\\e928"; }
+.icon-shield:before { content: "\\e929"; }
+.icon-sword:before { content: "\\e92a"; }
+.icon-key:before { content: "\\e92b"; }
+.icon-lock:before { content: "\\e92c"; }
+.icon-chain:before { content: "\\e92d"; }
+.icon-scale:before { content: "\\e92e"; }
+.icon-book:before { content: "\\e92f"; }
+.icon-scroll:before { content: "\\e930"; }
+.icon-quill:before { content: "\\e931"; }
+.icon-torch:before { content: "\\e932"; }
+.icon-well:before { content: "\\e933"; }
+.icon-gate:before { content: "\\e934"; }
+.icon-temple:before { content: "\\e935"; }
+.icon-altar:before { content: "\\e936"; }
+.icon-censer:before { content: "\\e937"; }
+.icon-robes:before { content: "\\e938"; }
+.icon-sandal:before { content: "\\e939"; }
+.icon-staff:before { content: "\\e93a"; }
+.icon-ring:before { content: "\\e93b"; }
+
+/* ===== ICON SIZES ===== */
+.icon-xs {
+    font-size: 0.75rem;
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+.icon-sm {
+    font-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+
+.icon-md {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.icon-lg {
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.icon-xl {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.icon-2xl {
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+.icon-3xl {
+    font-size: 6rem;
+    width: 6rem;
+    height: 6rem;
+}
+
+/* ===== ICON COLORS ===== */
+.icon-primary {
+    color: var(--primary-main);
+}
+
+.icon-secondary {
+    color: var(--secondary-main);
+}
+
+.icon-white {
+    color: white;
+}
+
+.icon-success {
+    color: var(--success);
+}
+
+.icon-warning {
+    color: var(--warning);
+}
+
+.icon-error {
+    color: var(--error);
+}
+
+/* ===== ICON ANIMATIONS ===== */
+.icon-spin {
+    animation: icon-spin 2s linear infinite;
+}
+
+@keyframes icon-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.icon-pulse {
+    animation: icon-pulse 2s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+.icon-bounce {
+    animation: icon-bounce 2s ease infinite;
+}
+
+@keyframes icon-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.icon-shake {
+    animation: icon-shake 0.5s ease-in-out infinite;
+}
+
+@keyframes icon-shake {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+}
+
+/* ===== ICON BUTTONS ===== */
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    background: var(--primary-main);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.icon-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.icon-button.outline {
+    background: transparent;
+    border: 2px solid var(--primary-main);
+    color: var(--primary-main);
+}
+
+.icon-button.outline:hover {
+    background: var(--primary-main);
+    color: white;
+}
+
+.icon-button.ghost {
+    background: transparent;
+    color: var(--primary-main);
+}
+
+.icon-button.ghost:hover {
+    background: var(--gray-100);
+}
+
+/* ===== ICON LIST ===== */
+.icon-list {
+    list-style: none;
+    padding: 0;
+}
+
+.icon-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.icon-list .icon {
+    flex-shrink: 0;
+}
+
+/* ===== ICON GRID ===== */
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.icon-grid-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--gray-100);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    text-align: center;
+}
+
+.icon-grid-item:hover {
+    background: var(--primary-light);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.icon-grid-item .icon {
+    margin-bottom: 0.5rem;
+}
+
+.icon-grid-item span {
+    font-size: var(--text-xs);
+    color: var(--text-dark);
+    word-break: break-word;
+}
+
+/* ===== ICON STACK ===== */
+.icon-stack {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    vertical-align: middle;
+}
+
+.icon-stack-1x,
+.icon-stack-2x {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.icon-stack-1x {
+    line-height: inherit;
+}
+
+.icon-stack-2x {
+    font-size: 2em;
+    line-height: 0.5em;
+}
+
+/* ===== RESPONSIVE ICONS ===== */
+@media (max-width: 768px) {
+    .icon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 1rem;
+    }
+    
+    .icon-xl {
+        font-size: 2.5rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .icon-2xl {
+        font-size: 3rem;
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .icon-3xl {
+        font-size: 4rem;
+        width: 4rem;
+        height: 4rem;
+    }
+}

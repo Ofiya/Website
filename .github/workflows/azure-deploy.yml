@@ -2,19 +2,110 @@ name: Deploy to Azure App Service
 
 on:
   push:
-    branches: [main]
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '20.x'
+  AZURE_WEBAPP_NAME: 'RedWeb01'
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment: production
     
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'RedWeb01'
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Verify Node.js version
+      run: node --version
+    
+    - name: Create production configuration
+      run: |
+        # Create web.config for Azure
+        cat > web.config << 'EOF'
+        <?xml version="1.0" encoding="utf-8"?>
+        <configuration>
+          <system.webServer>
+            <handlers>
+              <add name="iisnode" path="server.js" verb="*" modules="iisnode"/>
+            </handlers>
+            <rewrite>
+              <rules>
+                <rule name="StaticContent">
+                  <action type="Rewrite" url="public{REQUEST_URI}"/>
+                </rule>
+                <rule name="DynamicContent">
+                  <conditions>
+                    <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="True"/>
+                  </conditions>
+                  <action type="Rewrite" url="server.js"/>
+                </rule>
+              </rules>
+            </rewrite>
+            <iisnode 
+              node_env="production"
+              nodeProcessCountPerApplication="1"
+              maxConcurrentRequestsPerProcess="1024"
+              maxNamedPipeConnectionRetry="3"
+              namedPipeConnectionRetryDelay="2000"
+              asyncCompletionThreadCount="0"
+              initialRequestBufferSize="4096"
+              maxRequestBufferSize="65536"
+              watchedFiles="*.js;iisnode.yml"
+              uncFileChangesPollingInterval="5000"
+              gracefulShutdownTimeout="60000"
+              loggingEnabled="true"
+              logDirectoryName="iisnode"
+              debuggingEnabled="false"
+              devErrorsEnabled="false"
+            />
+          </system.webServer>
+        </configuration>
+        EOF
+        
+        # Create iisnode.yml
+        cat > iisnode.yml << 'EOF'
+        loggingEnabled: true
+        logDirectory: iisnode
+        debuggingEnabled: false
+        devErrorsEnabled: false
+        node_env: production
+        nodeProcessCountPerApplication: 1
+        maxConcurrentRequestsPerProcess: 1024
+        maxNamedPipeConnectionRetry: 3
+        namedPipeConnectionRetryDelay: 2000
+        initialRequestBufferSize: 4096
+        maxRequestBufferSize: 65536
+        EOF
+    
+    - name: Validate Azure credentials
+      run: |
+        if [ -z "${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}" ]; then
+          echo "Azure publish profile secret not set"
+          exit 1
+        fi
+    
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: .
+    
+    - name: Verify deployment
+      run: |
+        echo "✅ Deployment completed successfully!"
+        echo "🌐 Application URL: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
+        echo "⚙️ Runtime: Node.js ${{ env.NODE_VERSION }}"
