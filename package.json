@@ -1,15 +1,15 @@
-# Create package.json if it doesn't exist
-cat > package.json << 'EOF'
 {
   "name": "ccc-redemption-parish",
   "version": "1.0.0",
   "description": "Celestial Church of Christ Redemption Parish Winnipeg",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"No tests specified\""
+    "start": "echo 'Starting static site' && exit 0"
   },
   "keywords": ["church", "celestial", "winnipeg"],
   "author": "CCC Redemption Parish",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
 }
-EOF
