@@ -7,158 +7,80 @@
     <meta name="description" content="Experience the sacred rhythm of worship at CCC Redemption Parish. From Sunday worship to New Moon services, join our spiritual journey.">
     <link rel="canonical" href="https://cccredemptionwpg.org/services.html">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ===== UNIQUE THEME VARIABLES ===== */
-        :root {
-            --gold-gradient: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            --celestial-gradient: linear-gradient(135deg, #1a365d 0%, #2d55a1 50%, #4a90e2 100%);
-            --stained-glass-blue: rgba(77, 144, 254, 0.15);
-            --stained-glass-purple: rgba(152, 68, 183, 0.15);
-            --stained-glass-gold: rgba(255, 215, 0, 0.1);
-            --text-illuminated: #FFE082;
-            --shadow-soft: 0 8px 32px rgba(31, 38, 135, 0.1);
-            --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        /* ===== ENHANCED NAVIGATION BANNER - MATCHING ATTACHED DESIGN ===== */
+        /* ===== ENHANCED NAVIGATION BANNER ===== */
         .navbar {
-            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f38 100%);
+            background: rgba(30, 45, 71, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(100, 181, 246, 0.3);
+            z-index: 1000;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
-        .navbar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gold-gradient);
-        }
-
-        .navbar::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+        .navbar.scrolled {
+            background: rgba(12, 23, 38, 0.98);
+            box-shadow: var(--shadow-blue);
         }
 
         .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
-            position: relative;
+            padding: 1rem 2rem;
         }
 
-        /* Logo Section - Enhanced to match attached design */
+        /* Logo Section - Matching events.html */
         .logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            flex: 1;
         }
 
-        .logo-acronym {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 0.5rem;
-        }
-
-        .ccc-large {
+        .logo h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #FFD700;
-            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
-            line-height: 1;
-        }
-
-        .redemption-large {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            color: #FFE082;
-            text-shadow: 0 2px 8px rgba(255, 224, 130, 0.2);
-            line-height: 1;
-            margin-top: -0.25rem;
-        }
-
-        .parish-badge {
             background: var(--gold-gradient);
-            color: #0a0e1a;
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            margin-top: 0.5rem;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.25rem;
         }
 
-        /* Address Section */
-        .navbar-address {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
+        .logo .subtitle {
+            font-size: 0.875rem;
+            color: var(--text-muted);
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 0.25rem;
+            gap: 0.5rem;
         }
 
-        .address-main {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-            letter-spacing: 0.5px;
+        .logo .subtitle i {
+            color: var(--secondary-main);
         }
 
-        .address-sub {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.7);
-            letter-spacing: 0.3px;
-        }
-
-        /* Navigation Links */
+        /* Navigation Links - Matching events.html */
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
-            margin: 0;
-            padding: 0;
         }
 
         .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-bright);
             text-decoration: none;
-            font-family: 'Inter', sans-serif;
             font-weight: 500;
             font-size: 0.95rem;
             padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: var(--radius-full);
+            transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .nav-links a::before {
@@ -167,15 +89,15 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%) scaleX(0);
-            width: 80%;
+            width: 100%;
             height: 2px;
             background: var(--gold-gradient);
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-normal);
         }
 
         .nav-links a:hover {
             color: var(--text-illuminated);
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(100, 181, 246, 0.1);
         }
 
         .nav-links a:hover::before {
@@ -184,20 +106,12 @@
 
         .nav-links a.active {
             color: var(--text-illuminated);
-            background: rgba(255, 215, 0, 0.15);
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
+            background: rgba(100, 181, 246, 0.15);
+            box-shadow: var(--shadow-glow);
         }
 
         .nav-links a.active::before {
             transform: translateX(-50%) scaleX(1);
-        }
-
-        /* Scrolled State */
-        .navbar.scrolled {
-            padding: 1rem 0;
-            background: rgba(10, 14, 26, 0.98);
-            backdrop-filter: blur(30px);
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.4);
         }
 
         /* Mobile Navigation Toggle */
@@ -214,22 +128,17 @@
         }
 
         .nav-toggle:hover {
-            background: rgba(255, 215, 0, 0.1);
+            background: rgba(100, 181, 246, 0.1);
         }
 
-        /* IMMERSIVE BACKGROUND (Keep existing) */
+        /* IMMERSIVE BACKGROUND */
         .celestial-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, 
-                #0a0e1a 0%,
-                #1a1f38 25%,
-                #2d3b66 50%,
-                #1a1f38 75%,
-                #0a0e1a 100%);
+            background: var(--starry-night);
             z-index: -2;
             overflow: hidden;
         }
@@ -239,11 +148,11 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(2px 2px at 20% 30%, white 50%, transparent 100%),
-                radial-gradient(3px 3px at 40% 70%, white 50%, transparent 100%),
-                radial-gradient(1px 1px at 60% 20%, white 50%, transparent 100%),
-                radial-gradient(2px 2px at 80% 90%, white 50%, transparent 100%),
-                radial-gradient(3px 3px at 30% 50%, white 50%, transparent 100%);
+                radial-gradient(2px 2px at 20% 30%, #B3E5FC 50%, transparent 100%),
+                radial-gradient(3px 3px at 40% 70%, #64B5F6 50%, transparent 100%),
+                radial-gradient(1px 1px at 60% 20%, #4FC3F7 50%, transparent 100%),
+                radial-gradient(2px 2px at 80% 90%, #90CAF9 50%, transparent 100%),
+                radial-gradient(3px 3px at 30% 50%, #E3F2FD 50%, transparent 100%);
             animation: twinkle 4s infinite alternate;
         }
 
@@ -256,17 +165,17 @@
             background: 
                 radial-gradient(circle at 20% 50%, var(--stained-glass-blue) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, var(--stained-glass-purple) 0%, transparent 50%),
-                radial-gradient(circle at 50% 80%, var(--stained-glass-gold) 0%, transparent 50%);
+                radial-gradient(circle at 50% 80%, var(--stained-glass-aqua) 0%, transparent 50%);
             z-index: -1;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
         }
 
-        /* IMMERSIVE HERO (Keep existing) */
+        /* IMMERSIVE HERO */
         .hero-immersive {
             min-height: 70vh;
             display: flex;
@@ -286,8 +195,8 @@
             padding: 4rem;
             background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(100, 181, 246, 0.2);
             box-shadow: 
                 0 20px 40px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -298,13 +207,13 @@
             font-size: 4rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #FFD700, #FFA500, #FFD700);
+            background: linear-gradient(to right, #64B5F6, #4FC3F7, #64B5F6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             background-size: 200% auto;
             animation: shimmer 3s linear infinite;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         @keyframes shimmer {
@@ -316,10 +225,10 @@
             color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
             font-weight: 300;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        /* SACRED TIMELINE (Keep existing) */
+        /* SACRED TIMELINE - REARRANGED ORDER */
         .sacred-timeline {
             position: relative;
             max-width: 1200px;
@@ -387,7 +296,7 @@
             transform: translateX(-50%);
             z-index: 2;
             border: 3px solid var(--primary-dark);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 20px rgba(100, 181, 246, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -398,7 +307,7 @@
         .timeline-content {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
-            border-radius: 16px;
+            border-radius: var(--radius-lg);
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: var(--shadow-soft);
@@ -419,10 +328,8 @@
 
         .timeline-content:hover {
             transform: translateY(-5px);
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(255, 215, 0, 0.2);
-            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(100, 181, 246, 0.3);
         }
 
         .service-icon-large {
@@ -447,10 +354,10 @@
             background: var(--gold-gradient);
             color: var(--primary-dark);
             padding: 0.5rem 1.5rem;
-            border-radius: 50px;
+            border-radius: var(--radius-full);
             font-weight: 600;
             margin: 1rem 0;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(100, 181, 246, 0.3);
         }
 
         .service-description {
@@ -462,24 +369,97 @@
         .service-tag {
             display: inline-block;
             padding: 0.25rem 0.75rem;
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 4px;
+            background: rgba(100, 181, 246, 0.1);
+            border: 1px solid rgba(100, 181, 246, 0.3);
+            border-radius: var(--radius-sm);
             font-size: 0.75rem;
             color: var(--text-illuminated);
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
         }
 
-        /* CELESTIAL CALENDAR (Keep existing) */
+        /* WEEKLY SCHEDULE OVERVIEW */
+        .weekly-overview {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .overview-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-illuminated);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .schedule-day-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .schedule-day-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(100, 181, 246, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .day-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .day-card-icon {
+            font-size: 2rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .day-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--text-illuminated);
+        }
+
+        .day-card-time {
+            font-size: 1.1rem;
+            color: var(--secondary-main);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .day-card-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CELESTIAL CALENDAR - REARRANGED ORDER */
         .celestial-calendar {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
+            border-radius: var(--radius-xl);
             padding: 4rem 2rem;
             margin: 6rem auto;
             max-width: 1000px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(100, 181, 246, 0.2);
             position: relative;
             overflow: hidden;
         }
@@ -503,7 +483,7 @@
 
         .calendar-day {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
@@ -524,8 +504,8 @@
         .calendar-day:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 215, 0, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(100, 181, 246, 0.3);
+            box-shadow: var(--shadow-medium);
         }
 
         .day-of-week {
@@ -538,7 +518,7 @@
             gap: 0.75rem;
         }
 
-        /* SACRED DOCTRINE CARDS (Keep existing) */
+        /* SACRED DOCTRINE CARDS */
         .sacred-doctrine {
             max-width: 1400px;
             margin: 8rem auto;
@@ -555,7 +535,7 @@
         .doctrine-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
-            border-radius: 20px;
+            border-radius: var(--radius-xl);
             padding: 3rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -579,10 +559,8 @@
 
         .doctrine-card:hover {
             transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.4),
-                0 0 40px rgba(255, 215, 0, 0.3);
-            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: var(--shadow-glow);
+            border-color: rgba(100, 181, 246, 0.5);
         }
 
         .doctrine-card:hover::before {
@@ -631,22 +609,22 @@
 
         .read-more-btn:hover {
             gap: 1.25rem;
-            color: #FFD700;
+            color: var(--secondary-main);
         }
 
-        /* CELESTIAL LOCATION (Keep existing) */
+        /* CELESTIAL LOCATION */
         .celestial-location {
             background: linear-gradient(135deg, 
                 rgba(26, 54, 93, 0.9) 0%,
                 rgba(45, 85, 161, 0.9) 50%,
                 rgba(74, 144, 226, 0.9) 100%);
-            border-radius: 24px;
+            border-radius: var(--radius-xl);
             padding: 4rem;
             margin: 6rem auto;
             max-width: 1000px;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(100, 181, 246, 0.3);
         }
 
         .location-title {
@@ -670,7 +648,7 @@
             gap: 1.5rem;
             padding: 1.5rem;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            border-radius: var(--radius-lg);
             transition: all 0.3s ease;
         }
 
@@ -681,7 +659,7 @@
 
         .location-icon {
             font-size: 1.5rem;
-            color: #FFD700;
+            color: var(--secondary-main);
             background: rgba(255, 255, 255, 0.1);
             width: 50px;
             height: 50px;
@@ -691,72 +669,44 @@
             justify-content: center;
         }
 
-        /* RESPONSIVE DESIGN - Updated for new banner */
-        @media (max-width: 1200px) {
-            .navbar .container {
-                flex-direction: column;
-                gap: 1.5rem;
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 1.5rem;
             }
-
-            .navbar-address {
-                position: relative;
-                left: 0;
-                transform: none;
-                order: 2;
-                width: 100%;
-            }
-
-            .logo {
-                order: 1;
-                width: 100%;
-                align-items: center;
-                text-align: center;
-            }
-
+            
             .nav-links {
-                order: 3;
-                width: 100%;
-                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 0.5rem 0.75rem;
             }
         }
 
         @media (max-width: 768px) {
             .navbar .container {
-                padding: 0 1rem;
-            }
-
-            .nav-toggle {
-                display: block;
-                position: absolute;
-                right: 1rem;
-                top: 1.5rem;
-            }
-
-            .nav-links {
-                display: none;
                 flex-direction: column;
-                width: 100%;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                background: rgba(10, 14, 26, 0.98);
-                backdrop-filter: blur(30px);
                 padding: 1rem;
-                border-radius: 0 0 12px 12px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-                z-index: 1000;
             }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 0.75rem 1rem;
+            
+            .logo {
                 text-align: center;
-                border-radius: 6px;
+                margin-bottom: 1rem;
             }
-
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 0.5rem;
+            }
+            
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -773,13 +723,9 @@
             .timeline-content {
                 padding: 1.5rem;
             }
-
-            .ccc-large {
-                font-size: 2rem;
-            }
-
-            .redemption-large {
-                font-size: 1.5rem;
+            
+            .schedule-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -795,48 +741,14 @@
             .doctrine-grid {
                 grid-template-columns: 1fr;
             }
-
-            .ccc-large {
-                font-size: 1.75rem;
-            }
-
-            .redemption-large {
-                font-size: 1.25rem;
-            }
-
-            .address-main {
-                font-size: 0.8rem;
-            }
-
-            .address-sub {
-                font-size: 0.7rem;
+            
+            .nav-links {
+                grid-template-columns: repeat(2, 1fr);
+                width: 100%;
             }
         }
 
-        /* INTERACTIVE ELEMENTS (Keep existing) */
-        .glow-effect {
-            position: relative;
-        }
-
-        .glow-effect::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-        }
-
-        .glow-effect:hover::after {
-            opacity: 1;
-        }
-
-        /* ANIMATION UTILITIES (Keep existing) */
+        /* ANIMATION UTILITIES */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -847,18 +759,19 @@
         }
 
         @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); }
+            0%, 100% { box-shadow: var(--shadow-glow); }
+            50% { box-shadow: 0 0 30px rgba(100, 181, 246, 0.6); }
         }
 
         .pulse-glow {
             animation: pulse-glow 2s ease-in-out infinite;
         }
 
-        /* FOOTER (Keep existing but adjust for consistency) */
+        /* FOOTER */
         footer {
-            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f38 100%);
-            border-top: 2px solid rgba(255, 215, 0, 0.3);
+            background: rgba(20, 30, 48, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(100, 181, 246, 0.3);
             margin-top: 4rem;
         }
     </style>
@@ -870,21 +783,11 @@
         <div class="stained-glass-effect"></div>
     </div>
 
-    <!-- Navigation Banner (Updated to match attached design) -->
+    <!-- Navigation Banner - Matching events.html style -->
     <nav class="navbar">
-        <button class="nav-toggle" id="navToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <!-- Navigation -->
-    
         <div class="container">
             <div class="logo">
                 <h1>CCC Redemption Parish</h1>
-                <!-- <p class="subtitle">
-                    <i class="fas fa-map-marker-alt"></i>
-                    787 Toronto Street, Winnipeg, Manitoba R3E 1Z6
-                </p> -->
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -897,35 +800,6 @@
         </div>
     </nav>
 
-            
-            <!-- Logo Section
-            <div class="logo">
-                <div class="logo-acronym">
-                    <div class="ccc-large">CCC</div>
-                    <div class="redemption-large">REDEMPTION</div>
-                </div>
-                <span class="parish-badge">PARISH</span>
-            </div> -->
-
-            <!-- Address Section (Centered)
-            <div class="navbar-address">
-                <div class="address-main">787 Toronto Street,</div>
-                <div class="address-sub">Winnipeg, Manitoba R3E 1Z6</div>
-            </div> -->
-
-            <!-- Navigation Links
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html" class="active">Sacred Rhythm</a></li>
-                <li><a href="projects.html">Divine Projects</a></li>
-                <li><a href="events.html">Celestial Events</a></li>
-                <li><a href="contact.html">Sacred Connection</a></li>
-            </ul> -->
-        </div>
-    </nav>
-
-    <!-- Rest of your existing content remains exactly the same -->
     <!-- Immersive Hero -->
     <header class="hero-immersive">
         <div class="hero-content floating">
@@ -939,12 +813,108 @@
         </div>
     </header>
 
-    <!-- Sacred Timeline -->
+    <!-- Weekly Schedule Overview -->
+    <section class="weekly-overview">
+        <div class="container">
+            <h2 class="overview-title">Weekly Worship Schedule</h2>
+            <p class="celestial-subtitle">
+                A structured spiritual journey from Sunday to Friday, guiding you through the week
+            </p>
+            
+            <div class="schedule-grid">
+                <!-- Sunday -->
+                <div class="schedule-day-card">
+                    <div class="day-card-header">
+                        <div class="day-card-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3 class="day-card-title">Sunday</h3>
+                    </div>
+                    <div class="day-card-time">10:00 AM CT</div>
+                    <div class="day-card-description">
+                        Main worship service with sermon, hymns, and Holy Communion. Our primary weekly gathering.
+                    </div>
+                </div>
+
+                <!-- Monday -->
+                <div class="schedule-day-card">
+                    <div class="day-card-header">
+                        <div class="day-card-icon">
+                            <i class="fas fa-restroom"></i>
+                        </div>
+                        <h3 class="day-card-title">Monday</h3>
+                    </div>
+                    <div class="day-card-time">Rest Day</div>
+                    <div class="day-card-description">
+                        Day of personal devotion and rest. Time for individual prayer and spiritual reflection.
+                    </div>
+                </div>
+
+                <!-- Tuesday -->
+                <div class="schedule-day-card">
+                    <div class="day-card-header">
+                        <div class="day-card-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="day-card-title">Tuesday</h3>
+                    </div>
+                    <div class="day-card-time">7:00 PM CST (Zoom)</div>
+                    <div class="day-card-description">
+                        Virtual Bible study via Zoom. Deep scriptural exploration and community discussion.
+                    </div>
+                </div>
+
+                <!-- Wednesday -->
+                <div class="schedule-day-card">
+                    <div class="day-card-header">
+                        <div class="day-card-icon">
+                            <i class="fas fa-hands-praying"></i>
+                        </div>
+                        <h3 class="day-card-title">Wednesday</h3>
+                    </div>
+                    <div class="day-card-time">9:00 AM & 6:00 PM CT</div>
+                    <div class="day-card-description">
+                        Morning and evening Mercy Day services for spiritual renewal and divine grace.
+                    </div>
+                </div>
+
+                <!-- Thursday -->
+                <div class="schedule-day-card">
+                    <div class="day-card-header">
+                        <div class="day-card-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3 class="day-card-title">Thursday</h3>
+                    </div>
+                    <div class="day-card-time">Prayer Day</div>
+                    <div class="day-card-description">
+                        Personal prayer day with special New Moon service on the first Thursday at 11:00 PM.
+                    </div>
+                </div>
+
+                <!-- Friday -->
+                <div class="schedule-day-card">
+                    <div class="day-card-header">
+                        <div class="day-card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="day-card-title">Friday</h3>
+                    </div>
+                    <div class="day-card-time">3:00 PM & 6:00 PM CT</div>
+                    <div class="day-card-description">
+                        Power Day services for pregnant women and spiritual empowerment.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sacred Timeline - REARRANGED IN CHRONOLOGICAL ORDER -->
     <section class="sacred-timeline">
         <div class="timeline-glow"></div>
         <div class="timeline-guideline"></div>
         
-        <!-- Sunday Service -->
+        <!-- Sunday Service (Day 1) -->
         <div class="timeline-item">
             <div class="timeline-marker">
                 <i class="fas fa-sun"></i>
@@ -969,57 +939,7 @@
             </div>
         </div>
 
-        <!-- Wednesday Services -->
-        <div class="timeline-item">
-            <div class="timeline-marker">
-                <i class="fas fa-hands-praying"></i>
-            </div>
-            <div class="timeline-content">
-                <div class="service-icon-large">
-                    <i class="fas fa-star-of-david"></i>
-                </div>
-                <h2 class="day-header">Wednesday · Mercy Day</h2>
-                <div class="service-time">
-                    <i class="fas fa-clock"></i> 9:00 AM & 6:00 PM CT
-                </div>
-                <p class="service-description">
-                    Morning and evening services dedicated to seeking God's mercy and grace. 
-                    Mid-week spiritual renewal with prayers, testimonies, and special intercessions.
-                </p>
-                <div>
-                    <span class="service-tag">Morning Service</span>
-                    <span class="service-tag">Evening Service</span>
-                    <span class="service-tag">Spiritual Renewal</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Friday Services -->
-        <div class="timeline-item">
-            <div class="timeline-marker">
-                <i class="fas fa-bolt"></i>
-            </div>
-            <div class="timeline-content">
-                <div class="service-icon-large">
-                    <i class="fas fa-female"></i>
-                </div>
-                <h2 class="day-header">Friday · Power Day</h2>
-                <div class="service-time">
-                    <i class="fas fa-clock"></i> 3:00 PM & 6:00 PM CT
-                </div>
-                <p class="service-description">
-                    Special service for pregnant women at 3 PM, followed by Power Service at 6 PM. 
-                    A day of divine empowerment, blessings, and spiritual breakthroughs.
-                </p>
-                <div>
-                    <span class="service-tag">Pregnant Women</span>
-                    <span class="service-tag">Power Service</span>
-                    <span class="service-tag">Empowerment</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tuesday Bible Study -->
+        <!-- Tuesday Bible Study (Day 3) -->
         <div class="timeline-item">
             <div class="timeline-marker">
                 <i class="fas fa-bible"></i>
@@ -1044,18 +964,68 @@
             </div>
         </div>
 
-        <!-- New Moon Service -->
+        <!-- Wednesday Services (Day 4) -->
+        <div class="timeline-item">
+            <div class="timeline-marker">
+                <i class="fas fa-hands-praying"></i>
+            </div>
+            <div class="timeline-content">
+                <div class="service-icon-large">
+                    <i class="fas fa-star-of-david"></i>
+                </div>
+                <h2 class="day-header">Wednesday · Mercy Day</h2>
+                <div class="service-time">
+                    <i class="fas fa-clock"></i> 9:00 AM & 6:00 PM CT
+                </div>
+                <p class="service-description">
+                    Morning and evening services dedicated to seeking God's mercy and grace. 
+                    Mid-week spiritual renewal with prayers, testimonies, and special intercessions.
+                </p>
+                <div>
+                    <span class="service-tag">Morning Service</span>
+                    <span class="service-tag">Evening Service</span>
+                    <span class="service-tag">Spiritual Renewal</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Friday Services (Day 6) -->
+        <div class="timeline-item">
+            <div class="timeline-marker">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <div class="timeline-content">
+                <div class="service-icon-large">
+                    <i class="fas fa-female"></i>
+                </div>
+                <h2 class="day-header">Friday · Power Day</h2>
+                <div class="service-time">
+                    <i class="fas fa-clock"></i> 3:00 PM & 6:00 PM CT
+                </div>
+                <p class="service-description">
+                    Special service for pregnant women at 3 PM, followed by Power Service at 6 PM. 
+                    A day of divine empowerment, blessings, and spiritual breakthroughs.
+                </p>
+                <div>
+                    <span class="service-tag">Pregnant Women</span>
+                    <span class="service-tag">Power Service</span>
+                    <span class="service-tag">Empowerment</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Moon Service (Monthly Special) -->
         <div class="timeline-item">
             <div class="timeline-marker">
                 <i class="fas fa-moon"></i>
             </div>
-            <div class="timeline-content" style="border-color: rgba(255, 215, 0, 0.5);">
+            <div class="timeline-content" style="border-color: rgba(100, 181, 246, 0.5);">
                 <div class="service-icon-large">
                     <i class="fas fa-moon-stars"></i>
                 </div>
-                <h2 class="day-header">New Moon · Monthly Observance</h2>
-                <div class="service-time" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-                    <i class="fas fa-clock"></i> 11:00 PM CT
+                <h2 class="day-header">Monthly · New Moon Service</h2>
+                <div class="service-time" style="background: var(--gold-gradient);">
+                    <i class="fas fa-clock"></i> 1st Thursday, 11:00 PM CT
                 </div>
                 <p class="service-description">
                     Special monthly service on the first Thursday. A sacred time for spiritual cleansing, 
@@ -1070,75 +1040,8 @@
         </div>
     </section>
 
-    <!-- Celestial Calendar -->
-    <section class="celestial-calendar">
-        <h2 class="calendar-title">Weekly Worship Calendar</h2>
-        <div class="calendar-grid">
-            <!-- Monday -->
-            <div class="calendar-day">
-                <div class="day-of-week">
-                    <i class="fas fa-times" style="color: #666;"></i>
-                    Monday
-                </div>
-                <div style="color: rgba(255, 255, 255, 0.6);">
-                    <p>Day of rest and personal devotion</p>
-                    <div class="service-tag" style="background: rgba(255, 255, 255, 0.05);">No Service</div>
-                </div>
-            </div>
-
-            <!-- Tuesday -->
-            <div class="calendar-day">
-                <div class="day-of-week">
-                    <i class="fas fa-bible" style="color: #4a90e2;"></i>
-                    Tuesday
-                </div>
-                <p>Virtual Bible Study</p>
-                <div class="service-time" style="font-size: 0.9rem;">7:00 PM CST (Zoom)</div>
-            </div>
-
-            <!-- Wednesday -->
-            <div class="calendar-day">
-                <div class="day-of-week">
-                    <i class="fas fa-hands-praying" style="color: #daa520;"></i>
-                    Wednesday
-                </div>
-                <p>Morning & Evening Mercy Services</p>
-                <div class="service-time" style="font-size: 0.9rem;">9:00 AM & 6:00 PM CT</div>
-            </div>
-
-            <!-- Thursday -->
-            <div class="calendar-day">
-                <div class="day-of-week">
-                    <i class="fas fa-pray" style="color: #9b59b6;"></i>
-                    Thursday
-                </div>
-                <p>Personal Prayer Day</p>
-                <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">
-                    Special New Moon Service: 1st Thursday, 11:00 PM
-                </p>
-            </div>
-
-            <!-- Friday -->
-            <div class="calendar-day">
-                <div class="day-of-week">
-                    <i class="fas fa-bolt" style="color: #ff6b6b;"></i>
-                    Friday
-                </div>
-                <p>Power Day Services</p>
-                <div class="service-time" style="font-size: 0.9rem;">3:00 PM & 6:00 PM CT</div>
-            </div>
-
-            <!-- Saturday -->
-            <div class="calendar-day">
-                <div class="day-of-week">
-                    <i class="fas fa-broom" style="color: #2ecc71;"></i>
-                    Saturday
-                </div>
-                <p>Church Preparation</p>
-                <div style="color: rgba(255, 255, 255, 0.6);">Midday cleaning & preparation</div>
-            </div>
-        </div>
-    </section>
+    <!-- Celestial Calendar - REARRANGED IN CHRONOLOGICAL ORDER -->
+    
 
     <!-- Sacred Doctrine -->
     <section class="sacred-doctrine">
@@ -1154,7 +1057,7 @@
             
             <div class="doctrine-grid">
                 <!-- Church Doctrine -->
-                <div class="doctrine-card glow-effect">
+                <div class="doctrine-card">
                     <div class="doctrine-icon">
                         <i class="fas fa-book-bible"></i>
                     </div>
@@ -1170,7 +1073,7 @@
                 </div>
 
                 <!-- Spiritual Obligations -->
-                <div class="doctrine-card glow-effect">
+                <div class="doctrine-card">
                     <div class="doctrine-icon">
                         <i class="fas fa-hand-holding-heart"></i>
                     </div>
@@ -1186,7 +1089,7 @@
                 </div>
 
                 <!-- Biblical Foundations -->
-                <div class="doctrine-card glow-effect">
+                <div class="doctrine-card">
                     <div class="doctrine-icon">
                         <i class="fas fa-scroll"></i>
                     </div>
@@ -1271,13 +1174,14 @@
                     <p><i class="fas fa-envelope"></i> info@cccredemptionwpg.org</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Divine Rhythm</h3>
+                    <h3>Divine Rhythm (Chronological Order)</h3>
                     <ul>
                         <li><strong>Sunday:</strong> 10:00 AM CT</li>
-                        <li><strong>Tuesday:</strong> 7:00 PM CST (Zoom)</li>
+                        <li><strong>Monday:</strong> Rest & Personal Devotion</li>
+                        <li><strong>Tuesday:</strong> 7:00 PM CST (Zoom Bible Study)</li>
                         <li><strong>Wednesday:</strong> 9:00 AM & 6:00 PM CT</li>
+                        <li><strong>Thursday:</strong> Prayer Day (New Moon: 11:00 PM)</li>
                         <li><strong>Friday:</strong> 3:00 PM & 6:00 PM CT</li>
-                        <li><strong>New Moon:</strong> 1st Thu, 11:00 PM CT</li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1309,36 +1213,7 @@
 
     <script src="js/main.js"></script>
     <script>
-        // Enhanced navigation functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const navToggle = document.getElementById('navToggle');
-            const navLinks = document.getElementById('navLinks');
-
-            // Mobile navigation toggle
-            if (navToggle && navLinks) {
-                navToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                    const icon = navToggle.querySelector('i');
-                    if (navLinks.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    }
-                });
-
-                // Close mobile menu when clicking a link
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navLinks.classList.remove('active');
-                        const icon = navToggle.querySelector('i');
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    });
-                });
-            }
-
             // Timeline animation on scroll
             const timelineItems = document.querySelectorAll('.timeline-item');
             const observer = new IntersectionObserver((entries) => {
@@ -1400,28 +1275,6 @@
                 setTimeout(() => {
                     time.style.animation = 'pulse-glow 2s ease-in-out infinite';
                 }, index * 300);
-            });
-
-            // Interactive calendar day selection
-            const calendarDays = document.querySelectorAll('.calendar-day');
-            calendarDays.forEach(day => {
-                day.addEventListener('click', () => {
-                    calendarDays.forEach(d => d.classList.remove('active'));
-                    day.classList.add('active');
-                    
-                    // Scroll to corresponding timeline item
-                    const dayText = day.querySelector('.day-of-week').textContent.trim();
-                    const timelineItem = Array.from(timelineItems).find(item => 
-                        item.querySelector('.day-header').textContent.includes(dayText)
-                    );
-                    
-                    if (timelineItem) {
-                        timelineItem.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center' 
-                        });
-                    }
-                });
             });
 
             // Dynamic title animation

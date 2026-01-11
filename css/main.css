@@ -1,24 +1,30 @@
-/* ===== CELESTIAL THEME ENHANCEMENTS ===== */
+/* ===== CELESTIAL THEME ENHANCEMENTS - COOLER & BRIGHTER ===== */
 :root {
-    --primary-dark: #0a0e1a;
-    --primary-light: #1a1f38;
-    --secondary-main: #FFD700;
-    --secondary-light: #FFA500;
-    --text-light: #ffffff;
-    --text-illuminated: #FFE082;
-    --text-muted: rgba(255, 255, 255, 0.7);
+    --primary-dark: #0C1726;
+    --primary-light: #1E2D47;
+    --secondary-main: #64B5F6;
+    --secondary-light: #90CAF9;
+    --accent-blue: #4FC3F7;
+    --accent-purple: #9575CD;
+    --text-light: #FFFFFF;
+    --text-illuminated: #B3E5FC;
+    --text-muted: rgba(255, 255, 255, 0.85);
+    --text-bright: #E3F2FD;
     
-    --gold-gradient: linear-gradient(135deg, var(--secondary-main) 0%, var(--secondary-light) 100%);
-    --celestial-gradient: linear-gradient(135deg, #1a365d 0%, #2d55a1 50%, #4a90e2 100%);
+    --gold-gradient: linear-gradient(135deg, var(--secondary-main) 0%, var(--accent-blue) 100%);
+    --celestial-gradient: linear-gradient(135deg, #0C1726 0%, #1E2D47 25%, #2D55A1 50%, #4A90E2 75%, #64B5F6 100%);
+    --starry-night: linear-gradient(135deg, #0D1117 0%, #1A365D 50%, #2D55A1 100%);
     
-    --shadow-soft: 0 8px 32px rgba(31, 38, 135, 0.1);
-    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.3);
-    --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.3);
-    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.4);
+    --shadow-soft: 0 8px 32px rgba(31, 38, 135, 0.15);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.25);
+    --shadow-glow: 0 0 30px rgba(100, 181, 246, 0.4);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+    --shadow-blue: 0 10px 30px rgba(100, 181, 246, 0.2);
     
-    --stained-glass-blue: rgba(77, 144, 254, 0.15);
-    --stained-glass-purple: rgba(152, 68, 183, 0.15);
-    --stained-glass-gold: rgba(255, 215, 0, 0.1);
+    --stained-glass-blue: rgba(100, 181, 246, 0.2);
+    --stained-glass-purple: rgba(149, 117, 205, 0.2);
+    --stained-glass-aqua: rgba(79, 195, 247, 0.15);
+    --frosted-glass: rgba(255, 255, 255, 0.08);
     
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -53,19 +59,14 @@ body {
     padding: 0 2rem;
 }
 
-/* ===== CELESTIAL BACKGROUND ===== */
+/* ===== CELESTIAL BACKGROUND - COOLER VERSION ===== */
 .celestial-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, 
-        var(--primary-dark) 0%,
-        var(--primary-light) 25%,
-        #2d3b66 50%,
-        var(--primary-light) 75%,
-        var(--primary-dark) 100%);
+    background: var(--starry-night);
     z-index: -2;
     overflow: hidden;
 }
@@ -75,11 +76,11 @@ body {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(2px 2px at 20% 30%, white 50%, transparent 100%),
-        radial-gradient(3px 3px at 40% 70%, white 50%, transparent 100%),
-        radial-gradient(1px 1px at 60% 20%, white 50%, transparent 100%),
-        radial-gradient(2px 2px at 80% 90%, white 50%, transparent 100%),
-        radial-gradient(3px 3px at 30% 50%, white 50%, transparent 100%);
+        radial-gradient(2px 2px at 20% 30%, #B3E5FC 50%, transparent 100%),
+        radial-gradient(3px 3px at 40% 70%, #64B5F6 50%, transparent 100%),
+        radial-gradient(1px 1px at 60% 20%, #4FC3F7 50%, transparent 100%),
+        radial-gradient(2px 2px at 80% 90%, #90CAF9 50%, transparent 100%),
+        radial-gradient(3px 3px at 30% 50%, #E3F2FD 50%, transparent 100%);
     animation: twinkle 4s infinite alternate;
 }
 
@@ -92,14 +93,14 @@ body {
     background: 
         radial-gradient(circle at 20% 50%, var(--stained-glass-blue) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, var(--stained-glass-purple) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, var(--stained-glass-gold) 0%, transparent 50%);
+        radial-gradient(circle at 50% 80%, var(--stained-glass-aqua) 0%, transparent 50%);
     z-index: -1;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 @keyframes twinkle {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
 }
 
 @keyframes float {
@@ -108,8 +109,8 @@ body {
 }
 
 @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); }
+    0%, 100% { box-shadow: 0 0 30px rgba(100, 181, 246, 0.3); }
+    50% { box-shadow: 0 0 50px rgba(100, 181, 246, 0.6); }
 }
 
 @keyframes shimmer {
@@ -128,22 +129,22 @@ body {
     }
 }
 
-/* ===== NAVIGATION ===== */
+/* ===== NAVIGATION - COOLER DESIGN ===== */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(15, 23, 42, 0.95);
+    background: rgba(30, 45, 71, 0.95);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    border-bottom: 1px solid rgba(100, 181, 246, 0.3);
     z-index: 1000;
     transition: all var(--transition-normal);
 }
 
 .navbar.scrolled {
-    background: rgba(10, 14, 26, 0.98);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(12, 23, 38, 0.98);
+    box-shadow: var(--shadow-blue);
 }
 
 .navbar .container {
@@ -187,7 +188,7 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-light);
+    color: var(--text-bright);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
@@ -196,6 +197,7 @@ body {
     transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .nav-links a::before {
@@ -212,6 +214,7 @@ body {
 
 .nav-links a:hover {
     color: var(--text-illuminated);
+    background: rgba(100, 181, 246, 0.1);
 }
 
 .nav-links a:hover::before {
@@ -220,7 +223,8 @@ body {
 
 .nav-links a.active {
     color: var(--text-illuminated);
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(100, 181, 246, 0.15);
+    box-shadow: var(--shadow-glow);
 }
 
 .nav-links a.active::before {
@@ -267,7 +271,7 @@ body {
     line-height: 1.8;
 }
 
-/* ===== CELESTIAL BUTTONS ===== */
+/* ===== CELESTIAL BUTTONS - COOLER VERSION ===== */
 .btn-celestial {
     display: inline-flex;
     align-items: center;
@@ -296,7 +300,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: left var(--transition-slow);
 }
 
@@ -336,11 +340,11 @@ body {
     box-shadow: var(--shadow-glow);
 }
 
-/* ===== FOOTER ===== */
+/* ===== FOOTER - COOLER DESIGN ===== */
 footer {
-    background: rgba(15, 23, 42, 0.95);
+    background: rgba(20, 30, 48, 0.95);
     backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 215, 0, 0.2);
+    border-top: 1px solid rgba(100, 181, 246, 0.3);
     padding: 4rem 0 2rem;
     margin-top: 4rem;
 }
@@ -411,22 +415,23 @@ footer {
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--frosted-glass);
     border-radius: var(--radius-full);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(100, 181, 246, 0.2);
     transition: all var(--transition-normal);
 }
 
 .footer-social-link:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(100, 181, 246, 0.1);
     border-color: var(--secondary-main);
     transform: translateX(5px);
+    box-shadow: var(--shadow-blue);
 }
 
 .copyright {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(100, 181, 246, 0.2);
     color: var(--text-muted);
     font-size: 0.875rem;
 }
