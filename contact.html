@@ -1,18 +1,552 @@
-<div class="form-group">
-    <label for="subject">Subject</label>
-    <select id="subject" name="subject">
-        <option value="">Select a subject</option>
-        <option value="general">General Inquiry</option>
-        <option value="prayer">Prayer Request</option>
-        <option value="visitation">Request Visitation</option>
-        <option value="membership">Membership Information</option>
-        <option value="donation">Donation Inquiry</option>
-    </select>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Connection - Contact CCC Redemption Parish Winnipeg | cccredemptionwpg.org</title>
+    <meta name="description" content="Connect with Celestial Church of Christ Redemption Parish Winnipeg. Reach out for prayer, visitation, or inquiries.">
+    <link rel="canonical" href="https://cccredemptionwpg.org/contact.html">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+            margin-top: 80px;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(26, 54, 93, 0.9)),
+                        url('public/images/projects/5.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
 
-<div class="form-group">
-    <label for="message">Message *</label>
-    <textarea id="message" name="message" required placeholder="Your message..."></textarea>
-</div>
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 4rem;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
 
-<button type="submit" class="btn">Send Message</button>
+        .contact-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #FFD700, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+            letter-spacing: 2px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .contact-info-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .contact-info-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-illuminated);
+        }
+
+        .contact-info-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        /* Enhanced Form */
+        .form-container {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 4rem auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .form-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-illuminated);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: var(--text-illuminated);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-main);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group select option {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .required {
+            color: var(--secondary-main);
+        }
+
+        /* Map Section */
+        .map-container {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 4rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .map-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-illuminated);
+            text-align: center;
+        }
+
+        .map-placeholder {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .map-placeholder i {
+            font-size: 4rem;
+            color: var(--secondary-main);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-hero {
+                padding: 4rem 1rem;
+            }
+            
+            .contact-hero-content {
+                padding: 3rem 2rem;
+            }
+            
+            .contact-title {
+                font-size: 2.5rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .form-container {
+                padding: 3rem 2rem;
+                margin: 2rem 1rem;
+            }
+            
+            .map-container {
+                padding: 3rem 2rem;
+                margin: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-title {
+                font-size: 2rem;
+            }
+            
+            .contact-subtitle {
+                font-size: 1rem;
+            }
+            
+            .contact-info-card {
+                padding: 2rem;
+            }
+            
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Celestial Background -->
+    <div class="celestial-background">
+        <div class="stars"></div>
+        <div class="stained-glass-effect"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>CCC Redemption Parish</h1>
+                <!-- <p class="subtitle">Winnipeg, Manitoba</p> -->
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Sacred Rhythm</a></li>
+                <li><a href="projects.html">Divine Projects</a></li>
+                <li><a href="events.html">Celestial Events</a></li>
+                <li><a href="contact.html" class="active">Sacred Connection</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <header class="contact-hero">
+        <div class="contact-hero-content floating">
+            <h1 class="contact-title">Divine Connection</h1>
+            <p class="contact-subtitle">
+                Reach out to us for prayer, guidance, or to connect with our celestial community
+            </p>
+        </div>
+    </header>
+
+    <!-- Contact Information -->
+    <section class="contact-grid">
+        <div class="contact-info-card">
+            <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Our Sacred Ground</h3>
+            <p>
+                <strong>787 Toronto Street</strong><br>
+                Winnipeg, Manitoba<br>
+                Canada R3E 1Z6
+            </p>
+        </div>
+
+        <div class="contact-info-card">
+            <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+            </div>
+            <h3>Divine Communication</h3>
+            <p>
+                <strong>Phone:</strong> (204) 979-6644<br>
+                <strong>Email:</strong> info@cccredemptionwpg.org<br>
+                <strong>Hours:</strong> Mon-Fri 9AM-5PM
+            </p>
+        </div>
+
+        <div class="contact-info-card">
+            <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <h3>Worship Times</h3>
+            <p>
+                <strong>Sunday:</strong> 10:00 AM<br>
+                <strong>Wednesday:</strong> 9:00 AM & 6:00 PM<br>
+                <strong>New Moon:</strong> 1st Thu, 11:00 PM
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="form-container">
+        <h2 class="form-title">Send Us a Celestial Message</h2>
+        <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 3rem; text-align: center;">
+            We're here to listen, pray with you, and help you connect with our community
+        </p>
+        
+        <form id="contactForm" method="POST">
+            <div class="form-group">
+                <label for="name">Your Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Message Subject</label>
+                <select id="subject" name="subject">
+                    <option value="">Select a subject</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="prayer">Prayer Request</option>
+                    <option value="visitation">Request Visitation</option>
+                    <option value="membership">Membership Information</option>
+                    <option value="donation">Donation Inquiry</option>
+                    <option value="event">Event Information</option>
+                    <option value="counseling">Spiritual Counseling</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Your Celestial Message <span class="required">*</span></label>
+                <textarea id="message" name="message" required placeholder="Share your prayer request, inquiry, or message..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-celestial">
+                <i class="fas fa-paper-plane"></i>
+                Send Divine Message
+            </button>
+        </form>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-container">
+        <h2 class="map-title">Find Our Sacred Ground</h2>
+        <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem; text-align: center;">
+            Visit us at our celestial sanctuary in Winnipeg
+        </p>
+        
+        <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt"></i>
+            <h3 style="color: var(--text-illuminated); margin-bottom: 1rem;">787 Toronto Street</h3>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+                Winnipeg, Manitoba R3E 1Z6<br>
+                Located in the heart of Winnipeg
+            </p>
+            <a href="https://maps.google.com/?q=787+Toronto+Street+Winnipeg+Manitoba" 
+               target="_blank" 
+               class="btn-celestial-outline">
+                <i class="fas fa-directions"></i>
+                Get Directions
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sacred Ground</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 787 Toronto Street</p>
+                    <p>Winnipeg, Manitoba R3E 1Z6</p>
+                    <p><i class="fas fa-phone"></i> (204) 979-6644</p>
+                    <p><i class="fas fa-envelope"></i> info@cccredemptionwpg.org</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Worship Times</h3>
+                    <ul>
+                        <li><strong>Sunday:</strong> 10:00 AM</li>
+                        <li><strong>Wednesday Morning:</strong> 9:00 AM</li>
+                        <li><strong>Wednesday Evening:</strong> 6:00 PM</li>
+                        <li><strong>New Moon:</strong> 1st Thu, 11:00 PM</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Divine Pathways</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-church"></i> Sacred Foundations</a></li>
+                        <li><a href="services.html"><i class="fas fa-pray"></i> Divine Rhythm</a></li>
+                        <li><a href="contact.html"><i class="fas fa-hands"></i> Divine Connection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Celestial Connection</h3>
+                    <div class="footer-social">
+                        <a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank" class="footer-social-link">
+                            <i class="fab fa-youtube"></i> Divine Broadcast
+                        </a>
+                        <a href="https://linktr.ee/redemptionparish" target="_blank" class="footer-social-link">
+                            <i class="fas fa-tree"></i> Sacred Links
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2024 Celestial Church of Christ Redemption Parish Winnipeg. All Rights Reserved. | cccredemptionwpg.org</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize celestial background
+            const celestialBg = document.createElement('div');
+            celestialBg.className = 'celestial-background';
+            celestialBg.innerHTML = `
+                <div class="stars"></div>
+                <div class="stained-glass-effect"></div>
+            `;
+            document.body.insertBefore(celestialBg, document.body.firstChild);
+            
+            // Add floating animation to hero content
+            const heroContent = document.querySelector('.contact-hero-content');
+            if (heroContent) {
+                heroContent.classList.add('floating');
+            }
+            
+            // Contact form handling
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Divine Message...';
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        // Get form data
+                        const formData = new FormData(this);
+                        const data = Object.fromEntries(formData);
+                        
+                        // Simple validation
+                        if (!data.name || !data.email || !data.message) {
+                            throw new Error('Please fill in all required fields');
+                        }
+                        
+                        // Simulate API call
+                        await new Promise(resolve => setTimeout(resolve, 1500));
+                        
+                        // Show success message
+                        alert('✨ Your celestial message has been sent! We will connect with you soon.');
+                        
+                        // Reset form
+                        this.reset();
+                        
+                    } catch (error) {
+                        alert('❌ ' + error.message);
+                    } finally {
+                        // Restore button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
+            
+            // Add interactive effects to contact cards
+            const contactCards = document.querySelectorAll('.contact-info-card');
+            contactCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Scroll effect for navbar
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.navbar');
+                if (window.scrollY > 100) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

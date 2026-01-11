@@ -5,65 +5,435 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celestial Church of Christ - Redemption Parish Winnipeg | cccredemptionwpg.org</title>
     <meta name="description" content="Welcome to Celestial Church of Christ Redemption Parish Winnipeg. Join us for worship at 787 Toronto Street, Winnipeg. Sunday Service: 10:00 AM">
-    <!-- ... keep all existing meta tags ... -->
+    <meta name="keywords" content="Celestial Church, Winnipeg, Christian Church, Worship, Redemption Parish">
+    <meta name="author" content="CCC Redemption Parish">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cccredemptionwpg.org/">
+    <meta property="og:title" content="Celestial Church of Christ - Redemption Parish Winnipeg">
+    <meta property="og:description" content="Welcome to Celestial Church of Christ Redemption Parish Winnipeg">
+    <meta property="og:image" content="https://cccredemptionwpg.org/public/images/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cccredemptionwpg.org/">
+    <meta property="twitter:title" content="Celestial Church of Christ - Redemption Parish Winnipeg">
+    <meta property="twitter:description" content="Welcome to Celestial Church of Christ Redemption Parish Winnipeg">
+    <meta property="twitter:image" content="https://cccredemptionwpg.org/public/images/twitter-image.jpg">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
-    <!-- Add CSS for background carousel -->
     <style>
-        .hero-carousel {
+        /* Enhanced Hero Section */
+        .hero-immersive {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
-            height: 100vh;
             overflow: hidden;
+            padding: 2rem;
+            margin-top: 80px;
         }
-        
-        .carousel-slides {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-        
-        .carousel-slide.active {
-            opacity: 1;
-        }
-        
-        .hero-content {
+
+        .hero-content-enhanced {
             position: relative;
-            z-index: 10;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 4rem 2rem;
-            border-radius: 15px;
-            max-width: 800px;
-            margin: 0 auto;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 4rem;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease-out;
         }
-        
-        .overlay {
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #FFD700, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero-verse {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--text-illuminated);
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--secondary-main);
+        }
+
+        .hero-service-banner {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        .hero-service-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-illuminated);
+        }
+
+        .hero-social {
+            margin-top: 3rem;
+        }
+
+        .hero-social h4 {
+            color: var(--text-illuminated);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .social-icons-enhanced {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn-enhanced {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            color: white;
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-btn-enhanced:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .social-btn-enhanced.youtube:hover {
+            background: #FF0000;
+        }
+
+        .social-btn-enhanced.linktree:hover {
+            background: #39e09b;
+        }
+
+        /* Enhanced Welcome Section */
+        .welcome-section-enhanced {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 6rem 4rem;
+            margin: 6rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .welcome-section-enhanced::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            background: var(--gold-gradient);
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .welcome-content {
+            position: relative;
             z-index: 1;
+        }
+
+        /* Enhanced Projects Section */
+        .projects-section-enhanced {
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .projects-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .project-card-enhanced {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .project-card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gold-gradient);
+        }
+
+        .project-card-enhanced:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .project-image-enhanced {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image-enhanced::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(15, 23, 42, 0.7));
+        }
+
+        .project-content-enhanced {
+            padding: 2.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-content-enhanced h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-illuminated);
+        }
+
+        .project-content-enhanced p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 400px;
+        }
+
+        /* Enhanced Events Section */
+        .events-section-enhanced {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 24px;
+            margin: 4rem auto;
+            max-width: 1400px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .events-list-enhanced {
+            display: grid;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 4rem auto;
+        }
+
+        .event-card-enhanced {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .event-card-enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .event-date-enhanced {
+            background: var(--gold-gradient);
+            color: var(--primary-dark);
+            padding: 2rem;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .event-date-enhanced .month {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .event-date-enhanced .day {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-top: 0.5rem;
+        }
+
+        .event-details-enhanced {
+            padding: 2.5rem;
+            flex: 1;
+        }
+
+        .event-details-enhanced h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-illuminated);
+        }
+
+        .event-details-enhanced p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .projects-grid-enhanced {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content-enhanced {
+                padding: 3rem 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .event-card-enhanced {
+                flex-direction: column;
+            }
+            
+            .event-date-enhanced {
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+                min-height: auto;
+                padding: 1.5rem;
+            }
+            
+            .event-date-enhanced .month {
+                font-size: 0.9rem;
+            }
+            
+            .event-date-enhanced .day {
+                font-size: 2rem;
+            }
+            
+            .welcome-section-enhanced {
+                padding: 4rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-content-enhanced {
+                padding: 2rem 1.5rem;
+            }
+            
+            .projects-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-icons-enhanced {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .social-btn-enhanced {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -72,205 +442,260 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <!-- <h1>CCC Redemption Parish</h1> -->
-                    <i class="fas fa-map-marker-alt location-icon"></i>
-                <p class="subtitle">787, Toronto St. Winnipeg, Manitoba R3E 1Z6</p>
+                <h1>CCC Redemption Parish</h1>
+                <!-- <p class="subtitle">
+                    <i class="fas fa-map-marker-alt"></i>
+                    787 Toronto Street, Winnipeg, Manitoba R3E 1Z6
+                </p> -->
             </div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="services.html">Sacred Rhythm</a></li>
+                <li><a href="projects.html">Divine Projects</a></li>
+                <li><a href="events.html">Celestial Events</a></li>
+                <li><a href="contact.html">Sacred Connection</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Dynamic Background Carousel -->
-    <header class="hero-carousel">
-        <div class="carousel-slides" id="carouselSlides">
-            <!-- Slides will be added dynamically by JavaScript -->
-        </div>
-        <div class="overlay"></div>
-        
-        <div class="hero-content">
-            <h1>Welcome to Celestial Church of Christ</h1>
-            <h2>Redemption Parish, Winnipeg</h2>
-            <p>"For where two or three gather in my name, there am I with them." - Matthew 18:20</p>
-            <div class="service-times-banner">
-                <h3>Sunday Service: 10:00 AM</h3>
-                <a href="services.html" class="btn">View All Service Times</a>
+    <!-- Immersive Hero Section -->
+    <header class="hero-immersive">
+        <div class="hero-content-enhanced floating">
+            <h1 class="hero-title">Welcome to Celestial Church of Christ</h1>
+            <h2 class="hero-subtitle">Redemption Parish, Winnipeg</h2>
+            
+            <div class="hero-verse">
+                <i class="fas fa-quote-left" style="margin-right: 10px; color: var(--secondary-main);"></i>
+                "For where two or three gather in my name, there am I with them."
+                <i class="fas fa-quote-right" style="margin-left: 10px; color: var(--secondary-main);"></i>
+                <div style="margin-top: 0.5rem; font-size: 1rem; color: rgba(255, 255, 255, 0.7);">
+                    - Matthew 18:20
+                </div>
             </div>
             
-            <!-- Social Media Links -->
-            <div class="social-media">
-                <h3>Connect With Us</h3>
-                <div class="social-icons">
-                    <a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank" class="social-btn youtube">
-                        <i class="fab fa-youtube"></i> YouTube
+            <div class="hero-service-banner pulse-glow">
+                <h3>
+                    <i class="fas fa-church"></i>
+                    Sunday Divine Service
+                </h3>
+                <div style="font-size: 1.25rem; margin-bottom: 1.5rem; color: white;">
+                    10:00 AM CT | Main Sanctuary
+                </div>
+                <a href="services.html" class="btn-celestial">
+                    <i class="fas fa-calendar-alt"></i>
+                    Discover Our Sacred Rhythm
+                </a>
+            </div>
+            
+            <div class="hero-social">
+                <h4>Celestial Connection</h4>
+                <div class="social-icons-enhanced">
+                    <a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank" class="social-btn-enhanced youtube">
+                        <i class="fab fa-youtube"></i>
+                        Divine Broadcast on YouTube
                     </a>
-                    <a href="https://linktr.ee/redemptionparish" target="_blank" class="social-btn linktree">
-                        <i class="fas fa-tree"></i> Linktree
+                    <a href="https://linktr.ee/redemptionparish" target="_blank" class="social-btn-enhanced linktree">
+                        <i class="fas fa-tree"></i>
+                        Sacred Pathways on Linktree
                     </a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <section class="welcome-section" style="text-align: center;">
-    <div class="container">
-        <h2 style="text-align: center; margin: 0 auto 2rem auto; display: block;">Welcome to Our Parish</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
-            The Celestial Church of Christ Redemption Parish in Winnipeg is a place of worship, fellowship, and spiritual growth for members of the Celestial faith community in Manitoba. We welcome all who seek spiritual nourishment and community in Christ.
-        </p>
-        
-        
-            <div class="location-details">
-                <!-- <h4 style="text-align: center;">Our Location</h4>
-                <p style="text-align: center;">787 Toronto Street, Winnipeg, Manitoba, Canada R3E 1Z6</p> -->
+    <!-- Welcome Section -->
+    <section class="welcome-section-enhanced">
+        <div class="welcome-content">
+            <h2 class="celestial-title">Welcome to Our Sacred Parish</h2>
+            <p class="celestial-subtitle">
+                The Celestial Church of Christ Redemption Parish in Winnipeg is a sanctuary of worship, fellowship, 
+                and spiritual growth for the Celestial faith community in Manitoba. We welcome all who seek divine 
+                nourishment and celestial connection in Christ.
+            </p>
+            
+            <div style="margin-top: 3rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <div class="location-details" style="text-align: center;">
+                    <div style="margin-bottom: 1rem;">
+                        <i class="fas fa-compass" style="font-size: 2rem; color: var(--secondary-main);"></i>
+                    </div>
+                    <h4 style="color: var(--text-illuminated); margin-bottom: 0.5rem;">Our Sacred Ground</h4>
+                    <p style="color: rgba(255, 255, 255, 0.8);">
+                        787 Toronto Street<br>
+                        Winnipeg, Manitoba<br>
+                        Canada R3E 1Z6
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-        <!-- Projects Section -->
-        <section class="projects-section">
-        <section class="welcome-section" style="text-align: center;">
+    <!-- Divine Projects Section -->
+    <section class="projects-section-enhanced">
+        <div class="container">
+            <h2 class="celestial-title">Our Divine Projects</h2>
+            <p class="celestial-subtitle">
+                Engaging in sacred work that uplifts our community and strengthens our spiritual foundation.
+            </p>
             
-            <h2>Our Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
+            <div class="projects-grid-enhanced">
+                <!-- Community Outreach -->
+                <div class="project-card-enhanced">
+                    <div class="project-image-enhanced">
                         <img src="public/images/carousel/1.jpg" alt="Community Outreach">
                     </div>
-                    <div class="project-content">
+                    <div class="project-content-enhanced">
                         <h3>Community Outreach</h3>
-                        <p>Engaging with the local community through various outreach programs and charitable activities.</p>
-                        <a href="projects.html" class="btn btn-small">Learn More</a>
+                        <p>
+                            Extending God's love through charitable activities and support programs 
+                            that touch lives in our local community.
+                        </p>
+                        <a href="projects.html" class="btn-celestial-outline">
+                            <i class="fas fa-hands-helping"></i>
+                            Join the Mission
+                        </a>
                     </div>
                 </div>
                 
-                <div class="project-card">
-                    <div class="project-image">
+                <!-- Youth Ministry -->
+                <div class="project-card-enhanced">
+                    <div class="project-image-enhanced">
                         <img src="public/images/carousel/2.jpg" alt="Youth Ministry">
                     </div>
-                    <div class="project-content">
+                    <div class="project-content-enhanced">
                         <h3>Youth Ministry</h3>
-                        <p>Nurturing the spiritual growth of our youth through dedicated programs and activities.</p>
-                        <a href="projects.html" class="btn btn-small">Learn More</a>
+                        <p>
+                            Nurturing the next generation through spiritual programs and activities 
+                            that build faith and character.
+                        </p>
+                        <a href="projects.html" class="btn-celestial-outline">
+                            <i class="fas fa-child"></i>
+                            Empower Youth
+                        </a>
                     </div>
                 </div>
                 
-                <div class="project-card">
-                    <div class="project-image">
+                <!-- Building Fund -->
+                <div class="project-card-enhanced">
+                    <div class="project-image-enhanced">
                         <img src="public/images/carousel/9.jpg" alt="Building Fund">
                     </div>
-                    <div class="project-content">
-                        <h3>Building Fund</h3>
-                        <p>Supporting the maintenance and improvement of our church facilities.</p>
-                        <a href="projects.html" class="btn btn-small">Learn More</a>
+                    <div class="project-content-enhanced">
+                        <h3>Sanctuary Development</h3>
+                        <p>
+                            Supporting the enhancement of our worship space to create a more 
+                            inspiring environment for spiritual growth.
+                        </p>
+                        <a href="projects.html" class="btn-celestial-outline">
+                            <i class="fas fa-church"></i>
+                            Build With Us
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Events Section -->
-        <section class="events-section">
-            <section class="welcome-section" style="text-align: center;">
-
-            <h2>Upcoming Events</h2>
-            <div class="events-list">
-                <div class="event-card">
-                    <div class="event-date">
+    <!-- Celestial Events Section -->
+    <section class="events-section-enhanced">
+        <div class="container">
+            <h2 class="celestial-title">Upcoming Celestial Events</h2>
+            <p class="celestial-subtitle">
+                Join us for special gatherings that celebrate faith, fellowship, and divine connection.
+            </p>
+            
+            <div class="events-list-enhanced">
+                <!-- Event 1 -->
+                <div class="event-card-enhanced">
+                    <div class="event-date-enhanced">
                         <span class="month">MAR</span>
                         <span class="day">15</span>
                     </div>
-                    <div class="event-details">
-                        
+                    <div class="event-details-enhanced">
                         <h3>Community Prayer Breakfast</h3>
                         <p><i class="fas fa-clock"></i> Saturday, 9:00 AM</p>
                         <p><i class="fas fa-map-marker-alt"></i> Church Hall</p>
-                        <p>Join us for fellowship and prayer over breakfast.</p>
+                        <p>Join us for fellowship and prayer over a shared morning meal. A time to connect with God and community.</p>
                     </div>
                 </div>
                 
-                <div class="event-card">
-                    <div class="event-date">
+                <!-- Event 2 -->
+                <div class="event-card-enhanced">
+                    <div class="event-date-enhanced">
                         <span class="month">MAR</span>
                         <span class="day">22</span>
                     </div>
-                    <div class="event-details">
-                        <h3>Youth Bible Study</h3>
+                    <div class="event-details-enhanced">
+                        <h3>Youth Bible Study Session</h3>
                         <p><i class="fas fa-clock"></i> Friday, 6:00 PM</p>
                         <p><i class="fas fa-map-marker-alt"></i> Youth Center</p>
-                        <p>Special Bible study session for youth members.</p>
+                        <p>Special interactive Bible study designed for our youth members to explore faith together.</p>
                     </div>
                 </div>
                 
-                <div class="event-card">
-                    <div class="event-date">
+                <!-- Event 3 -->
+                <div class="event-card-enhanced">
+                    <div class="event-date-enhanced">
                         <span class="month">APR</span>
                         <span class="day">05</span>
                     </div>
-                    <div class="event-details">
-                        <h3>Easter Sunday Service</h3>
+                    <div class="event-details-enhanced">
+                        <h3>Easter Sunday Celebration</h3>
                         <p><i class="fas fa-clock"></i> Sunday, 9:00 AM</p>
                         <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
-                        <p>Special Easter celebration service with Holy Communion.</p>
+                        <p>Special Easter celebration service with Holy Communion. Rejoice in the resurrection of our Lord.</p>
                     </div>
                 </div>
             </div>
-            <div class="text-center">
-                <a href="events.html" class="btn">View All Events</a>
+            
+            <div style="margin-top: 4rem;">
+                <a href="events.html" class="btn-celestial">
+                    <i class="fas fa-calendar-star"></i>
+                    View All Celestial Events
+                </a>
             </div>
-        </section>
-
-        <!-- Rest of your existing sections (Service Times, Gallery, Features, CTA) -->
-        <!-- ... keep your existing service times, gallery, features, and CTA sections ... -->
-        
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Contact Info</h3>
+                    <h3>Sacred Ground</h3>
                     <p><i class="fas fa-map-marker-alt"></i> 787 Toronto Street</p>
                     <p>Winnipeg, Manitoba R3E 1Z6</p>
                     <p><i class="fas fa-phone"></i> (204) 979-6644</p>
                     <p><i class="fas fa-envelope"></i> info@cccredemptionwpg.org</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
+                    <h3>Divine Pathways</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-church"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-pray"></i> Sacred Rhythm</a></li>
+                        <li><a href="projects.html"><i class="fas fa-hands-helping"></i> Divine Projects</a></li>
+                        <li><a href="events.html"><i class="fas fa-calendar-star"></i> Celestial Events</a></li>
+                        <li><a href="contact.html"><i class="fas fa-hands"></i> Sacred Connection</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Service Times</h3>
+                    <h3>Worship Times</h3>
                     <ul>
                         <li><strong>Sunday:</strong> 10:00 AM</li>
-                        <li><strong>Wednesday (Seeker):</strong> 9:00 AM</li>
-                        <li><strong>Wednesday (Mercy):</strong> 6:00 PM</li>
-                        <li><strong>New Moon:</strong> First Thursday, 11:00 PM</li>
+                        <li><strong>Wednesday Morning:</strong> 9:00 AM</li>
+                        <li><strong>Wednesday Evening:</strong> 6:00 PM</li>
+                        <li><strong>New Moon:</strong> 1st Thu, 11:00 PM</li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Follow Us</h3>
+                    <h3>Celestial Connection</h3>
                     <div class="footer-social">
                         <a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank" class="footer-social-link">
-                            <i class="fab fa-youtube"></i> YouTube
+                            <i class="fab fa-youtube"></i> Divine Broadcast
                         </a>
                         <a href="https://linktr.ee/redemptionparish" target="_blank" class="footer-social-link">
-                            <i class="fas fa-tree"></i> Linktree
+                            <i class="fas fa-tree"></i> Sacred Links
                         </a>
                     </div>
                 </div>
@@ -282,11 +707,19 @@
     <!-- JavaScript -->
     <script src="js/main.js"></script>
     
-    <!-- Add this script for dynamic background -->
+    <!-- Enhanced Scripts -->
     <script>
-        // Dynamic Background Carousel
         document.addEventListener('DOMContentLoaded', function() {
-            // Array of your Google Drive image URLs
+            // Initialize celestial background
+            const celestialBg = document.createElement('div');
+            celestialBg.className = 'celestial-background';
+            celestialBg.innerHTML = `
+                <div class="stars"></div>
+                <div class="stained-glass-effect"></div>
+            `;
+            document.body.insertBefore(celestialBg, document.body.firstChild);
+            
+            // Enhanced carousel functionality
             const backgroundImages = [
                 'public/images/events/7.jpg',
                 'public/images/events/8.jpg',
@@ -294,24 +727,69 @@
                 'public/images/projects/4.jpg'
             ];
             
-            const carouselSlides = document.getElementById('carouselSlides');
-            let currentSlide = 0;
+            let currentHeroBg = 0;
+            const heroSection = document.querySelector('.hero-immersive');
             
-            // Create slides
-            backgroundImages.forEach((imageUrl, index) => {
-                const slide = document.createElement('div');
-                slide.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
-                slide.style.backgroundImage = `url('${imageUrl}')`;
-                carouselSlides.appendChild(slide);
+            if (heroSection && backgroundImages.length > 0) {
+                // Set initial background
+                heroSection.style.backgroundImage = `
+                    linear-gradient(rgba(15, 23, 42, 0.85), rgba(26, 54, 93, 0.9)),
+                    url('${backgroundImages[0]}')
+                `;
+                heroSection.style.backgroundSize = 'cover';
+                heroSection.style.backgroundPosition = 'center';
+                heroSection.style.transition = 'background-image 1.5s ease-in-out';
+                
+                // Rotate backgrounds
+                setInterval(() => {
+                    currentHeroBg = (currentHeroBg + 1) % backgroundImages.length;
+                    heroSection.style.backgroundImage = `
+                        linear-gradient(rgba(15, 23, 42, 0.85), rgba(26, 54, 93, 0.9)),
+                        url('${backgroundImages[currentHeroBg]}')
+                    `;
+                }, 8000);
+            }
+            
+            // Add floating animation to hero content
+            const heroContent = document.querySelector('.hero-content-enhanced');
+            if (heroContent) {
+                heroContent.classList.add('floating');
+            }
+            
+            // Add glow animation to service banner
+            const serviceBanner = document.querySelector('.hero-service-banner');
+            if (serviceBanner) {
+                serviceBanner.classList.add('pulse-glow');
+            }
+            
+            // Enhanced scroll effects
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.navbar');
+                if (window.scrollY > 100) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+                
+                // Parallax effect for stars
+                const stars = document.querySelector('.stars');
+                const scrolled = window.pageYOffset;
+                if (stars) {
+                    stars.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
             });
             
-            // Rotate slides every 5 seconds
-            setInterval(() => {
-                const slides = document.querySelectorAll('.carousel-slide');
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }, 5000);
+            // Add smooth hover effects to cards
+            const cards = document.querySelectorAll('.project-card-enhanced, .event-card-enhanced');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
         });
     </script>
 </body>

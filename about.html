@@ -8,108 +8,479 @@
     <link rel="canonical" href="https://cccredemptionwpg.org/about.html">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* About Page Specific Styles */
+        .about-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+            margin-top: 80px;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(26, 54, 93, 0.9)),
+                        url('public/images/events/7.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 4rem;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .about-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #FFD700, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+            letter-spacing: 2px;
+        }
+
+        .about-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* About Content Sections */
+        .about-content-section {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 5rem 4rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .about-content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-gradient);
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .section-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-illuminated);
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gold-gradient);
+            border-radius: var(--radius-full);
+        }
+
+        .section-text {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Values Grid Enhanced */
+        .values-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .value-item-enhanced {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-item-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gold-gradient);
+        }
+
+        .value-item-enhanced:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .value-icon-enhanced {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .value-item-enhanced h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-illuminated);
+        }
+
+        .value-item-enhanced p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        /* Timeline for History */
+        .history-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            text-align: left;
+        }
+
+        .timeline-item-about {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--secondary-main);
+        }
+
+        .timeline-item-about::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            border: 3px solid var(--primary-dark);
+        }
+
+        .timeline-year {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-illuminated);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 4rem 1rem;
+            }
+            
+            .about-hero-content {
+                padding: 3rem 2rem;
+            }
+            
+            .about-title {
+                font-size: 2.5rem;
+            }
+            
+            .about-content-section {
+                padding: 3rem 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .values-grid-enhanced {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-title {
+                font-size: 2rem;
+            }
+            
+            .about-subtitle {
+                font-size: 1rem;
+            }
+            
+            .about-content-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
                 <h1>CCC Redemption Parish</h1>
-                <p class="subtitle">Winnipeg, Manitoba</p>
+                <!-- <p class="subtitle">Winnipeg, Manitoba</p> -->
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html" class="active">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="services.html">Sacred Rhythm</a></li>
+                <li><a href="projects.html">Divine Projects</a></li>
+                <li><a href="events.html">Celestial Events</a></li>
+                <li><a href="contact.html">Sacred Connection</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="page-header">
-        <div class="container">
-            <h1>About Our Church</h1>
-            <p>Our history, mission, and beliefs</p>
+    <!-- About Hero -->
+    <header class="about-hero">
+        <div class="about-hero-content floating">
+            <h1 class="about-title">Sacred Foundations</h1>
+            <p class="about-subtitle">
+                Our history, divine mission, and celestial beliefs that guide our spiritual journey
+            </p>
         </div>
     </header>
 
+    <!-- Main Content -->
     <main class="container">
-        <section class="about-section">
-            <div class="about-content">
-                <h2>Our History</h2>
-                <p>The Celestial Church of Christ Redemption Parish in Winnipeg was established to serve the spiritual needs of the Celestial Church community in Manitoba. As part of the worldwide Celestial Church of Christ, we continue the rich tradition of worship and fellowship that began with the founding of the church.</p>
+        <!-- Our History -->
+        <section class="about-content-section">
+            <div class="section-content">
+                <h2 class="section-title">Our Sacred History</h2>
+                <div class="section-text">
+                    <p>
+                        The Celestial Church of Christ Redemption Parish in Winnipeg was divinely established 
+                        to serve the spiritual needs of the Celestial Church community in Manitoba. As part of 
+                        the worldwide Celestial Church of Christ, we continue the rich tradition of worship 
+                        and fellowship that began with the founding of the church.
+                    </p>
+                    <p>
+                        Our journey is one of faith, growth, and divine guidance, building a sanctuary where 
+                        souls can connect with the celestial presence of God.
+                    </p>
+                </div>
                 
-                <h2>Our Beliefs</h2>
-                <p>We believe in the Holy Trinity - God the Father, God the Son (Jesus Christ), and God the Holy Spirit. We uphold the divinity of Jesus Christ, the power of the Holy Spirit, and the authority of the Bible as God's word. We follow the teachings and practices of the Celestial Church of Christ worldwide, emphasizing prayer, holiness, and evangelism.</p>
-                
-                <h2>Our Mission</h2>
-                <p>Our mission is to provide spiritual guidance, promote Christian fellowship, and serve our community through worship, prayer, and outreach programs. We aim to be a beacon of hope and a place of refuge for all seeking spiritual growth and connection with God.</p>
-                
-                <h2>Our Vision</h2>
-                <p>To build a vibrant, growing community of believers who worship God in spirit and truth, serve one another in love, and reach out to our city with the message of salvation through Jesus Christ.</p>
-                
-                <h2>Core Values</h2>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <i class="fas fa-pray"></i>
-                        <h3>Prayer</h3>
-                        <p>We believe in the power of prayer and maintain a strong prayer life individually and corporately.</p>
+                <div class="history-timeline">
+                    <div class="timeline-item-about">
+                        <div class="timeline-year">2005</div>
+                        <p>Establishment of Redemption Parish in Winnipeg</p>
                     </div>
-                    <div class="value-item">
-                        <i class="fas fa-hands-helping"></i>
-                        <h3>Community</h3>
-                        <p>We foster a supportive community where members care for one another and grow together in faith.</p>
+                    <div class="timeline-item-about">
+                        <div class="timeline-year">2010</div>
+                        <p>Acquisition of our current sacred ground</p>
                     </div>
-                    <div class="value-item">
-                        <i class="fas fa-book-bible"></i>
-                        <h3>Scripture</h3>
-                        <p>We base our teachings and practices on the Holy Bible as the inspired word of God.</p>
+                    <div class="timeline-item-about">
+                        <div class="timeline-year">2018</div>
+                        <p>Major sanctuary renovation and expansion</p>
                     </div>
-                    <div class="value-item">
-                        <i class="fas fa-heart"></i>
-                        <h3>Love</h3>
-                        <p>We demonstrate God's love through our actions, words, and service to others.</p>
+                    <div class="timeline-item-about">
+                        <div class="timeline-year">2024</div>
+                        <p>Continued spiritual growth and community outreach</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Beliefs -->
+        <section class="about-content-section">
+            <div class="section-content">
+                <h2 class="section-title">Our Divine Beliefs</h2>
+                <div class="section-text">
+                    <p>
+                        We believe in the Holy Trinity - God the Father, God the Son (Jesus Christ), and God the Holy Spirit. 
+                        We uphold the divinity of Jesus Christ, the power of the Holy Spirit, and the authority of the Bible 
+                        as God's revealed word.
+                    </p>
+                    <p>
+                        We follow the sacred teachings and practices of the Celestial Church of Christ worldwide, 
+                        emphasizing prayer, holiness, evangelism, and the manifestation of God's power in our lives.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Mission -->
+        <section class="about-content-section">
+            <div class="section-content">
+                <h2 class="section-title">Our Divine Mission</h2>
+                <div class="section-text">
+                    <p>
+                        Our mission is to provide spiritual guidance, promote Christian fellowship, and serve our 
+                        community through worship, prayer, and outreach programs. We aim to be a beacon of hope and 
+                        a place of refuge for all seeking spiritual growth and connection with God.
+                    </p>
+                    <p>
+                        We strive to create an environment where every soul can experience divine transformation 
+                        and find their purpose in God's grand design.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Vision -->
+        <section class="about-content-section">
+            <div class="section-content">
+                <h2 class="section-title">Our Celestial Vision</h2>
+                <div class="section-text">
+                    <p>
+                        To build a vibrant, growing community of believers who worship God in spirit and truth, 
+                        serve one another in love, and reach out to our city with the message of salvation through 
+                        Jesus Christ.
+                    </p>
+                    <p>
+                        We envision a parish where divine encounters are common, spiritual gifts are manifested, 
+                        and lives are continually transformed by God's grace.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="about-content-section">
+            <div class="section-content">
+                <h2 class="section-title">Our Sacred Core Values</h2>
+                
+                <div class="values-grid-enhanced">
+                    <div class="value-item-enhanced">
+                        <div class="value-icon-enhanced">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3>Divine Prayer</h3>
+                        <p>
+                            We believe in the power of prayer and maintain a strong prayer life 
+                            individually and corporately, seeking God's presence continually.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item-enhanced">
+                        <div class="value-icon-enhanced">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Sacred Community</h3>
+                        <p>
+                            We foster a supportive community where members care for one another 
+                            and grow together in faith, love, and spiritual maturity.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item-enhanced">
+                        <div class="value-icon-enhanced">
+                            <i class="fas fa-book-bible"></i>
+                        </div>
+                        <h3>Scriptural Foundation</h3>
+                        <p>
+                            We base our teachings and practices on the Holy Bible as the inspired 
+                            word of God, our ultimate authority in faith and life.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item-enhanced">
+                        <div class="value-icon-enhanced">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Divine Love</h3>
+                        <p>
+                            We demonstrate God's love through our actions, words, and service 
+                            to others, reflecting Christ's compassion in everything we do.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Contact Info</h3>
+                    <h3>Sacred Ground</h3>
                     <p><i class="fas fa-map-marker-alt"></i> 787 Toronto Street</p>
                     <p>Winnipeg, Manitoba R3E 1Z6</p>
                     <p><i class="fas fa-phone"></i> (204) 979-6644</p>
                     <p><i class="fas fa-envelope"></i> info@cccredemptionwpg.org</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Service Times</h3>
+                    <h3>Worship Times</h3>
                     <ul>
                         <li><strong>Sunday:</strong> 10:00 AM</li>
-                        <li><strong>Wednesday (Seeker):</strong> 9:00 AM</li>
-                        <li><strong>Wednesday (Mercy):</strong> 6:00 PM</li>
-                        <li><strong>New Moon:</strong> First Thursday, 11:00 PM</li>
+                        <li><strong>Wednesday Morning:</strong> 9:00 AM</li>
+                        <li><strong>Wednesday Evening:</strong> 6:00 PM</li>
+                        <li><strong>New Moon:</strong> 1st Thu, 11:00 PM</li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
+                    <h3>Divine Pathways</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-church"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-pray"></i> Sacred Rhythm</a></li>
+                        <li><a href="projects.html"><i class="fas fa-hands-helping"></i> Divine Projects</a></li>
+                        <li><a href="events.html"><i class="fas fa-calendar-star"></i> Celestial Events</a></li>
+                        <li><a href="contact.html"><i class="fas fa-hands"></i> Sacred Connection</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Follow Us</h3>
+                    <h3>Celestial Connection</h3>
                     <div class="footer-social">
                         <a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank" class="footer-social-link">
-                            <i class="fab fa-youtube"></i> YouTube
+                            <i class="fab fa-youtube"></i> Divine Broadcast
                         </a>
                         <a href="https://linktr.ee/redemptionparish" target="_blank" class="footer-social-link">
-                            <i class="fas fa-tree"></i> Linktree
+                            <i class="fas fa-tree"></i> Sacred Links
                         </a>
                     </div>
                 </div>
@@ -119,5 +490,44 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add floating animation to hero content
+            const heroContent = document.querySelector('.about-hero-content');
+            if (heroContent) {
+                heroContent.classList.add('floating');
+            }
+            
+            // Timeline animation
+            const timelineItems = document.querySelectorAll('.timeline-item-about');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                item.style.transition = 'all 0.6s ease';
+                observer.observe(item);
+            });
+            
+            // Value items hover enhancement
+            const valueItems = document.querySelectorAll('.value-item-enhanced');
+            valueItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>

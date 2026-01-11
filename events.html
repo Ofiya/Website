@@ -3,264 +3,547 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - CCC Redemption Parish Winnipeg | cccredemptionwpg.org</title>
-    <meta name="description" content="Upcoming events at Celestial Church of Christ Redemption Parish Winnipeg. Join us for worship, fellowship, and community events.">
+    <title>Celestial Events - CCC Redemption Parish Winnipeg | cccredemptionwpg.org</title>
+    <meta name="description" content="Join us for worship, fellowship, and community events at Celestial Church of Christ Redemption Parish Winnipeg.">
     <link rel="canonical" href="https://cccredemptionwpg.org/events.html">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* Events Page Specific Styles */
         .events-hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)),
-                        url('https://drive.google.com/uc?export=view&id=YOUR_EVENTS_IMAGE_ID');
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem;
+            margin-top: 80px;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(26, 54, 93, 0.9)),
+                        url('public/images/events/8.jpg');
             background-size: cover;
             background-position: center;
-            color: white;
             text-align: center;
-            padding: 6rem 1rem;
-            margin-bottom: 3rem;
         }
-        
-        .upcoming-events, .annual-events {
-            margin: 4rem 0;
+
+        .events-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 4rem;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
-        
-        .event-category {
-            margin: 3rem 0;
-        }
-        
-        .coming-soon {
-            background: #f8f9fa;
-            padding: 3rem;
-            border-radius: 10px;
-            text-align: center;
-            margin: 3rem 0;
-            border: 2px dashed #3498db;
-        }
-        
-        .coming-soon i {
-            font-size: 3rem;
-            color: #3498db;
+
+        .events-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
             margin-bottom: 1rem;
+            background: linear-gradient(to right, #FFD700, #FFA500, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+            letter-spacing: 2px;
         }
-        
-        .event-signup {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: white;
-            padding: 3rem;
-            border-radius: 10px;
+
+        .events-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Regular Events */
+        .regular-events-section {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 5rem 4rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
             text-align: center;
-            margin: 3rem 0;
         }
-        
-        .event-signup h2 {
-            color: white;
+
+        .regular-events-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-gradient);
+            opacity: 0.05;
+            z-index: 0;
         }
-        
-        .event-highlight {
-            background: white;
+
+        .regular-events-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .regular-events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .regular-event-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            text-align: center;
+        }
+
+        .regular-event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gold-gradient);
+        }
+
+        .regular-event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .regular-event-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .regular-event-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-illuminated);
+        }
+
+        .regular-event-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        /* Upcoming Events */
+        .upcoming-events-section {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 5rem 4rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .events-list-enhanced {
+            display: grid;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 4rem auto;
+        }
+
+        .event-card-enhanced {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        .event-card-enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 215, 0, 0.2);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .event-date-enhanced {
+            background: var(--gold-gradient);
+            color: var(--primary-dark);
             padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            border-left: 5px solid #f39c12;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
         }
-        
-        .event-highlight h3 {
-            color: #2c3e50;
+
+        .event-date-enhanced .month {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .event-date-enhanced .day {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-top: 0.5rem;
+        }
+
+        .event-details-enhanced {
+            padding: 2.5rem;
+            flex: 1;
+        }
+
+        .event-details-enhanced h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--text-illuminated);
+        }
+
+        .event-details-enhanced p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* Monthly Event Highlight */
+        .monthly-event-highlight {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(26, 54, 93, 0.3));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem auto;
+            max-width: 800px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .monthly-event-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-gradient);
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .monthly-event-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .monthly-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Signup Section */
+        .event-signup-section {
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.8), rgba(44, 62, 80, 0.9));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 5rem 4rem;
+            margin: 4rem auto;
+            max-width: 1200px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .signup-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .events-hero {
+                padding: 4rem 1rem;
+            }
+            
+            .events-hero-content {
+                padding: 3rem 2rem;
+            }
+            
+            .events-title {
+                font-size: 2.5rem;
+            }
+            
+            .regular-events-section,
+            .upcoming-events-section,
+            .event-signup-section {
+                padding: 3rem 2rem;
+                margin: 2rem 1rem;
+            }
+            
+            .event-card-enhanced {
+                flex-direction: column;
+            }
+            
+            .event-date-enhanced {
+                flex-direction: row;
+                justify-content: center;
+                gap: 2rem;
+                min-height: auto;
+                padding: 1.5rem;
+            }
+            
+            .regular-events-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .events-title {
+                font-size: 2rem;
+            }
+            
+            .events-subtitle {
+                font-size: 1rem;
+            }
+            
+            .monthly-event-highlight {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
                 <h1>CCC Redemption Parish</h1>
-                <p class="subtitle">Winnipeg, Manitoba</p>
+                <!-- <p class="subtitle">Winnipeg, Manitoba</p> -->
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="events.html" class="active">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="services.html">Sacred Rhythm</a></li>
+                <li><a href="projects.html">Divine Projects</a></li>
+                <li><a href="events.html" class="active">Celestial Events</a></li>
+                <li><a href="contact.html">Sacred Connection</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Events Hero -->
     <header class="events-hero">
-        <div class="container">
-            <h1>Church Events</h1>
-            <p>Join us for worship, fellowship, and community events</p>
+        <div class="events-hero-content floating">
+            <h1 class="events-title">Celestial Events</h1>
+            <p class="events-subtitle">
+                Join us for worship, fellowship, and divine gatherings that uplift the spirit
+            </p>
         </div>
     </header>
 
-    <main class="container">
-        <!-- Regular Weekly Events -->
-        <section class="upcoming-events">
-            <h2>Regular Weekly Events</h2>
-            <p>These events happen regularly throughout the year. All are welcome to join us!</p>
+    <!-- Regular Weekly Events -->
+    <section class="regular-events-section">
+        <div class="regular-events-content">
+            <h2 class="celestial-title">Regular Weekly Events</h2>
+            <p class="celestial-subtitle">
+                These events happen regularly throughout the year. All are welcome to join us!
+            </p>
             
-            <div class="events-list">
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="month">EVERY</span>
-                        <span class="day">SUN</span>
+            <div class="regular-events-grid">
+                <div class="regular-event-card">
+                    <div class="regular-event-icon">
+                        <i class="fas fa-church"></i>
                     </div>
-                    <div class="event-details">
-                        <h3>Sunday Worship Service</h3>
-                        <p><i class="fas fa-clock"></i> 10:00 AM - 12:00 PM</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
-                        <p>Our main weekly worship service with sermon, hymns, and Holy Communion.</p>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="month">EVERY</span>
-                        <span class="day">WED</span>
-                    </div>
-                    <div class="event-details">
-                        <h3>Seeker Service</h3>
-                        <p><i class="fas fa-clock"></i> 9:00 AM - 10:00 AM</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Chapel</p>
-                        <p>Morning devotion and prayer service for spiritual renewal.</p>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="month">EVERY</span>
-                        <span class="day">WED</span>
-                    </div>
-                    <div class="event-details">
-                        <h3>Mercy Day Service</h3>
-                        <p><i class="fas fa-clock"></i> 6:00 PM - 7:30 PM</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
-                        <p>Mid-week spiritual renewal focusing on God's mercy and grace.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Annual Anniversary Event -->
-        <section class="annual-events">
-            <h2>Annual Events</h2>
-            
-            <div class="event-highlight">
-                <h3>📅 Church Anniversary Celebration</h3>
-                <p><strong>Date:</strong> August (Date to be announced)</p>
-                <p><strong>Location:</strong> Celestial Church of Christ Redemption Parish</p>
-                <p>Join us for our annual church anniversary celebration! This special event includes:</p>
-                <ul class="donation-features" style="margin-top: 1rem;">
-                    <li>Special anniversary service with guest ministers</li>
-                    <li>Thanksgiving and praise celebration</li>
-                    <li>Community fellowship meal</li>
-                    <li>Cultural presentations and music</li>
-                    <li>Testimonies and sharing of God's faithfulness</li>
-                </ul>
-                <p style="margin-top: 1rem; color: #666;"><em>The exact date for our 2024 anniversary will be announced soon. Please check back regularly for updates.</em></p>
-            </div>
-        </section>
-
-        <!-- Coming Soon Section -->
-        <section class="coming-soon">
-            <i class="fas fa-calendar-plus"></i>
-            <h3>More Events Coming Soon!</h3>
-            <p>We are planning various church events throughout the year including:</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
-                <div class="event-category">
-                    <h4><i class="fas fa-pray"></i> Prayer Vigils</h4>
-                    <p>All-night prayer sessions for special intercessions</p>
-                </div>
-                <div class="event-category">
-                    <h4><i class="fas fa-users"></i> Community Outreach</h4>
-                    <p>Serving our local community through various programs</p>
-                </div>
-                <div class="event-category">
-                    <h4><i class="fas fa-child"></i> Youth Programs</h4>
-                    <p>Special events and activities for our youth members</p>
-                </div>
-                <div class="event-category">
-                    <h4><i class="fas fa-music"></i> Gospel Concerts</h4>
-                    <p>Musical celebrations and worship nights</p>
-                </div>
-            </div>
-            
-            <p><strong>Stay tuned!</strong> We will update this page with event information as it becomes available.</p>
-            <p>To stay informed about upcoming events, please:</p>
-            <div style="margin-top: 1.5rem;">
-                <a href="contact.html" class="btn" style="margin-right: 1rem;">Join Our Mailing List</a>
-                <a href="https://linktr.ee/redemptionparish" target="_blank" class="btn btn-secondary">Follow on Social Media</a>
-            </div>
-        </section>
-
-        <!-- Event Signup -->
-        <section class="event-signup">
-            <h2>Never Miss an Event!</h2>
-            <p>Sign up for our event notifications and be the first to know about upcoming church activities.</p>
-            <a href="contact.html" class="btn" style="background: white; color: #2c3e50;">Sign Up for Updates</a>
-        </section>
-
-        <!-- Monthly Special Service -->
-        <section class="monthly-events">
-            <h2>Monthly Special Services</h2>
-            <div class="event-card">
-                <div class="event-date">
-                    <span class="month">1st</span>
-                    <span class="day">THU</span>
-                </div>
-                <div class="event-details">
-                    <h3>New Moon Service</h3>
-                    <p><i class="fas fa-clock"></i> 11:00 PM (First Thursday of every month)</p>
+                    <h3>Sunday Worship Service</h3>
+                    <p><i class="fas fa-clock"></i> Every Sunday, 10:00 AM - 12:00 PM</p>
                     <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
-                    <p>Monthly New Moon service for spiritual cleansing, renewal, and prayers for the new month.</p>
+                    <p>Our main weekly worship service with sermon, hymns, and Holy Communion.</p>
+                </div>
+                
+                <div class="regular-event-card">
+                    <div class="regular-event-icon">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3>Seeker Service</h3>
+                    <p><i class="fas fa-clock"></i> Every Wednesday, 9:00 AM - 10:00 AM</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Chapel</p>
+                    <p>Morning devotion and prayer service for spiritual renewal.</p>
+                </div>
+                
+                <div class="regular-event-card">
+                    <div class="regular-event-icon">
+                        <i class="fas fa-hands-praying"></i>
+                    </div>
+                    <h3>Mercy Day Service</h3>
+                    <p><i class="fas fa-clock"></i> Every Wednesday, 6:00 PM - 7:30 PM</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
+                    <p>Mid-week spiritual renewal focusing on God's mercy and grace.</p>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Upcoming Special Events -->
+    <section class="upcoming-events-section">
+        <div class="regular-events-content">
+            <h2 class="celestial-title">Upcoming Celestial Events</h2>
+            <p class="celestial-subtitle">
+                Join us for these special gatherings and celebrations
+            </p>
+            
+            <div class="events-list-enhanced">
+                <div class="event-card-enhanced">
+                    <div class="event-date-enhanced">
+                        <span class="month">MAR</span>
+                        <span class="day">15</span>
+                    </div>
+                    <div class="event-details-enhanced">
+                        <h3>Community Prayer Breakfast</h3>
+                        <p><i class="fas fa-clock"></i> Saturday, 9:00 AM - 11:00 AM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Church Hall</p>
+                        <p>Join us for fellowship and prayer over a shared morning meal. A time to connect with God and community.</p>
+                    </div>
+                </div>
+                
+                <div class="event-card-enhanced">
+                    <div class="event-date-enhanced">
+                        <span class="month">MAR</span>
+                        <span class="day">22</span>
+                    </div>
+                    <div class="event-details-enhanced">
+                        <h3>Youth Bible Study Session</h3>
+                        <p><i class="fas fa-clock"></i> Friday, 6:00 PM - 8:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Youth Center</p>
+                        <p>Special interactive Bible study designed for our youth members to explore faith together.</p>
+                    </div>
+                </div>
+                
+                <div class="event-card-enhanced">
+                    <div class="event-date-enhanced">
+                        <span class="month">APR</span>
+                        <span class="day">05</span>
+                    </div>
+                    <div class="event-details-enhanced">
+                        <h3>Easter Sunday Celebration</h3>
+                        <p><i class="fas fa-clock"></i> Sunday, 9:00 AM - 12:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
+                        <p>Special Easter celebration service with Holy Communion. Rejoice in the resurrection of our Lord.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Monthly New Moon Service -->
+    <section class="monthly-event-highlight">
+        <div class="monthly-event-content">
+            <div class="monthly-icon">
+                <i class="fas fa-moon"></i>
+            </div>
+            <h3 style="color: var(--text-illuminated); margin-bottom: 1rem;">Monthly New Moon Service</h3>
+            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem;">
+                <strong>When:</strong> First Thursday of every month, 11:00 PM<br>
+                <strong>Where:</strong> Main Sanctuary<br>
+                <strong>Details:</strong> Monthly New Moon service for spiritual cleansing, renewal, and prayers for the new month.
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.8); font-style: italic;">
+                "And God said, Let there be lights in the firmament of the heaven to divide the day from the night; 
+                and let them be for signs, and for seasons, and for days, and years." - Genesis 1:14
+            </p>
+        </div>
+    </section>
+
+    <!-- Event Signup -->
+    <section class="event-signup-section">
+        <div class="signup-content">
+            <h2 class="celestial-title">Never Miss an Event!</h2>
+            <p class="celestial-subtitle" style="color: rgba(255, 255, 255, 0.9);">
+                Sign up for our event notifications and be the first to know about upcoming church activities.
+            </p>
+            <div style="margin-top: 3rem;">
+                <a href="contact.html" class="btn-celestial">
+                    <i class="fas fa-bell"></i>
+                    Sign Up for Updates
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Contact Info</h3>
+                    <h3>Sacred Ground</h3>
                     <p><i class="fas fa-map-marker-alt"></i> 787 Toronto Street</p>
                     <p>Winnipeg, Manitoba R3E 1Z6</p>
                     <p><i class="fas fa-phone"></i> (204) 979-6644</p>
                     <p><i class="fas fa-envelope"></i> info@cccredemptionwpg.org</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
+                    <h3>Worship Times</h3>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="projects.html">Projects</a></li>
-                        <li><a href="events.html">Events</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Regular Events</h3>
-                    <ul>
-                        <li><strong>Sunday Service:</strong> 10:00 AM</li>
-                        <li><strong>Seeker Service:</strong> Wed, 9:00 AM</li>
-                        <li><strong>Mercy Service:</strong> Wed, 6:00 PM</li>
+                        <li><strong>Sunday:</strong> 10:00 AM</li>
+                        <li><strong>Wednesday Morning:</strong> 9:00 AM</li>
+                        <li><strong>Wednesday Evening:</strong> 6:00 PM</li>
                         <li><strong>New Moon:</strong> 1st Thu, 11:00 PM</li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Stay Connected</h3>
-                    <p>Follow us for event updates:</p>
+                    <h3>Divine Pathways</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-church"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-pray"></i> Sacred Rhythm</a></li>
+                        <li><a href="projects.html"><i class="fas fa-hands-helping"></i> Divine Projects</a></li>
+                        <li><a href="events.html"><i class="fas fa-calendar-star"></i> Celestial Events</a></li>
+                        <li><a href="contact.html"><i class="fas fa-hands"></i> Sacred Connection</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Celestial Connection</h3>
                     <div class="footer-social">
                         <a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank" class="footer-social-link">
-                            <i class="fab fa-youtube"></i> YouTube
+                            <i class="fab fa-youtube"></i> Divine Broadcast
                         </a>
                         <a href="https://linktr.ee/redemptionparish" target="_blank" class="footer-social-link">
-                            <i class="fas fa-tree"></i> Linktree
+                            <i class="fas fa-tree"></i> Sacred Links
                         </a>
                     </div>
                 </div>
@@ -270,5 +553,50 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add floating animation to hero content
+            const heroContent = document.querySelector('.events-hero-content');
+            if (heroContent) {
+                heroContent.classList.add('floating');
+            }
+            
+            // Add hover effects to event cards
+            const eventCards = document.querySelectorAll('.regular-event-card, .event-card-enhanced');
+            eventCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Event countdown functionality
+            const upcomingEvents = document.querySelectorAll('.event-date-enhanced');
+            upcomingEvents.forEach(eventDate => {
+                const month = eventDate.querySelector('.month').textContent;
+                const day = parseInt(eventDate.querySelector('.day').textContent);
+                
+                // Add year based on current date
+                const currentDate = new Date();
+                const currentYear = currentDate.getFullYear();
+                let eventYear = currentYear;
+                
+                // Create event date
+                const eventDateObj = new Date(`${month} ${day}, ${eventYear}`);
+                
+                // If event date has passed, set to next year
+                if (eventDateObj < currentDate) {
+                    eventYear = currentYear + 1;
+                }
+                
+                // You could add countdown functionality here
+                // For now, we'll just log the dates
+                console.log(`Event on: ${month} ${day}, ${eventYear}`);
+            });
+        });
+    </script>
 </body>
 </html>
