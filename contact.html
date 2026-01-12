@@ -12,159 +12,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-dark: #0f172a;
-            --primary-main: #1e2d47;
-            --secondary-main: #64B5F6;
-            --secondary-light: #90CAF9;
-            --text-illuminated: #e2e8f0;
-            --text-bright: rgba(255, 255, 255, 0.9);
-            --text-muted: rgba(255, 255, 255, 0.7);
-            --blue-gradient: linear-gradient(to right, #64B5F6, #4FC3F7, #64B5F6);
-            --shadow-glow: 0 0 30px rgba(100, 181, 246, 0.3);
-            --shadow-blue: 0 8px 32px rgba(100, 181, 246, 0.1);
-            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.2);
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-            --radius-full: 9999px;
-            --transition-normal: 0.3s ease;
-        }
-
-        /* ===== ENHANCED NAVIGATION BANNER ===== */
-        .navbar {
-            background: rgba(30, 45, 71, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(100, 181, 246, 0.3);
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .navbar.scrolled {
-            background: rgba(12, 23, 38, 0.98);
-            box-shadow: var(--shadow-blue);
-        }
-
+        /* Center the navigation */
         .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
+            justify-content: center !important;
         }
-
-        /* Logo Section */
+        
         .logo {
-            flex: 1;
+            position: absolute;
+            left: 2rem;
         }
-
-        .logo h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: var(--blue-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 0.25rem;
-        }
-
-        /* Navigation Links */
+        
         .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
+            justify-content: center;
+            margin: 0 auto;
         }
 
-        .nav-links a {
-            color: var(--text-bright);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-full);
-            transition: all var(--transition-normal);
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 100%;
-            height: 2px;
-            background: var(--blue-gradient);
-            transition: transform var(--transition-normal);
-        }
-
-        .nav-links a:hover {
-            color: var(--text-illuminated);
-            background: rgba(100, 181, 246, 0.1);
-        }
-
-        .nav-links a:hover::before {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        .nav-links a.active {
-            color: var(--text-illuminated);
-            background: rgba(100, 181, 246, 0.15);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .nav-links a.active::before {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        /* IMMERSIVE BACKGROUND */
-        .celestial-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0f172a 0%, #1e2d47 50%, #1a365d 100%);
-            z-index: -2;
-            overflow: hidden;
-        }
-
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(2px 2px at 20% 30%, #B3E5FC 50%, transparent 100%),
-                radial-gradient(3px 3px at 40% 70%, #64B5F6 50%, transparent 100%),
-                radial-gradient(1px 1px at 60% 20%, #4FC3F7 50%, transparent 100%),
-                radial-gradient(2px 2px at 80% 90%, #90CAF9 50%, transparent 100%),
-                radial-gradient(3px 3px at 30% 50%, #E3F2FD 50%, transparent 100%);
-            animation: twinkle 4s infinite alternate;
-        }
-
-        .stained-glass-effect {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(100, 181, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 80%, rgba(45, 212, 191, 0.15) 0%, transparent 50%);
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
-        }
-
-        /* Contact Page Specific Styles */
+        /* Contact Page Specific Styles with Light Blue Theme */
         .contact-hero {
             min-height: 70vh;
             display: flex;
@@ -182,13 +45,13 @@
             z-index: 2;
             max-width: 800px;
             padding: 4rem;
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(230, 240, 250, 0.85);
             backdrop-filter: blur(20px);
-            border-radius: var(--radius-xl);
-            border: 1px solid rgba(100, 181, 246, 0.2);
+            border-radius: 24px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
             box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 20px 40px rgba(74, 144, 226, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .contact-title {
@@ -196,13 +59,14 @@
             font-size: 3.5rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            background: var(--blue-gradient);
+            background: linear-gradient(135deg, #4A90E2 0%, #2D87E0 50%, #1E2D47 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             background-size: 200% auto;
             animation: shimmer 3s linear infinite;
             letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(12, 23, 38, 0.1);
         }
 
         @keyframes shimmer {
@@ -211,10 +75,11 @@
 
         .contact-subtitle {
             font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-muted);
             margin-bottom: 2rem;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
         }
 
         /* Contact Grid */
@@ -228,27 +93,28 @@
         }
 
         .contact-info-card {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(20px);
             border-radius: 20px;
             padding: 3rem;
-            border: 1px solid rgba(100, 181, 246, 0.2);
+            border: 1px solid rgba(74, 144, 226, 0.2);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
+            box-shadow: 0 8px 24px rgba(74, 144, 226, 0.1);
         }
 
         .contact-info-card:hover {
             transform: translateY(-10px);
             box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.4),
-                0 0 40px rgba(100, 181, 246, 0.2);
-            border-color: rgba(100, 181, 246, 0.3);
+                0 30px 60px rgba(74, 144, 226, 0.2),
+                0 0 40px rgba(74, 144, 226, 0.15);
+            border-color: rgba(74, 144, 226, 0.4);
         }
 
         .contact-icon {
             font-size: 3rem;
             margin-bottom: 1.5rem;
-            background: var(--blue-gradient);
+            background: var(--gold-gradient);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -262,21 +128,22 @@
         }
 
         .contact-info-card p {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-muted);
             line-height: 1.6;
             margin-bottom: 1rem;
         }
 
         /* Enhanced Form */
         .form-container {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(230, 240, 250, 0.9);
             backdrop-filter: blur(20px);
-            border-radius: var(--radius-xl);
+            border-radius: 24px;
             padding: 4rem;
             margin: 4rem auto;
             max-width: 800px;
-            border: 1px solid rgba(100, 181, 246, 0.2);
+            border: 1px solid rgba(74, 144, 226, 0.3);
             text-align: center;
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.1);
         }
 
         .form-title {
@@ -305,10 +172,10 @@
         .form-group textarea {
             width: 100%;
             padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: 12px;
-            color: white;
+            color: var(--text-light);
             font-size: 1rem;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
@@ -319,18 +186,18 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--secondary-main);
-            box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.1);
-            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-muted);
         }
 
         .form-group select option {
             background: var(--primary-dark);
-            color: white;
+            color: var(--text-light);
         }
 
         .form-group textarea {
@@ -344,14 +211,15 @@
 
         /* Map Section */
         .map-container {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(230, 240, 250, 0.9);
             backdrop-filter: blur(20px);
-            border-radius: var(--radius-xl);
+            border-radius: 24px;
             padding: 4rem;
             margin: 4rem auto;
             max-width: 1200px;
-            border: 1px solid rgba(100, 181, 246, 0.2);
+            border: 1px solid rgba(74, 144, 226, 0.3);
             text-align: center;
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.1);
         }
 
         .map-title {
@@ -363,11 +231,11 @@
         }
 
         .map-placeholder {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 12px;
             padding: 3rem;
             margin-top: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(74, 144, 226, 0.2);
         }
 
         .map-placeholder i {
@@ -381,8 +249,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            background: var(--blue-gradient);
-            color: var(--primary-dark);
+            background: var(--gold-gradient);
+            color: var(--text-light);
             padding: 1rem 2.5rem;
             border-radius: var(--radius-full);
             font-weight: 600;
@@ -396,6 +264,7 @@
         .btn-celestial:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-glow);
+            color: var(--text-light);
         }
 
         .btn-celestial-outline {
@@ -403,7 +272,7 @@
             align-items: center;
             gap: 0.75rem;
             background: transparent;
-            color: var(--text-illuminated);
+            color: var(--secondary-main);
             padding: 1rem 2.5rem;
             border-radius: var(--radius-full);
             font-weight: 600;
@@ -414,85 +283,10 @@
         }
 
         .btn-celestial-outline:hover {
-            background: rgba(100, 181, 246, 0.1);
+            background: var(--secondary-main);
+            color: var(--text-light);
             transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(20, 30, 48, 0.95);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(100, 181, 246, 0.3);
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            padding: 4rem 0;
-        }
-
-        .footer-section h3 {
-            font-family: 'Cinzel', serif;
-            color: var(--text-illuminated);
-            margin-bottom: 1.5rem;
-            font-size: 1.25rem;
-        }
-
-        .footer-section p, .footer-section li {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 0.75rem;
-            line-height: 1.6;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-section a:hover {
-            color: var(--secondary-main);
-        }
-
-        .footer-social {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-social-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .footer-social-link:hover {
-            background: rgba(100, 181, 246, 0.1);
-            border-color: rgba(100, 181, 246, 0.3);
-            transform: translateX(5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding: 2rem 0;
-            color: rgba(255, 255, 255, 0.6);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.875rem;
+            box-shadow: var(--shadow-glow);
         }
 
         /* ANIMATION UTILITIES */
@@ -528,6 +322,7 @@
             }
             
             .logo {
+                position: static;
                 text-align: center;
                 margin-bottom: 1rem;
             }
@@ -592,21 +387,11 @@
     </style>
 </head>
 <body>
-    <!-- Celestial Background -->
-    <div class="celestial-background">
-        <div class="stars"></div>
-        <div class="stained-glass-effect"></div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <h1>CCC Redemption Parish</h1>
-                <!-- <p class="subtitle">
-                    <i class="fas fa-map-marker-alt"></i>
-                    787 Toronto Street, Winnipeg, Manitoba R3E 1Z6
-                </p> -->
+                <!-- <h1>CCC Redemption Parish</h1> -->
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -671,7 +456,7 @@
     <!-- Contact Form -->
     <section class="form-container">
         <h2 class="form-title">Send Us a Celestial Message</h2>
-        <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 3rem; text-align: center;">
+        <p style="color: var(--text-muted); margin-bottom: 3rem; text-align: center;">
             We're here to listen, pray with you, and help you connect with our community
         </p>
         
@@ -720,14 +505,14 @@
     <!-- Map Section -->
     <section class="map-container">
         <h2 class="map-title">Find Our Sacred Ground</h2>
-        <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem; text-align: center;">
+        <p style="color: var(--text-muted); margin-bottom: 2rem; text-align: center;">
             Visit us at our celestial sanctuary in Winnipeg
         </p>
         
         <div class="map-placeholder">
             <i class="fas fa-map-marked-alt"></i>
             <h3 style="color: var(--text-illuminated); margin-bottom: 1rem;">787 Toronto Street</h3>
-            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 2rem;">
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">
                 Winnipeg, Manitoba R3E 1Z6<br>
                 Located in the heart of Winnipeg
             </p>
@@ -791,18 +576,6 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize celestial background
-            const celestialBg = document.querySelector('.celestial-background');
-            if (!celestialBg) {
-                const newCelestialBg = document.createElement('div');
-                newCelestialBg.className = 'celestial-background';
-                newCelestialBg.innerHTML = `
-                    <div class="stars"></div>
-                    <div class="stained-glass-effect"></div>
-                `;
-                document.body.insertBefore(newCelestialBg, document.body.firstChild);
-            }
-            
             // Add floating animation to hero content
             const heroContent = document.querySelector('.contact-hero-content');
             if (heroContent) {

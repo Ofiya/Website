@@ -12,170 +12,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ===== ENHANCED NAVIGATION BANNER ===== */
-        .navbar {
-            background: rgba(30, 45, 71, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(100, 181, 246, 0.3);
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .navbar.scrolled {
-            background: rgba(12, 23, 38, 0.98);
-            box-shadow: var(--shadow-blue);
-        }
-
+        /* Center the navigation */
         .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
+            justify-content: center !important;
         }
-
-        /* Logo Section - Matching events.html */
+        
         .logo {
-            flex: 1;
+            position: absolute;
+            left: 2rem;
         }
-
-        .logo h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 0.25rem;
-        }
-
-        .logo .subtitle {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo .subtitle i {
-            color: var(--secondary-main);
-        }
-
-        /* Navigation Links - Matching events.html */
+        
         .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
+            justify-content: center;
+            margin: 0 auto;
         }
 
-        .nav-links a {
-            color: var(--text-bright);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-full);
-            transition: all var(--transition-normal);
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 100%;
-            height: 2px;
-            background: var(--gold-gradient);
-            transition: transform var(--transition-normal);
-        }
-
-        .nav-links a:hover {
-            color: var(--text-illuminated);
-            background: rgba(100, 181, 246, 0.1);
-        }
-
-        .nav-links a:hover::before {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        .nav-links a.active {
-            color: var(--text-illuminated);
-            background: rgba(100, 181, 246, 0.15);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .nav-links a.active::before {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        /* Mobile Navigation Toggle */
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-illuminated);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-toggle:hover {
-            background: rgba(100, 181, 246, 0.1);
-        }
-
-        /* IMMERSIVE BACKGROUND */
-        .celestial-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--starry-night);
-            z-index: -2;
-            overflow: hidden;
-        }
-
-        .stars {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(2px 2px at 20% 30%, #B3E5FC 50%, transparent 100%),
-                radial-gradient(3px 3px at 40% 70%, #64B5F6 50%, transparent 100%),
-                radial-gradient(1px 1px at 60% 20%, #4FC3F7 50%, transparent 100%),
-                radial-gradient(2px 2px at 80% 90%, #90CAF9 50%, transparent 100%),
-                radial-gradient(3px 3px at 30% 50%, #E3F2FD 50%, transparent 100%);
-            animation: twinkle 4s infinite alternate;
-        }
-
-        .stained-glass-effect {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, var(--stained-glass-blue) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, var(--stained-glass-purple) 0%, transparent 50%),
-                radial-gradient(circle at 50% 80%, var(--stained-glass-aqua) 0%, transparent 50%);
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
-        }
-
-        /* IMMERSIVE HERO */
+        /* IMMERSIVE HERO with Light Blue Theme */
         .hero-immersive {
             min-height: 70vh;
             display: flex;
@@ -193,13 +45,13 @@
             text-align: center;
             max-width: 800px;
             padding: 4rem;
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(230, 240, 250, 0.85);
             backdrop-filter: blur(20px);
-            border-radius: var(--radius-xl);
-            border: 1px solid rgba(100, 181, 246, 0.2);
+            border-radius: 24px;
+            border: 1px solid rgba(74, 144, 226, 0.3);
             box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                0 20px 40px rgba(74, 144, 226, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .hero-title {
@@ -207,13 +59,14 @@
             font-size: 4rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #64B5F6, #4FC3F7, #64B5F6);
+            background: linear-gradient(135deg, #4A90E2 0%, #2D87E0 50%, #1E2D47 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             background-size: 200% auto;
             animation: shimmer 3s linear infinite;
             letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(12, 23, 38, 0.1);
         }
 
         @keyframes shimmer {
@@ -222,13 +75,14 @@
 
         .hero-subtitle {
             font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-muted);
             margin-bottom: 2rem;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
         }
 
-        /* SACRED TIMELINE - REARRANGED ORDER */
+        /* SACRED TIMELINE - REARRANGED ORDER with Light Blue Theme */
         .sacred-timeline {
             position: relative;
             max-width: 1200px;
@@ -296,20 +150,20 @@
             transform: translateX(-50%);
             z-index: 2;
             border: 3px solid var(--primary-dark);
-            box-shadow: 0 0 20px rgba(100, 181, 246, 0.5);
+            box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-dark);
+            color: var(--text-light);
             font-size: 0.75rem;
         }
 
         .timeline-content {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(20px);
             border-radius: var(--radius-lg);
             padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.2);
             box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
             position: relative;
@@ -329,7 +183,7 @@
         .timeline-content:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-glow);
-            border-color: rgba(100, 181, 246, 0.3);
+            border-color: rgba(74, 144, 226, 0.4);
         }
 
         .service-icon-large {
@@ -352,16 +206,16 @@
         .service-time {
             display: inline-block;
             background: var(--gold-gradient);
-            color: var(--primary-dark);
+            color: var(--text-light);
             padding: 0.5rem 1.5rem;
             border-radius: var(--radius-full);
             font-weight: 600;
             margin: 1rem 0;
-            box-shadow: 0 4px 15px rgba(100, 181, 246, 0.3);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         }
 
         .service-description {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-muted);
             line-height: 1.6;
             margin-bottom: 1rem;
         }
@@ -369,8 +223,8 @@
         .service-tag {
             display: inline-block;
             padding: 0.25rem 0.75rem;
-            background: rgba(100, 181, 246, 0.1);
-            border: 1px solid rgba(100, 181, 246, 0.3);
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.3);
             border-radius: var(--radius-sm);
             font-size: 0.75rem;
             color: var(--text-illuminated);
@@ -378,7 +232,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* WEEKLY SCHEDULE OVERVIEW */
+        /* WEEKLY SCHEDULE OVERVIEW with Light Blue Theme */
         .weekly-overview {
             max-width: 1400px;
             margin: 6rem auto;
@@ -401,18 +255,19 @@
         }
 
         .schedule-day-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(20px);
             border-radius: var(--radius-lg);
             padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.2);
             transition: all 0.3s ease;
             text-align: center;
+            box-shadow: 0 8px 24px rgba(74, 144, 226, 0.1);
         }
 
         .schedule-day-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(100, 181, 246, 0.3);
+            border-color: rgba(74, 144, 226, 0.4);
             box-shadow: var(--shadow-glow);
         }
 
@@ -446,79 +301,12 @@
         }
 
         .day-card-description {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
         }
 
-        /* CELESTIAL CALENDAR - REARRANGED ORDER */
-        .celestial-calendar {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius-xl);
-            padding: 4rem 2rem;
-            margin: 6rem auto;
-            max-width: 1000px;
-            border: 1px solid rgba(100, 181, 246, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .calendar-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .calendar-day {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .calendar-day::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gold-gradient);
-        }
-
-        .calendar-day:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(100, 181, 246, 0.3);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .day-of-week {
-            font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
-            color: var(--text-illuminated);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        /* SACRED DOCTRINE CARDS */
+        /* SACRED DOCTRINE CARDS with Light Blue Theme */
         .sacred-doctrine {
             max-width: 1400px;
             margin: 8rem auto;
@@ -533,15 +321,16 @@
         }
 
         .doctrine-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(20px);
             border-radius: var(--radius-xl);
             padding: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.2);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
             transform-style: preserve-3d;
+            box-shadow: 0 8px 24px rgba(74, 144, 226, 0.1);
         }
 
         .doctrine-card::before {
@@ -560,7 +349,7 @@
         .doctrine-card:hover {
             transform: translateY(-10px) rotateX(5deg);
             box-shadow: var(--shadow-glow);
-            border-color: rgba(100, 181, 246, 0.5);
+            border-color: rgba(74, 144, 226, 0.5);
         }
 
         .doctrine-card:hover::before {
@@ -588,7 +377,7 @@
         }
 
         .doctrine-text {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-muted);
             line-height: 1.8;
             margin-bottom: 2rem;
             position: relative;
@@ -612,25 +401,26 @@
             color: var(--secondary-main);
         }
 
-        /* CELESTIAL LOCATION */
+        /* CELESTIAL LOCATION with Light Blue Theme */
         .celestial-location {
             background: linear-gradient(135deg, 
-                rgba(26, 54, 93, 0.9) 0%,
-                rgba(45, 85, 161, 0.9) 50%,
-                rgba(74, 144, 226, 0.9) 100%);
+                rgba(208, 228, 247, 0.9) 0%,
+                rgba(230, 240, 250, 0.9) 50%,
+                rgba(168, 208, 240, 0.9) 100%);
             border-radius: var(--radius-xl);
             padding: 4rem;
             margin: 6rem auto;
             max-width: 1000px;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(100, 181, 246, 0.3);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.1);
         }
 
         .location-title {
             font-family: 'Cinzel', serif;
             font-size: 2.5rem;
-            color: white;
+            color: var(--text-light);
             margin-bottom: 3rem;
             text-align: center;
         }
@@ -647,20 +437,21 @@
             align-items: center;
             gap: 1.5rem;
             padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: var(--radius-lg);
             transition: all 0.3s ease;
         }
 
         .location-item:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.4);
             transform: translateX(10px);
+            box-shadow: 0 8px 24px rgba(74, 144, 226, 0.2);
         }
 
         .location-icon {
             font-size: 1.5rem;
             color: var(--secondary-main);
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.3);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -692,6 +483,7 @@
             }
             
             .logo {
+                position: static;
                 text-align: center;
                 margin-bottom: 1rem;
             }
@@ -711,8 +503,8 @@
                 font-size: 2.5rem;
             }
             
-            .celestial-calendar,
-            .celestial-location {
+            .celestial-location,
+            .sacred-doctrine {
                 padding: 2rem;
             }
             
@@ -727,6 +519,21 @@
             .schedule-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0;
+                padding-left: 3rem;
+            }
+            
+            .timeline-guideline,
+            .timeline-glow {
+                left: 1.5rem;
+            }
+            
+            .timeline-marker {
+                left: 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -734,8 +541,9 @@
                 font-size: 2rem;
             }
             
-            .calendar-grid {
-                grid-template-columns: 1fr;
+            .celestial-location,
+            .sacred-doctrine {
+                padding: 1.5rem;
             }
             
             .doctrine-grid {
@@ -760,34 +568,20 @@
 
         @keyframes pulse-glow {
             0%, 100% { box-shadow: var(--shadow-glow); }
-            50% { box-shadow: 0 0 30px rgba(100, 181, 246, 0.6); }
+            50% { box-shadow: 0 0 30px rgba(74, 144, 226, 0.6); }
         }
 
         .pulse-glow {
             animation: pulse-glow 2s ease-in-out infinite;
         }
-
-        /* FOOTER */
-        footer {
-            background: rgba(20, 30, 48, 0.95);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(100, 181, 246, 0.3);
-            margin-top: 4rem;
-        }
     </style>
 </head>
 <body>
-    <!-- Celestial Background -->
-    <div class="celestial-background">
-        <div class="stars"></div>
-        <div class="stained-glass-effect"></div>
-    </div>
-
-    <!-- Navigation Banner - Matching events.html style -->
+    <!-- Navigation Banner -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <h1>CCC Redemption Parish</h1>
+                <!-- <h1>CCC Redemption Parish</h1> -->
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -1019,7 +813,7 @@
             <div class="timeline-marker">
                 <i class="fas fa-moon"></i>
             </div>
-            <div class="timeline-content" style="border-color: rgba(100, 181, 246, 0.5);">
+            <div class="timeline-content" style="border-color: rgba(74, 144, 226, 0.5);">
                 <div class="service-icon-large">
                     <i class="fas fa-moon-stars"></i>
                 </div>
@@ -1040,9 +834,6 @@
         </div>
     </section>
 
-    <!-- Celestial Calendar - REARRANGED IN CHRONOLOGICAL ORDER -->
-    
-
     <!-- Sacred Doctrine -->
     <section class="sacred-doctrine">
         <div class="container">
@@ -1050,7 +841,7 @@
                 <h2 style="color: var(--text-illuminated); font-family: 'Cinzel', serif; font-size: 3rem;">
                     Sacred Foundations
                 </h2>
-                <p style="color: rgba(255, 255, 255, 0.8); font-size: 1.25rem;">
+                <p style="color: var(--text-muted); font-size: 1.25rem;">
                     The pillars of our spiritual journey
                 </p>
             </div>
@@ -1117,8 +908,8 @@
                         <i class="fas fa-church"></i>
                     </div>
                     <div>
-                        <h3 style="color: white; margin-bottom: 0.25rem;">Redemption Parish</h3>
-                        <p style="color: rgba(255, 255, 255, 0.9);">787 Toronto Street, Winnipeg</p>
+                        <h3 style="color: var(--text-light); margin-bottom: 0.25rem;">Redemption Parish</h3>
+                        <p style="color: var(--text-muted);">787 Toronto Street, Winnipeg</p>
                     </div>
                 </div>
                 
@@ -1127,8 +918,8 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <div>
-                        <h3 style="color: white; margin-bottom: 0.25rem;">Divine Timing</h3>
-                        <p style="color: rgba(255, 255, 255, 0.9);">Sunday: 10:00 AM CT Prompt</p>
+                        <h3 style="color: var(--text-light); margin-bottom: 0.25rem;">Divine Timing</h3>
+                        <p style="color: var(--text-muted);">Sunday: 10:00 AM CT Prompt</p>
                     </div>
                 </div>
                 
@@ -1137,8 +928,8 @@
                         <i class="fas fa-phone"></i>
                     </div>
                     <div>
-                        <h3 style="color: white; margin-bottom: 0.25rem;">Sacred Connection</h3>
-                        <p style="color: rgba(255, 255, 255, 0.9);">(204) 979-6644</p>
+                        <h3 style="color: var(--text-light); margin-bottom: 0.25rem;">Sacred Connection</h3>
+                        <p style="color: var(--text-muted);">(204) 979-6644</p>
                     </div>
                 </div>
                 
@@ -1147,8 +938,8 @@
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div>
-                        <h3 style="color: white; margin-bottom: 0.25rem;">Celestial Message</h3>
-                        <p style="color: rgba(255, 255, 255, 0.9);">info@cccredemptionwpg.org</p>
+                        <h3 style="color: var(--text-light); margin-bottom: 0.25rem;">Celestial Message</h3>
+                        <p style="color: var(--text-muted);">info@cccredemptionwpg.org</p>
                     </div>
                 </div>
             </div>
