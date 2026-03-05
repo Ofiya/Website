@@ -9,7 +9,7 @@ on:
 
 env:
   NODE_VERSION: '20.x'
-  AZURE_WEBAPP_NAME: 'RedWeb01'
+  AZURE_WEBAPP_NAME: 'RedemptionWeb'
 
 jobs:
   build-and-deploy:
@@ -30,6 +30,15 @@ jobs:
     
     - name: Verify Node.js version
       run: node --version
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build application
+      run: npm run build --if-present
+    
+    - name: Run tests
+      run: npm test --if-present
     
     - name: Create production configuration
       run: |
@@ -92,16 +101,19 @@ jobs:
     
     - name: Validate Azure credentials
       run: |
-        if [ -z "${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}" ]; then
-          echo "Azure publish profile secret not set"
+        if [ -z "${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_80FE6C17A7A44F76874D0B9423490B8E }}" ]; then
+          echo "❌ Azure publish profile secret not set"
+          echo "Please add the publish profile for RedemptionWeb to GitHub secrets"
           exit 1
+        else
+          echo "✅ Azure publish profile secret found"
         fi
     
     - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
+      uses: azure/webapps-deploy@v3
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_80FE6C17A7A44F76874D0B9423490B8E }}
         package: .
     
     - name: Verify deployment
@@ -109,3 +121,5 @@ jobs:
         echo "✅ Deployment completed successfully!"
         echo "🌐 Application URL: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
         echo "⚙️ Runtime: Node.js ${{ env.NODE_VERSION }}"
+        echo "📅 Deployed: $(date)"
+        echo "📦 Package: RedemptionWeb"
