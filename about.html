@@ -66,6 +66,10 @@
             background: rgba(255, 255, 240, 0.98);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(139, 125, 107, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
         
         .navbar .container {
@@ -207,7 +211,7 @@
             width: 80px;
             height: 4px;
             background: var(--sage-gradient);
-            border-radius: var(--radius-full);
+            border-radius: 4px;
         }
 
         .section-text {
@@ -218,7 +222,26 @@
             text-align: center;
         }
 
-        /* Values Grid Enhanced */
+        /* Vision/Mandate list styling */
+        .vision-list, .mandate-list {
+            text-align: left;
+            margin: 2rem auto;
+            max-width: 800px;
+            padding-left: 1.5rem;
+        }
+        .vision-list li, .mandate-list li {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .vision-list i, .mandate-list i {
+            color: var(--sage-green);
+            margin-right: 0.75rem;
+            width: 1.5rem;
+        }
+
+        /* Values Grid Enhanced - Updated to match new content */
         .values-grid-enhanced {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -278,41 +301,6 @@
             line-height: 1.6;
         }
 
-        /* Timeline for History */
-        .history-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 2rem;
-            text-align: left;
-        }
-
-        .timeline-item-about {
-            position: relative;
-            margin-bottom: 3rem;
-            padding-left: 2rem;
-            border-left: 3px solid var(--sage-green);
-        }
-
-        .timeline-item-about::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            background: var(--sage-gradient);
-            border-radius: 50%;
-            border: 3px solid var(--ivory-dark);
-        }
-
-        .timeline-year {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-illuminated);
-            margin-bottom: 0.5rem;
-        }
-
         /* Buttons */
         .btn-celestial {
             display: inline-flex;
@@ -321,7 +309,7 @@
             background: var(--sage-gradient);
             color: var(--ivory-main);
             padding: 1rem 2.5rem;
-            border-radius: var(--radius-full);
+            border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
             border: none;
@@ -334,28 +322,6 @@
             transform: translateY(-2px);
             box-shadow: var(--shadow-glow);
             color: var(--ivory-main);
-        }
-
-        .btn-celestial-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: transparent;
-            color: var(--sage-green);
-            padding: 1rem 2.5rem;
-            border-radius: var(--radius-full);
-            font-weight: 600;
-            text-decoration: none;
-            border: 2px solid var(--sage-green);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-celestial-outline:hover {
-            background: var(--sage-green);
-            color: var(--ivory-main);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
         }
 
         /* ANIMATION UTILITIES */
@@ -476,7 +442,7 @@
         .footer-section a {
             color: var(--text-light);
             text-decoration: none;
-            transition: color var(--transition-normal);
+            transition: color 0.3s ease;
         }
 
         .footer-section a:hover {
@@ -495,7 +461,7 @@
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
             background: rgba(255, 255, 240, 0.7);
-            border-radius: var(--radius-full);
+            border-radius: 50px;
             border: 1px solid rgba(139, 125, 107, 0.2);
         }
 
@@ -535,108 +501,89 @@
     <!-- About Hero -->
     <header class="about-hero">
         <div class="about-hero-content floating">
-            <h1 class="about-title">Sacred Foundations</h1>
+            <h1 class="about-title">Our Sacred History</h1>
             <p class="about-subtitle">
-                Our history, divine mission, and celestial beliefs that guide our spiritual journey
+                Celestial Church of Christ, Redemption Parish, is a faith-based non-profit established in 2016, serving Winnipeg as a spiritual haven for racialized minorities through worship, counselling, mentorship, and outreach. Guided by Christ's teachings, we embrace faith as a force for personal and community transformation.
             </p>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container">
-        <!-- Our History -->
-        <section class="about-content-section">
+    <!-- <main class="container"> -->
+        <!-- Our History (without timeline) -->
+        <!-- <section class="about-content-section">
             <div class="section-content">
                 <h2 class="section-title">Our Sacred History</h2>
                 <div class="section-text">
                     <p>
-                        The Celestial Church of Christ Redemption Parish in Winnipeg was divinely established 
-                        to serve the spiritual needs of the Celestial Church community in Manitoba. As part of 
-                        the worldwide Celestial Church of Christ, we continue the rich tradition of worship 
-                        and fellowship that began with the founding of the church.
-                    </p>
-                    <p>
-                        Our journey is one of faith, growth, and divine guidance, building a sanctuary where 
-                        souls can connect with the celestial presence of God.
-                    </p>
-                </div>
-                
-                <div class="history-timeline">
-                    <div class="timeline-item-about">
-                        <div class="timeline-year">2005</div>
-                        <p>Establishment of Redemption Parish in Winnipeg</p>
-                    </div>
-                    <div class="timeline-item-about">
-                        <div class="timeline-year">2010</div>
-                        <p>Acquisition of our current sacred ground</p>
-                    </div>
-                    <div class="timeline-item-about">
-                        <div class="timeline-year">2018</div>
-                        <p>Major sanctuary renovation and expansion</p>
-                    </div>
-                    <div class="timeline-item-about">
-                        <div class="timeline-year">2024</div>
-                        <p>Continued spiritual growth and community outreach</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Our Beliefs -->
-        <section class="about-content-section">
-            <div class="section-content">
-                <h2 class="section-title">Our Divine Beliefs</h2>
-                <div class="section-text">
-                    <p>
-                        We believe in the Holy Trinity - God the Father, God the Son (Jesus Christ), and God the Holy Spirit. 
-                        We uphold the divinity of Jesus Christ, the power of the Holy Spirit, and the authority of the Bible 
-                        as God's revealed word.
-                    </p>
-                    <p>
-                        We follow the sacred teachings and practices of the Celestial Church of Christ worldwide, 
-                        emphasizing prayer, holiness, evangelism, and the manifestation of God's power in our lives.
+                        The Celestial Church of Christ, Redemption Parish, is a faith-based non-profit organisation. 
+                        It strives for spiritual renewal, community empowerment, and societal upliftment in Winnipeg 
+                        and nearby areas. Since its establishment in 2016, the Parish has become a spiritual centre 
+                        and haven for racialized minorities, offering worship services, family counselling, youth mentorship, 
+                        and outreach programs that promote resilience, dignity, and a sense of belonging. Guided by the 
+                        teachings of Jesus Christ, rooted in love, holiness, service, and compassion, we see faith as a 
+                        vital force for personal and community transformation.
                     </p>
                 </div>
             </div>
-        </section>
+        </section> -->
 
-        <!-- Our Mission -->
-        <section class="about-content-section">
-            <div class="section-content">
-                <h2 class="section-title">Our Divine Mission</h2>
-                <div class="section-text">
-                    <p>
-                        Our mission is to provide spiritual guidance, promote Christian fellowship, and serve our 
-                        community through worship, prayer, and outreach programs. We aim to be a beacon of hope and 
-                        a place of refuge for all seeking spiritual growth and connection with God.
-                    </p>
-                    <p>
-                        We strive to create an environment where every soul can experience divine transformation 
-                        and find their purpose in God's grand design.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Our Vision -->
+        <!-- Our Vision (updated with new script) -->
         <section class="about-content-section">
             <div class="section-content">
                 <h2 class="section-title">Our Celestial Vision</h2>
                 <div class="section-text">
                     <p>
-                        To build a vibrant, growing community of believers who worship God in spirit and truth, 
-                        serve one another in love, and reach out to our city with the message of salvation through 
-                        Jesus Christ.
+                        We are committed to creating a vibrant and supportive 
+                        environment focused on Jesus Christ. Our goal is to empower individuals and build an inclusive community 
+                        where faith serves as the foundation for transformation, dedicated service, and ongoing personal growth.
+                    </p>
+                </div>
+                <ul class="vision-list" style="list-style: none; padding-left: 0;">
+                    <li><i class="fas fa-hand-holding-heart"></i> <strong>Empower marginalized individuals & families</strong> — providing spiritual nourishment tailored to their specific challenges and goals.</li>
+                    <li><i class="fas fa-users"></i> <strong>Strengthen social bonds</strong> — fostering fellowship, mutual support, and encouragement.</li>
+                    <li><i class="fas fa-chart-line"></i> <strong>Economic initiatives</strong> — helping members thrive and achieve financial independence.</li>
+                    <li><i class="fas fa-church"></i> <strong>A symbol of hope and excellence</strong> — equipping individuals with faith-based teachings, practical skills, and unwavering confidence.</li>
+                    <li><i class="fas fa-heart"></i> <strong>Love, unity & compassion</strong> — influencing every interaction and project; promoting harmony across cultures and generations.</li>
+                </ul>
+                <div class="section-text">
+                    <p>Through this vision, we aim to demonstrate faith-driven leadership and meaningful community involvement.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Mandate Section -->
+        <section class="about-content-section">
+            <div class="section-content">
+                <h2 class="section-title">Our Divine Mandate</h2>
+                <div class="section-text">
+                    <p>
+                        The mandate of Celestial Church of Christ, Redemption Parish, is to promote the Christian faith and 
+                        improve the social and economic well-being of individuals and families in our community. We strive to be 
+                        a spiritual home and a centre for community development, where faith inspires practical empowerment.
                     </p>
                     <p>
-                        We envision a parish where divine encounters are common, spiritual gifts are manifested, 
-                        and lives are continually transformed by God's grace.
+                        Guided by the teachings of Jesus Christ, our Parish is committed to:
+                    </p>
+                </div>
+                <ul class="mandate-list" style="list-style: none; padding-left: 0;">
+                    <li><i class="fas fa-praying-hands"></i> Promoting spiritual growth and moral values through worship and education</li>
+                    <li><i class="fas fa-chalkboard-user"></i> Empowering youth and families with mentorship and skills training</li>
+                    <li><i class="fas fa-globe-americas"></i> Fostering inclusion among people of colour</li>
+                    <li><i class="fas fa-hand-holding-medical"></i> Participating in charitable initiatives to support vulnerable groups</li>
+                    <li><i class="fas fa-handshake"></i> Building partnerships to strengthen community capacity</li>
+                </ul>
+                <div class="section-text">
+                    <p>
+                        Our ultimate aim is to transform lives through faith-driven service, fostering a community where 
+                        individuals are spiritually rooted and equipped to contribute to Canadian society.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Core Values -->
+        <!-- Core Values - Updated to match the write-up sentiment -->
         <section class="about-content-section">
             <div class="section-content">
                 <h2 class="section-title">Our Sacred Core Values</h2>
@@ -644,45 +591,61 @@
                 <div class="values-grid-enhanced">
                     <div class="value-item-enhanced">
                         <div class="value-icon-enhanced">
-                            <i class="fas fa-pray"></i>
-                        </div>
-                        <h3>Divine Prayer</h3>
-                        <p>
-                            We believe in the power of prayer and maintain a strong prayer life 
-                            individually and corporately, seeking God's presence continually.
-                        </p>
-                    </div>
-                    
-                    <div class="value-item-enhanced">
-                        <div class="value-icon-enhanced">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <h3>Sacred Community</h3>
-                        <p>
-                            We foster a supportive community where members care for one another 
-                            and grow together in faith, love, and spiritual maturity.
-                        </p>
-                    </div>
-                    
-                    <div class="value-item-enhanced">
-                        <div class="value-icon-enhanced">
-                            <i class="fas fa-book-bible"></i>
-                        </div>
-                        <h3>Scriptural Foundation</h3>
-                        <p>
-                            We base our teachings and practices on the Holy Bible as the inspired 
-                            word of God, our ultimate authority in faith and life.
-                        </p>
-                    </div>
-                    
-                    <div class="value-item-enhanced">
-                        <div class="value-icon-enhanced">
                             <i class="fas fa-heart"></i>
                         </div>
-                        <h3>Divine Love</h3>
+                        <h3>Love & Compassion</h3>
                         <p>
-                            We demonstrate God's love through our actions, words, and service 
-                            to others, reflecting Christ's compassion in everything we do.
+                            We demonstrate God's unconditional love through tangible acts of service, kindness, and genuine care for all — especially the marginalized and vulnerable in our community.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item-enhanced">
+                        <div class="value-icon-enhanced">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <h3>Holiness & Integrity</h3>
+                        <p>
+                            We strive for spiritual purity and moral excellence in all we do, reflecting Christ's character and upholding the sacred teachings of the Celestial Church of Christ.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item-enhanced">
+                        <div class="value-icon-enhanced">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>Service & Empowerment</h3>
+                        <p>
+                            We believe faith without works is incomplete. We actively serve, equip, and empower individuals and families to overcome challenges and thrive in every aspect of life.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item-enhanced">
+                        <div class="value-icon-enhanced">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Inclusive Community</h3>
+                        <p>
+                            We embrace diversity as a gift from God, fostering an environment where people from all racial, cultural, and generational backgrounds feel seen, valued, and belong.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item-enhanced">
+                        <div class="value-icon-enhanced">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3>Transformative Faith</h3>
+                        <p>
+                            We view faith as a dynamic force for personal and societal change — prayerful, action-oriented, and committed to seeing lives, families, and our city transformed by God's power.
+                        </p>
+                    </div>
+                    
+                    <div class="value-item-enhanced">
+                        <div class="value-icon-enhanced">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3>Spiritual Nourishment</h3>
+                        <p>
+                            We are dedicated to providing rich spiritual resources — worship, teaching, and pastoral care — that address the unique challenges and aspirations of every soul we serve.
                         </p>
                     </div>
                 </div>
@@ -734,7 +697,7 @@
                     </div>
                 </div>
             </div>
-            <p class="copyright">&copy; 2024 Celestial Church of Christ Redemption Parish Winnipeg. All Rights Reserved. | cccredemptionwpg.org</p>
+            <p class="copyright">&copy; 2025 Celestial Church of Christ Redemption Parish Winnipeg. All Rights Reserved. | cccredemptionwpg.org</p>
         </div>
     </footer>
     
@@ -746,24 +709,6 @@
             if (heroContent) {
                 heroContent.classList.add('floating');
             }
-            
-            // Timeline animation
-            const timelineItems = document.querySelectorAll('.timeline-item-about');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateX(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            timelineItems.forEach(item => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateX(-20px)';
-                item.style.transition = 'all 0.6s ease';
-                observer.observe(item);
-            });
             
             // Value items hover enhancement
             const valueItems = document.querySelectorAll('.value-item-enhanced');
@@ -784,18 +729,6 @@
                     nav.classList.add('scrolled');
                 } else {
                     nav.classList.remove('scrolled');
-                }
-            });
-
-            // Parallax effect for celestial background
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const stars = document.querySelector('.stars');
-                const stainedGlass = document.querySelector('.stained-glass-effect');
-                
-                if (stars && stainedGlass) {
-                    stars.style.transform = `translateY(${scrolled * 0.5}px)`;
-                    stainedGlass.style.transform = `translateY(${scrolled * 0.3}px)`;
                 }
             });
         });
