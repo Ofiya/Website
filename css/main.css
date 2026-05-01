@@ -45,6 +45,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
+    font-size: 16px;
     line-height: 1.6;
     color: var(--text-light);
     background-color: var(--background-color);
@@ -471,7 +472,7 @@ footer {
     }
     
     .nav-links a {
-        font-size: 0.9rem;
+        font-size: 1rem;
         padding: 0.5rem 0.75rem;
     }
 }
@@ -494,13 +495,25 @@ footer {
     }
     
     .nav-links a {
-        font-size: 0.85rem;
+        font-size: 1rem;
         padding: 0.5rem;
     }
     
     .footer-content {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
+    }
+
+    .logo .subtitle {
+        font-size: 1rem;
+    }
+
+    .celestial-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .copyright {
+        font-size: 1rem;
     }
 }
 
@@ -525,6 +538,6 @@ footer {
     .btn-celestial,
     .btn-celestial-outline {
         padding: 0.875rem 1.5rem;
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }
