@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celestial Church of Christ - Redemption Parish Winnipeg | cccredemptionwpg.org</title>
-    <meta name="description" content="Welcome to Celestial Church of Christ Redemption Parish Winnipeg. Join us for worship at 787 Toronto Street, Winnipeg. Sunday Service: 10:00 AM">
+    <meta name="description" content="Welcome to Celestial Church of Christ Redemption Parish Winnipeg. Join us for worship at 787 Toronto Street, Winnipeg. Sunday Service: 10:00 AM CT">
     <meta name="keywords" content="Celestial Church, Winnipeg, Christian Church, Worship, Redemption Parish">
     <meta name="author" content="CCC Redemption Parish">
     
@@ -92,7 +92,8 @@
             position: relative;
             overflow: hidden;
             padding: 3rem;
-            margin-top: 80px;
+            padding-top: calc(80px + 3rem);
+            margin-top: 0;
             background-color: var(--ivory-main);
         }
 
@@ -1066,8 +1067,8 @@
 
     <!-- Immersive Hero Section -->
     <header class="hero-immersive">
-        <video class="hero-video-bg" autoplay muted loop playsinline poster="public/images/carousel/1.jpg">
-            <source src="public/videos/hero.mp4" type="video/mp4">
+        <video id="heroVideo" class="hero-video-bg" autoplay muted playsinline poster="public/images/carousel/1.jpg">
+            <source src="public/videos/thanksgiving.mp4" type="video/mp4">
         </video>
         <div class="hero-content-enhanced floating">
             <h2 class="hero-subtitle">Welcome to</h2>
@@ -1146,7 +1147,7 @@
                     <!-- </div>
                     <div class="event-details-enhanced">
                         <h3>Community Prayer Breakfast</h3>
-                        <p><i class="fas fa-clock"></i> Saturday, 9:00 AM</p>
+                        <p><i class="fas fa-clock"></i> Saturday, 9:00 AM CT</p>
                         <p><i class="fas fa-map-marker-alt"></i> Church Hall</p>
                         <p>Join us for fellowship and prayer over a shared morning meal. A time to connect with God and community.</p>
                     </div>
@@ -1160,7 +1161,7 @@
                     <!-- </div>
                     <div class="event-details-enhanced">
                         <h3>Youth Bible Study Session</h3>
-                        <p><i class="fas fa-clock"></i> Friday, 6:00 PM</p>
+                        <p><i class="fas fa-clock"></i> Friday, 6:00 PM CT</p>
                         <p><i class="fas fa-map-marker-alt"></i> Youth Center</p>
                         <p>Special interactive Bible study designed for our youth members to explore faith together.</p>
                     </div>
@@ -1174,7 +1175,7 @@
                     <!-- </div>
                     <div class="event-details-enhanced">
                         <h3>Easter Sunday Celebration</h3>
-                        <p><i class="fas fa-clock"></i> Sunday, 9:00 AM</p>
+                        <p><i class="fas fa-clock"></i> Sunday, 9:00 AM CT</p>
                         <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
                         <p>Special Easter celebration service with Holy Communion. Rejoice in the resurrection of our Lord.</p>
                     </div>
@@ -1235,10 +1236,10 @@
                 <div class="footer-section">
                     <h3>Worship Times</h3>
                     <ul>
-                        <li><strong>Sunday:</strong> 10:00 AM</li>
-                        <li><strong>Wednesday Morning:</strong> 9:00 AM</li>
-                        <li><strong>Wednesday Evening:</strong> 6:00 PM</li>
-                        <li><strong>New Moon:</strong> 1st Thu, 11:00 PM</li>
+                        <li><strong>Sunday:</strong> 10:00 AM CT</li>
+                        <li><strong>Wednesday Morning:</strong> 9:00 AM CT</li>
+                        <li><strong>Wednesday Evening:</strong> 6:00 PM CT</li>
+                        <li><strong>New Moon:</strong> 1st Thu, 11:00 PM CT</li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -1271,7 +1272,48 @@
             `;
             document.body.insertBefore(celestialBg, document.body.firstChild);
             
-            // Video background - no image carousel needed
+            // Hero video rotation: thanksgiving.mp4 (10s) → hero.mp4 (full) → repeat
+            const heroVideo = document.getElementById('heroVideo');
+            if (heroVideo) {
+                let currentVideo = 'thanksgiving'; // Start with thanksgiving
+                let thanksgivingTimer = null;
+                
+                const switchToHero = () => {
+                    currentVideo = 'hero';
+                    heroVideo.src = 'public/videos/hero.mp4';
+                    heroVideo.load();
+                    heroVideo.play().catch(e => console.log('Video play interrupted:', e));
+                };
+                
+                const switchToThanksgiving = () => {
+                    currentVideo = 'thanksgiving';
+                    heroVideo.src = 'public/videos/thanksgiving.mp4';
+                    heroVideo.load();
+                    heroVideo.play().catch(e => console.log('Video play interrupted:', e));
+                    
+                    // Switch to hero.mp4 after 10 seconds
+                    thanksgivingTimer = setTimeout(switchToHero, 10000);
+                };
+                
+                // Handle video end event
+                heroVideo.addEventListener('ended', () => {
+                    if (currentVideo === 'hero') {
+                        // Hero video finished, switch back to thanksgiving
+                        switchToThanksgiving();
+                    }
+                });
+                
+                // Handle timeupdate for thanksgiving (backup in case timer doesn't fire)
+                heroVideo.addEventListener('timeupdate', () => {
+                    if (currentVideo === 'thanksgiving' && heroVideo.currentTime >= 10) {
+                        clearTimeout(thanksgivingTimer);
+                        switchToHero();
+                    }
+                });
+                
+                // Start with thanksgiving for 10 seconds
+                thanksgivingTimer = setTimeout(switchToHero, 10000);
+            }
             
             // Add floating animation to hero content
             const heroContent = document.querySelector('.hero-content-enhanced');

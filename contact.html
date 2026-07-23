@@ -154,7 +154,7 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
-            padding: 4rem;
+            padding: 2rem 3rem;
             background: rgba(255, 255, 240, 0.85);
             backdrop-filter: blur(20px);
             border-radius: 24px;
@@ -609,21 +609,27 @@
             </div>
             <h3>Worship Times</h3>
             <p>
-                <strong>Sunday:</strong> 10:00 AM<br>
-                <strong>Wednesday:</strong> 9:00 AM & 6:00 PM<br>
-                <strong>New Moon:</strong> 1st Thu, 11:00 PM
+                <strong>Sunday:</strong> 10:00 AM CT<br>
+                <strong>Wednesday:</strong> 9:00 AM & 6:00 PM CT<br>
+                <strong>New Moon:</strong> 1st Thu, 11:00 PM CT
             </p>
         </div>
     </section>
 
     <!-- Contact Form -->
     <section class="form-container">
-        <h2 class="form-title">Send Us a Celestial Message</h2>
+        <h2 class="form-title">Send Us a Message</h2>
         <p style="color: var(--text-muted); margin-bottom: 3rem; text-align: center;">
             We're here to listen, pray with you, and help you connect with our community
         </p>
         
-        <form id="contactForm" method="POST">
+        <form id="contactForm" action="https://formsubmit.co/info@cccredemptionwpg.org" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="New message from CCC Redemption Parish Website">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" style="display:none">
+            
             <div class="form-group">
                 <label for="name">Your Name <span class="required">*</span></label>
                 <input type="text" id="name" name="name" required placeholder="Enter your full name">
@@ -643,18 +649,18 @@
                 <label for="subject">Message Subject</label>
                 <select id="subject" name="subject">
                     <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="prayer">Prayer Request</option>
-                    <option value="visitation">Request Visitation</option>
-                    <option value="membership">Membership Information</option>
-                    <option value="donation">Donation Inquiry</option>
-                    <option value="event">Event Information</option>
-                    <option value="counseling">Spiritual Counseling</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Prayer Request">Prayer Request</option>
+                    <option value="Request Visitation">Request Visitation</option>
+                    <option value="Membership Information">Membership Information</option>
+                    <option value="Donation Inquiry">Donation Inquiry</option>
+                    <option value="Event Information">Event Information</option>
+                    <option value="Spiritual Counseling">Spiritual Counseling</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="message">Your Celestial Message <span class="required">*</span></label>
+                <label for="message">Your Message <span class="required">*</span></label>
                 <textarea id="message" name="message" required placeholder="Share your prayer request, inquiry, or message..."></textarea>
             </div>
 
@@ -702,10 +708,10 @@
                 <div class="footer-section">
                     <h3>Worship Times</h3>
                     <ul>
-                        <li><strong>Sunday:</strong> 10:00 AM</li>
-                        <li><strong>Wednesday Morning:</strong> 9:00 AM</li>
-                        <li><strong>Wednesday Evening:</strong> 6:00 PM</li>
-                        <li><strong>New Moon:</strong> 1st Thu, 11:00 PM</li>
+                        <li><strong>Sunday:</strong> 10:00 AM CT</li>
+                        <li><strong>Wednesday Morning:</strong> 9:00 AM CT</li>
+                        <li><strong>Wednesday Evening:</strong> 6:00 PM CT</li>
+                        <li><strong>New Moon:</strong> 1st Thu, 11:00 PM CT</li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -732,45 +738,28 @@
                 heroContent.classList.add('floating');
             }
             
-            // Contact form handling
+            // Contact form handling - show loading state
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
-                contactForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
+                contactForm.addEventListener('submit', function(e) {
                     const submitBtn = this.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.innerHTML;
+                    
+                    // Validate required fields
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const message = document.getElementById('message').value.trim();
+                    
+                    if (!name || !email || !message) {
+                        e.preventDefault();
+                        alert('❌ Please fill in all required fields');
+                        return;
+                    }
                     
                     // Show loading state
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Divine Message...';
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Message...';
                     submitBtn.disabled = true;
                     
-                    try {
-                        // Get form data
-                        const formData = new FormData(this);
-                        const data = Object.fromEntries(formData);
-                        
-                        // Simple validation
-                        if (!data.name || !data.email || !data.message) {
-                            throw new Error('Please fill in all required fields');
-                        }
-                        
-                        // Simulate API call
-                        await new Promise(resolve => setTimeout(resolve, 1500));
-                        
-                        // Show success message
-                        alert('✨ Your celestial message has been sent! We will connect with you soon.');
-                        
-                        // Reset form
-                        this.reset();
-                        
-                    } catch (error) {
-                        alert('❌ ' + error.message);
-                    } finally {
-                        // Restore button
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                    }
+                    // Form will submit naturally to FormSubmit
                 });
             }
             
