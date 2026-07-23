@@ -148,13 +148,19 @@ body {
 
 .navbar .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
 }
 
 .logo {
-    flex: 1;
+    /* Logo stays at natural size */
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .logo h1 {
@@ -184,7 +190,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
-    margin: 0 auto;
+    margin: 0;
 }
 
 .nav-links a {
