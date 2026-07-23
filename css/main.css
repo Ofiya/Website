@@ -150,7 +150,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 2rem;
+    padding: 0.3rem 2rem;
 }
 
 .logo {
@@ -158,20 +158,20 @@ body {
 }
 
 .logo-img {
-    height: 100px;
+    height: 55px;
     width: auto;
-    max-height: 100px;
+    max-height: 55px;
     display: block;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: optimizeQuality;
     -ms-interpolation-mode: bicubic;
     transition: transform 0.3s ease;
     object-fit: contain;
-    filter: contrast(1.1) brightness(1.05);
+    filter: contrast(1.15) brightness(1.08) saturate(1.1);
 }
 
 .logo-img:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .nav-right {
@@ -206,7 +206,7 @@ body {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
     margin: 0;
 }
 
@@ -214,8 +214,8 @@ body {
     color: var(--text-bright);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.95rem;
-    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.85rem;
     border-radius: var(--radius-full);
     transition: all var(--transition-normal);
     position: relative;
