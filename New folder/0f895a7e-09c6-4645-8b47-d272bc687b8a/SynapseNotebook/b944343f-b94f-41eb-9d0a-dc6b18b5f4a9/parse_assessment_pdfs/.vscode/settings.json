@@ -1,0 +1,13 @@
+{
+    "python.analysis.stubPath": "..\\..\\..\\..\\.stubs\\pyspark34",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none"
+    },
+    "python-envs.pythonProjects": [
+        {
+            "path": ".",
+            "envManager": "ms-python.python:venv",
+            "packageManager": "ms-python.python:pip"
+        }
+    ]
+}

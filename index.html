@@ -96,6 +96,24 @@
             background-color: var(--ivory-main);
         }
 
+        /* Hero background video */
+        .hero-video-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .hero-immersive::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(255, 255, 240, 0.25), rgba(255, 255, 240, 0.5));
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .hero-content-enhanced {
             position: relative;
             z-index: 2;
@@ -446,6 +464,116 @@
             color: var(--sage-green);
         }
 
+        /* 9th Adult Harvest Feature */
+        .harvest-feature {
+            background: linear-gradient(135deg, rgba(138, 154, 91, 0.10), rgba(218, 165, 32, 0.08));
+            border: 1px solid rgba(139, 125, 107, 0.25);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 0 auto 2.5rem;
+            max-width: 820px;
+            box-shadow: var(--shadow-medium);
+            text-align: left;
+        }
+        .harvest-feature-header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+        .harvest-badge {
+            background: var(--sage-gradient);
+            color: var(--ivory-main);
+            font-family: 'Cinzel', serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            width: 86px;
+            height: 86px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            box-shadow: var(--shadow-glow);
+        }
+        .harvest-feature-header h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--text-illuminated);
+            margin: 0 0 0.35rem;
+        }
+        .harvest-theme {
+            color: var(--goldenrod-dark);
+            font-size: 1.1rem;
+            margin: 0.25rem 0;
+        }
+        .harvest-meta {
+            color: var(--text-muted);
+            margin: 0.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .harvest-meta i { color: var(--sage-green); }
+        .harvest-subtitle {
+            font-family: 'Cinzel', serif;
+            color: var(--text-illuminated);
+            text-align: center;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+        }
+        .harvest-schedule {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 240, 0.7);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+        .harvest-schedule th {
+            background: var(--sage-gradient);
+            color: var(--ivory-main);
+            padding: 0.9rem 1rem;
+            text-align: left;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .harvest-schedule td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(139, 125, 107, 0.15);
+            color: var(--text-muted);
+            vertical-align: top;
+        }
+        .harvest-schedule tbody tr:last-child td { border-bottom: none; }
+        .harvest-schedule td .activity-note {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.2rem;
+        }
+        .harvest-schedule td:last-child {
+            white-space: nowrap;
+            font-weight: 600;
+            color: var(--text-illuminated);
+        }
+        .harvest-dignitaries {
+            margin-top: 1.75rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(139, 125, 107, 0.18);
+            text-align: center;
+            color: var(--text-muted);
+        }
+        .harvest-dignitaries p { margin: 0.35rem 0; }
+        .harvest-dignitaries .name { font-family: 'Cinzel', serif; color: var(--text-illuminated); font-weight: 600; }
+        .harvest-dignitaries .role { display: block; font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 0.15rem; }
+        .harvest-dignitaries .founder .name { font-size: 1.35rem; color: var(--goldenrod-dark); }
+        @media (max-width: 640px) {
+            .harvest-feature { padding: 1.5rem; }
+            .harvest-feature-header { flex-direction: column; text-align: center; }
+            .harvest-schedule th, .harvest-schedule td { padding: 0.6rem; font-size: 0.85rem; }
+        }
+
         .location-details {
             background: rgba(255, 255, 240, 0.85);
             backdrop-filter: blur(10px);
@@ -463,6 +591,98 @@
         .location-details p {
             color: var(--text-muted);
         }
+
+        /* ===== HARVEST COUNTDOWN ===== */
+        .harvest-countdown {
+            background: linear-gradient(135deg, var(--sage-green-dark), var(--sage-green));
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--ivory-main);
+        }
+        .harvest-countdown .countdown-badge {
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        .harvest-countdown h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin: 0.5rem 0 0.4rem;
+            color: var(--ivory-main);
+        }
+        .harvest-countdown .countdown-theme {
+            font-style: italic;
+            color: var(--ivory-light);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 16px;
+            min-width: 110px;
+            padding: 1.25rem 1rem;
+            box-shadow: var(--shadow-medium);
+        }
+        .countdown-box .count {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--sage-green-dark);
+            line-height: 1;
+        }
+        .countdown-box .label {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+        .harvest-countdown .btn-celestial { background: var(--gold-gradient); }
+        @media (max-width: 640px) {
+            .countdown-box { min-width: 70px; padding: 0.85rem 0.6rem; }
+            .countdown-box .count { font-size: 2rem; }
+            .harvest-countdown h2 { font-size: 1.5rem; }
+        }
+
+        /* ===== PROJECTS SUMMARY (home) ===== */
+        .projects-summary {
+            max-width: 760px;
+            margin: 1.5rem auto 0;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.85;
+        }
+        .projects-summary-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+        .project-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(138, 154, 91, 0.12);
+            color: var(--sage-green-dark);
+            border: 1px solid rgba(139, 125, 107, 0.2);
+            padding: 0.55rem 1.1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .project-chip i { color: var(--sage-green); }
 
         /* ===== NAVIGATION - CENTERED DESIGN ===== */
         .navbar {
@@ -484,15 +704,29 @@
 
         .navbar .container {
             display: flex;
-            justify-content: center; /* Center navigation */
+            justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            position: relative; /* For logo positioning */
+            padding: 0.6rem 2rem;
+            position: relative;
         }
 
         .logo {
-            position: absolute; /* Logo on left */
-            left: 2rem;
+            position: static;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+        }
+
+        .logo-img { height: 70px; width: auto; display: block; }
+
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--sage-green-dark);
+            white-space: nowrap;
+            line-height: 1.1;
         }
 
         .logo h1 {
@@ -509,21 +743,46 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
-            justify-content: center; /* Center the links */
-            margin: 0 auto; /* Center the entire nav menu */
+            gap: 0.9rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            margin: 0;
+        }
+
+        .watch-live-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gold-gradient);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.4rem;
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-glow);
+            transition: all var(--transition-normal);
+            white-space: nowrap;
+            margin-left: 2rem;
+        }
+        .watch-live-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(218, 165, 32, 0.35);
         }
 
         .nav-links a {
             color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            padding: 0.45rem 0.8rem;
             border-radius: var(--radius-full);
             transition: all var(--transition-normal);
             position: relative;
             overflow: hidden;
+            white-space: nowrap;
             background: rgba(138, 154, 91, 0.08);
         }
 
@@ -634,27 +893,6 @@
         }
 
         .footer-section a:hover {
-            color: var(--sage-green);
-        }
-
-        .footer-social {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .footer-social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: rgba(255, 255, 240, 0.7);
-            border-radius: var(--radius-full);
-            border: 1px solid rgba(139, 125, 107, 0.2);
-        }
-
-        .footer-social-link:hover {
-            background: rgba(138, 154, 91, 0.1);
             color: var(--sage-green);
         }
 
@@ -821,22 +1059,28 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <!-- <h1>CCC Redemption Parish</h1> -->
-            </div>
+            <a class="logo" href="index.html">
+                <img src="public/images/logo.png" alt="Celestial Church of Christ Redemption Parish logo" class="logo-img">
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="services.html">Sacred Rhythm</a></li>
-                <li><a href="projects.html">Divine Projects</a></li>
-                <li><a href="events.html">Celestial Events</a></li>
-                <li><a href="contact.html">Sacred Connection</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="events.html">Event</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
+            <a href="https://youtube.com/@cccrpwpg" target="_blank" rel="noopener" class="watch-live-btn">
+                <i class="fas fa-broadcast-tower"></i> WATCH LIVE
+            </a>
         </div>
     </nav>
 
     <!-- Immersive Hero Section -->
     <header class="hero-immersive">
+        <video class="hero-video-bg" autoplay muted loop playsinline poster="public/images/carousel/1.jpg">
+            <source src="public/videos/hero.mp4" type="video/mp4">
+        </video>
         <div class="hero-content-enhanced floating">
             <h1 class="hero-title">Welcome to Celestial Church of Christ</h1>
             <h2 class="hero-subtitle">Redemption Parish, Winnipeg</h2>
@@ -863,143 +1107,25 @@
                     Discover Our Sacred Rhythm
                 </a>
             </div>
-            
-            <div class="hero-social">
-                <h4>Celestial Connection</h4>
-                <div class="social-icons-enhanced">
-                    <a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank" class="social-btn-enhanced youtube">
-                        <i class="fab fa-youtube"></i>
-                        Divine Broadcast on YouTube
-                    </a>
-                    <a href="https://www.facebook.com/share/1akn8Bab8B/" target="_blank" class="social-btn-enhanced facebook">
-                        <i class="fab fa-facebook"></i>
-                        Connect on Facebook
-                    </a>
-                    <a href="https://www.instagram.com/cccredemptionparish?igsh=MXZ1ZTlmbTdqMjlybQ==" target="_blank" class="social-btn-enhanced instagram">
-                        <i class="fab fa-instagram"></i>
-                        Follow on Instagram
-                    </a>
-                    <a href="https://www.tiktok.com/@cccredemptionparish?_r=1&_t=ZS-92zFFIUSeDx" target="_blank" class="social-btn-enhanced tiktok">
-                        <i class="fab fa-tiktok"></i>
-                        Join us on TikTok
-                    </a>
-                    <a href="https://linktr.ee/redemptionparish" target="_blank" class="social-btn-enhanced linktree">
-                        <i class="fas fa-tree"></i>
-                        Sacred Pathways on Linktree
-                    </a>
-                </div>
-            </div>
         </div>
     </header>
 
-    <!-- Welcome Section -->
-    <section class="welcome-section-enhanced">
-        <div class="welcome-content">
-            <h2 class="celestial-title">Welcome to Our Sacred Parish</h2>
-            <p class="celestial-subtitle">
-                The Celestial Church of Christ Redemption Parish in Winnipeg is a sanctuary of worship, fellowship, 
-                and spiritual growth for the Celestial faith community in Manitoba. We welcome all who seek divine 
-                nourishment and celestial connection in Christ.
-            </p>
-            
-            <div style="margin-top: 3rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-                <div class="location-details">
-                    <div style="margin-bottom: 1rem;">
-                        <i class="fas fa-compass" style="font-size: 2rem; color: var(--sage-green);"></i>
-                    </div>
-                    <h4>Our Sacred Ground</h4>
-                    <p>
-                        787 Toronto Street<br>
-                        Winnipeg, Manitoba<br>
-                        Canada R3E 1Z6
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Divine Projects Section -->
-        <!-- Divine Projects Section -->
-    <section class="projects-section-enhanced">
+    <!-- Harvest Week Countdown -->
+    <section class="harvest-countdown">
         <div class="container">
-            <h2 class="celestial-title">Our Divine Projects</h2>
-            <p class="celestial-subtitle">
-                Engaging in sacred work that uplifts our community and strengthens our spiritual foundation.
-            </p>
-            
-            <div class="projects-grid-enhanced">
-                <!-- Community Outreach -->
-                <div class="project-card-enhanced">
-                    <div class="project-image-enhanced">
-                        <img src="public/images/carousel/1.jpg" alt="Community Outreach">
-                    </div>
-                    <div class="project-content-enhanced">
-                        <h3>Community Outreach</h3>
-                        <p>
-                            Extending God's love through charitable activities and support programs 
-                            that touch lives in our local community.
-                        </p>
-                        <a href="projects.html" class="btn-celestial-outline">
-                            <i class="fas fa-hands-helping"></i>
-                            Join the Mission
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Youth Ministry -->
-                <div class="project-card-enhanced">
-                    <div class="project-image-enhanced">
-                        <img src="public/images/carousel/2.jpg" alt="Youth Ministry">
-                    </div>
-                    <div class="project-content-enhanced">
-                        <h3>Youth Ministry</h3>
-                        <p>
-                            Nurturing the next generation through spiritual programs and activities 
-                            that build faith and character.
-                        </p>
-                        <a href="projects.html" class="btn-celestial-outline">
-                            <i class="fas fa-child"></i>
-                            Empower Youth
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Sanctuary Development -->
-                <div class="project-card-enhanced">
-                    <div class="project-image-enhanced">
-                        <img src="public/images/carousel/9.jpg" alt="Sanctuary Development">
-                    </div>
-                    <div class="project-content-enhanced">
-                        <h3>Sanctuary Development</h3>
-                        <p>
-                            Supporting the enhancement of our worship space to create a more 
-                            inspiring environment for spiritual growth.
-                        </p>
-                        <a href="projects.html#support-section" class="btn-celestial-outline">
-                            <i class="fas fa-church"></i>
-                            Support Our Vision
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Sunday School Program (NEW CARD) -->
-                <div class="project-card-enhanced">
-                    <div class="project-image-enhanced">
-                        <img src="public/images/carousel/juvenil.png" alt="Sunday School Program">
-                    </div>
-                    <div class="project-content-enhanced">
-                        <h3>Sunday School Program</h3>
-                        <p>
-                            Nurturing children and teenagers in faith through engaging biblical teachings, 
-                            helping them grow spiritually and develop a deeper relationship with our Lord Jesus Christ.
-                        </p>
-                        <a href="projects.html" class="btn-celestial-outline">
-                            <i class="fas fa-bible"></i>
-                            Learn & Grow
-                        </a>
-                    </div>
-                </div>
+            <p class="countdown-badge">9th Adult Harvest &amp; Thanksgiving Service</p>
+            <h2>Harvest Week Begins In</h2>
+            <p class="countdown-theme">&ldquo;The Light that Shines in the Darkness&rdquo; &mdash; John 1:5</p>
+            <div class="countdown-timer" id="harvestCountdown">
+                <div class="countdown-box"><span class="count" id="cd-days">00</span><span class="label">Days</span></div>
+                <div class="countdown-box"><span class="count" id="cd-hours">00</span><span class="label">Hours</span></div>
+                <div class="countdown-box"><span class="count" id="cd-mins">00</span><span class="label">Minutes</span></div>
+                <div class="countdown-box"><span class="count" id="cd-secs">00</span><span class="label">Seconds</span></div>
             </div>
+            <a href="events.html" class="btn-celestial">
+                <i class="fas fa-calendar-star"></i>
+                View Program of Events
+            </a>
         </div>
     </section>
 
@@ -1012,6 +1138,41 @@
             </p>
             
             <div class="events-list-enhanced">
+                <div class="harvest-feature">
+                    <div class="harvest-feature-header">
+                        <span class="harvest-badge">9<sup>th</sup></span>
+                        <div>
+                            <h3>Adult Harvest &amp; Thanksgiving Service</h3>
+                            <p class="harvest-theme"><strong>Theme:</strong> <em>&ldquo;The Light that Shines in the Darkness&rdquo;</em> &mdash; John 1:5</p>
+                            <p class="harvest-meta"><i class="fas fa-calendar-alt"></i> August 10 &ndash; 16, 2026</p>
+                            <p class="harvest-meta"><i class="fas fa-map-marker-alt"></i> Venue: Church Auditorium &middot; 787 Toronto Street, Winnipeg, MB</p>
+                        </div>
+                    </div>
+
+                    <h4 class="harvest-subtitle">Program of Events</h4>
+                    <table class="harvest-schedule">
+                        <thead>
+                            <tr><th>Date</th><th>Activity</th><th>Time</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Mon, Aug 10</td><td>Women's Ministry Symposium<span class="activity-note">Living a Life of Purpose: Church, Motherhood &amp; Career</span></td><td>7:00 PM CT</td></tr>
+                            <tr><td>Tue, Aug 11</td><td>Lecture: The Revelation of Christ in C.C.C. Hymns<span class="activity-note">A Scriptural Exposition</span></td><td>7:00 PM CT</td></tr>
+                            <tr><td>Wed, Aug 12</td><td>Seekers Service</td><td>9:00 AM CT</td></tr>
+                            <tr><td>Wed, Aug 12</td><td>Mercy Day Service</td><td>6:00 PM CT</td></tr>
+                            <tr><td>Thu, Aug 13</td><td>Prayer, Spiritual Consultation &amp; Guidance</td><td>12 Noon CT</td></tr>
+                            <tr><td>Thu, Aug 13</td><td>Revival</td><td>6:00 PM CT</td></tr>
+                            <tr><td>Fri, Aug 14</td><td>Praise Galore 2.0</td><td>8:00 PM CT</td></tr>
+                            <tr><td>Sat, Aug 15</td><td>Community Outreach</td><td>8:00 AM CT</td></tr>
+                            <tr><td>Sun, Aug 16</td><td>Thanksgiving Service</td><td>10:00 AM CT</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="harvest-dignitaries">
+                        <p><span class="name">Rev. E.M.F. Oshoffa</span><span class="role">Pastor, CCC Worldwide</span></p>
+                        <p class="founder"><span class="name">Rev. S.B.J. Oshoffa</span><span class="role">CCC Founder W/W (1909&ndash;1985)</span></p>
+                    </div>
+                </div>
+
                 <!-- Event 1 -->
                 <!-- <div class="event-card-enhanced">
                     <div class="event-date-enhanced"> -->
@@ -1064,6 +1225,37 @@
         </div>
     </section>
 
+    <!-- Divine Projects Section -->
+    <section class="projects-section-enhanced">
+        <div class="container">
+            <h2 class="celestial-title">Our Divine Projects</h2>
+            <p class="celestial-subtitle">
+                Engaging in sacred work that uplifts our community and strengthens our spiritual foundation.
+            </p>
+
+            <p class="projects-summary">
+                From <strong>Community Outreach</strong> and <strong>Youth Ministry</strong> to
+                <strong>Sanctuary Development</strong> and our <strong>Sunday School Program</strong>,
+                we invest in both people and place &mdash; extending God's love in our community, nurturing
+                the next generation in faith, and enhancing our space for worship and spiritual growth.
+            </p>
+
+            <div class="projects-summary-chips">
+                <span class="project-chip"><i class="fas fa-hands-helping"></i> Community Outreach</span>
+                <span class="project-chip"><i class="fas fa-child"></i> Youth Ministry</span>
+                <span class="project-chip"><i class="fas fa-church"></i> Sanctuary Development</span>
+                <span class="project-chip"><i class="fas fa-bible"></i> Sunday School Program</span>
+            </div>
+
+            <div style="margin-top: 2.5rem;">
+                <a href="projects.html" class="btn-celestial">
+                    <i class="fas fa-hands-helping"></i>
+                    Explore Our Divine Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1076,17 +1268,6 @@
                     <p><i class="fas fa-envelope"></i> info@cccredemptionwpg.org</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Divine Pathways</h3>
-                    <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="about.html"><i class="fas fa-church"></i> About Us</a></li>
-                        <li><a href="services.html"><i class="fas fa-pray"></i> Sacred Rhythm</a></li>
-                        <li><a href="projects.html"><i class="fas fa-hands-helping"></i> Divine Projects</a></li>
-                        <li><a href="events.html"><i class="fas fa-calendar-star"></i> Celestial Events</a></li>
-                        <li><a href="contact.html"><i class="fas fa-hands"></i> Sacred Connection</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
                     <h3>Worship Times</h3>
                     <ul>
                         <li><strong>Sunday:</strong> 10:00 AM</li>
@@ -1097,23 +1278,13 @@
                 </div>
                 <div class="footer-section">
                     <h3>Celestial Connection</h3>
-                    <div class="footer-social">
-                        <a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank" class="footer-social-link">
-                            <i class="fab fa-youtube"></i> Divine Broadcast
-                        </a>
-                        <a href="https://www.facebook.com/share/1akn8Bab8B/" target="_blank" class="footer-social-link">
-                            <i class="fab fa-facebook"></i> Connect on Facebook
-                        </a>
-                        <a href="https://www.instagram.com/cccredemptionparish?igsh=MXZ1ZTlmbTdqMjlybQ==" target="_blank" class="footer-social-link">
-                            <i class="fab fa-instagram"></i> Follow on Instagram
-                        </a>
-                        <a href="https://www.tiktok.com/@cccredemptionparish?_r=1&_t=ZS-92zFFIUSeDx" target="_blank" class="footer-social-link">
-                            <i class="fab fa-tiktok"></i> Join us on TikTok
-                        </a>
-                        <a href="https://linktr.ee/redemptionparish" target="_blank" class="footer-social-link">
-                            <i class="fas fa-tree"></i> Sacred Links
-                        </a>
-                    </div>
+                    <ul>
+                        <li><a href="https://youtube.com/@cccrpwpg?si=hGla60dBXsGfLMw6" target="_blank"><i class="fab fa-youtube"></i> Divine Broadcast</a></li>
+                        <li><a href="https://www.facebook.com/share/1akn8Bab8B/" target="_blank"><i class="fab fa-facebook"></i> Connect on Facebook</a></li>
+                        <li><a href="https://www.instagram.com/cccredemptionparish?igsh=MXZ1ZTlmbTdqMjlybQ==" target="_blank"><i class="fab fa-instagram"></i> Follow on Instagram</a></li>
+                        <li><a href="https://www.tiktok.com/@cccredemptionparish?_r=1&_t=ZS-92zFFIUSeDx" target="_blank"><i class="fab fa-tiktok"></i> Join us on TikTok</a></li>
+                        <li><a href="https://linktr.ee/redemptionparish" target="_blank"><i class="fas fa-tree"></i> Sacred Links</a></li>
+                    </ul>
                 </div>
             </div>
             <p class="copyright">&copy; 2024 Celestial Church of Christ Redemption Parish Winnipeg. All Rights Reserved. | cccredemptionwpg.org</p>
@@ -1207,6 +1378,26 @@
                 });
             });
         });
-    </script>a
+    </script>
+
+    <script>
+        // Harvest Week countdown -> Monday, August 10, 2026, 00:00 Central Time
+        (function () {
+            var target = new Date('2026-08-10T00:00:00-05:00').getTime();
+            function pad(n) { return (n < 10 ? '0' : '') + n; }
+            function tick() {
+                var days = document.getElementById('cd-days');
+                if (!days) return;
+                var diff = target - Date.now();
+                if (diff < 0) diff = 0;
+                days.textContent = pad(Math.floor(diff / 86400000));
+                document.getElementById('cd-hours').textContent = pad(Math.floor(diff % 86400000 / 3600000));
+                document.getElementById('cd-mins').textContent = pad(Math.floor(diff % 3600000 / 60000));
+                document.getElementById('cd-secs').textContent = pad(Math.floor(diff % 60000 / 1000));
+            }
+            tick();
+            setInterval(tick, 1000);
+        })();
+    </script>
 </body>
 </html>
