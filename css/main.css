@@ -158,9 +158,9 @@ body {
 }
 
 .logo-img {
-    height: 55px;
+    height: 65px;
     width: auto;
-    max-height: 55px;
+    max-height: 65px;
     display: block;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: optimizeQuality;
@@ -491,35 +491,53 @@ footer {
     }
     
     .nav-links {
-        gap: 1rem;
+        gap: 1.2rem;
     }
     
     .nav-links a {
-        font-size: 1rem;
-        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+        padding: 0.3rem 0.7rem;
     }
 }
 
 @media (max-width: 768px) {
     .navbar .container {
         flex-direction: column;
-        padding: 1rem;
+        padding: 0.4rem 1rem;
+        gap: 0.5rem;
     }
     
     .logo {
         text-align: center;
-        margin-bottom: 1rem;
+    }
+    
+    .logo-img {
+        height: 50px;
+        max-height: 50px;
+    }
+    
+    .nav-right {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
     }
     
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 0.75rem;
+        gap: 0.5rem;
+        width: 100%;
     }
     
     .nav-links a {
-        font-size: 1rem;
-        padding: 0.5rem;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .watch-live-btn {
+        margin-left: 0;
+        font-size: 0.75rem;
+        padding: 0.35rem 0.9rem;
     }
     
     .footer-content {
@@ -527,16 +545,12 @@ footer {
         gap: 2rem;
     }
 
-    .logo .subtitle {
-        font-size: 1rem;
-    }
-
     .celestial-subtitle {
         font-size: 1.1rem;
     }
 
     .copyright {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 }
 
@@ -545,13 +559,29 @@ footer {
         padding: 0 1rem;
     }
     
-    .logo h1 {
-        font-size: 1.25rem;
+    .navbar .container {
+        padding: 0.3rem 0.5rem;
+    }
+    
+    .logo-img {
+        height: 45px;
+        max-height: 45px;
     }
     
     .nav-links {
         grid-template-columns: repeat(2, 1fr);
         width: 100%;
+        gap: 0.3rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .watch-live-btn {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.8rem;
     }
     
     .footer-content {

@@ -1070,10 +1070,10 @@
 
     <!-- Immersive Hero Section -->
     <header class="hero-immersive">
-        <video id="heroVideo1" class="hero-video-bg" autoplay muted playsinline preload="auto">
+        <video id="heroVideo1" class="hero-video-bg" autoplay muted playsinline preload="metadata">
             <source src="public/videos/thanksgiving.mp4" type="video/mp4">
         </video>
-        <video id="heroVideo2" class="hero-video-bg hidden" muted playsinline preload="auto">
+        <video id="heroVideo2" class="hero-video-bg hidden" muted playsinline preload="none">
             <source src="public/videos/hero.mp4" type="video/mp4">
         </video>
         <div class="hero-content-enhanced floating">
@@ -1284,8 +1284,23 @@
             
             if (video1 && video2) {
                 let currentVideo = 1; // 1 = thanksgiving (video1), 2 = hero (video2)
+                let video2Loaded = false;
+                
+                // Preload video2 after a short delay to prioritize initial page load
+                setTimeout(() => {
+                    if (!video2Loaded) {
+                        video2.load();
+                        video2Loaded = true;
+                    }
+                }, 2000);
                 
                 const crossfadeToVideo2 = () => {
+                    // Ensure video2 is loaded
+                    if (!video2Loaded) {
+                        video2.load();
+                        video2Loaded = true;
+                    }
+                    
                     // Fade out video1, fade in video2
                     video1.classList.add('hidden');
                     video2.classList.remove('hidden');
