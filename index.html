@@ -97,7 +97,7 @@
             background-color: var(--ivory-main);
         }
 
-        /* Hero background video */
+        /* Hero background videos - dual video for seamless transitions */
         .hero-video-bg {
             position: absolute;
             inset: 0;
@@ -105,6 +105,11 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .hero-video-bg.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
         .hero-immersive::after {
             content: '';
@@ -1067,8 +1072,11 @@
 
     <!-- Immersive Hero Section -->
     <header class="hero-immersive">
-        <video id="heroVideo" class="hero-video-bg" autoplay muted playsinline>
+        <video id="heroVideo1" class="hero-video-bg" autoplay muted playsinline preload="auto">
             <source src="public/videos/thanksgiving.mp4" type="video/mp4">
+        </video>
+        <video id="heroVideo2" class="hero-video-bg hidden" muted playsinline preload="auto">
+            <source src="public/videos/hero.mp4" type="video/mp4">
         </video>
         <div class="hero-content-enhanced floating">
             <h2 class="hero-subtitle">Welcome to</h2>
@@ -1272,47 +1280,48 @@
             `;
             document.body.insertBefore(celestialBg, document.body.firstChild);
             
-            // Hero video rotation: thanksgiving.mp4 (10s) → hero.mp4 (full) → repeat
-            const heroVideo = document.getElementById('heroVideo');
-            if (heroVideo) {
-                let currentVideo = 'thanksgiving'; // Start with thanksgiving
-                let thanksgivingTimer = null;
+            // Hero video rotation with dual videos for seamless transitions
+            const video1 = document.getElementById('heroVideo1'); // thanksgiving
+            const video2 = document.getElementById('heroVideo2'); // hero
+            
+            if (video1 && video2) {
+                let currentVideo = 1; // 1 = thanksgiving (video1), 2 = hero (video2)
                 
-                const switchToHero = () => {
-                    currentVideo = 'hero';
-                    heroVideo.src = 'public/videos/hero.mp4';
-                    heroVideo.load();
-                    heroVideo.play().catch(e => console.log('Video play interrupted:', e));
+                const crossfadeToVideo2 = () => {
+                    // Fade out video1, fade in video2
+                    video1.classList.add('hidden');
+                    video2.classList.remove('hidden');
+                    video2.currentTime = 0;
+                    video2.play().catch(e => console.log('Video2 play error:', e));
+                    currentVideo = 2;
                 };
                 
-                const switchToThanksgiving = () => {
-                    currentVideo = 'thanksgiving';
-                    heroVideo.src = 'public/videos/thanksgiving.mp4';
-                    heroVideo.load();
-                    heroVideo.play().catch(e => console.log('Video play interrupted:', e));
+                const crossfadeToVideo1 = () => {
+                    // Fade out video2, fade in video1
+                    video2.classList.add('hidden');
+                    video1.classList.remove('hidden');
+                    video1.currentTime = 0;
+                    video1.play().catch(e => console.log('Video1 play error:', e));
+                    currentVideo = 1;
                     
-                    // Switch to hero.mp4 after 10 seconds
-                    thanksgivingTimer = setTimeout(switchToHero, 10000);
+                    // Switch to hero after 10 seconds
+                    setTimeout(crossfadeToVideo2, 10000);
                 };
                 
-                // Handle video end event
-                heroVideo.addEventListener('ended', () => {
-                    if (currentVideo === 'hero') {
-                        // Hero video finished, switch back to thanksgiving
-                        switchToThanksgiving();
+                // When hero video (video2) ends, switch back to thanksgiving
+                video2.addEventListener('ended', () => {
+                    crossfadeToVideo1();
+                });
+                
+                // Backup check for thanksgiving duration
+                video1.addEventListener('timeupdate', () => {
+                    if (currentVideo === 1 && video1.currentTime >= 10) {
+                        crossfadeToVideo2();
                     }
                 });
                 
-                // Handle timeupdate for thanksgiving (backup in case timer doesn't fire)
-                heroVideo.addEventListener('timeupdate', () => {
-                    if (currentVideo === 'thanksgiving' && heroVideo.currentTime >= 10) {
-                        clearTimeout(thanksgivingTimer);
-                        switchToHero();
-                    }
-                });
-                
-                // Start with thanksgiving for 10 seconds
-                thanksgivingTimer = setTimeout(switchToHero, 10000);
+                // Start: thanksgiving plays for 10 seconds
+                setTimeout(crossfadeToVideo2, 10000);
             }
             
             // Add floating animation to hero content
