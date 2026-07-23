@@ -720,14 +720,20 @@
             margin-bottom: 0.25rem;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 0.9rem;
-            justify-content: center;
             align-items: center;
             flex-wrap: nowrap;
             margin: 0;
+            padding: 0;
         }
 
         .watch-live-btn {
@@ -1042,17 +1048,19 @@
             <a class="logo" href="index.html">
                 <img src="public/images/logo.png" alt="Celestial Church of Christ Redemption Parish logo" class="logo-img">
             </a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Sacred Rhythm</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="events.html">Event</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-            <a href="https://youtube.com/@cccrpwpg" target="_blank" rel="noopener" class="watch-live-btn">
-                <i class="fas fa-broadcast-tower"></i> WATCH LIVE
-            </a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Sacred Rhythm</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="events.html">Event</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+                <a href="https://youtube.com/@cccrpwpg" target="_blank" rel="noopener" class="watch-live-btn">
+                    <i class="fas fa-broadcast-tower"></i> WATCH LIVE
+                </a>
+            </div>
         </div>
     </nav>
 
