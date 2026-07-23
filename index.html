@@ -1306,36 +1306,7 @@
             `;
             document.body.insertBefore(celestialBg, document.body.firstChild);
             
-            // Enhanced carousel functionality
-            const backgroundImages = [
-                'public/images/events/7.jpg',
-                'public/images/events/8.jpg',
-                'public/images/projects/5.jpg',
-                'public/images/projects/4.jpg'
-            ];
-            
-            let currentHeroBg = 0;
-            const heroSection = document.querySelector('.hero-immersive');
-            
-            if (heroSection && backgroundImages.length > 0) {
-                // Set initial background
-                heroSection.style.backgroundImage = `
-                    linear-gradient(rgba(255, 255, 240, 0.4), rgba(245, 245, 220, 0.1)),
-                    url('${backgroundImages[0]}')
-                `;
-                heroSection.style.backgroundSize = 'cover';
-                heroSection.style.backgroundPosition = 'center';
-                heroSection.style.transition = 'background-image 1.5s ease-in-out';
-                
-                // Rotate backgrounds
-                setInterval(() => {
-                    currentHeroBg = (currentHeroBg + 1) % backgroundImages.length;
-                    heroSection.style.backgroundImage = `
-                        linear-gradient(rgba(255, 255, 240, 0.85), rgba(245, 245, 220, 0.9)),
-                        url('${backgroundImages[currentHeroBg]}')
-                    `;
-                }, 8000);
-            }
+            // Video background - no image carousel needed
             
             // Add floating animation to hero content
             const heroContent = document.querySelector('.hero-content-enhanced');
