@@ -1133,7 +1133,7 @@
                             <tr><td>Wed, Aug 12</td><td>Mercy Day Service</td><td>6:00 PM (CT)</td></tr>
                             <tr><td>Thu, Aug 13</td><td>Prayer, Spiritual Consultation &amp; Guidance</td><td>12 Noon (CT)</td></tr>
                             <tr><td>Thu, Aug 13</td><td>Revival</td><td>6:00 PM (CT)</td></tr>
-                            <tr><td>Fri, Aug 14</td><td>Praise Galore 2.0</td><td>8:00 PM (CT)</td></tr>
+                            <tr><td>Fri, Aug 14</td><td>Praise Galore 2.0 with Moses Harmony & co.</td><td>8:00 PM (CT)</td></tr>
                             <tr><td>Sat, Aug 15</td><td>Community Outreach</td><td>8:00 AM (CT)</td></tr>
                             <tr><td>Sun, Aug 16</td><td>Thanksgiving Service</td><td>10:00 AM (CT)</td></tr>
                         </tbody>
@@ -1191,7 +1191,7 @@
             <div style="margin-top: 4rem;">
                 <a href="events.html" class="btn-celestial">
                     <i class="fas fa-calendar-star"></i>
-                    View All Celestial Events
+                    Our Events
                 </a>
             </div>
         </div>
@@ -1349,13 +1349,46 @@
                 serviceBanner.classList.add('pulse-glow');
             }
             
+            // Track scroll position for mobile header hide/show
+            let lastScrollTop = 0;
+            let scrollTimeout;
+            
             // Enhanced scroll effects
             window.addEventListener('scroll', () => {
                 const nav = document.querySelector('.navbar');
-                if (window.scrollY > 100) {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Add scrolled class for styling
+                if (currentScroll > 100) {
                     nav.classList.add('scrolled');
                 } else {
                     nav.classList.remove('scrolled');
+                }
+                
+                // Mobile header hide/show on scroll (only for mobile devices)
+                if (window.innerWidth <= 768) {
+                    // Clear timeout to debounce
+                    clearTimeout(scrollTimeout);
+                    
+                    scrollTimeout = setTimeout(() => {
+                        if (currentScroll > lastScrollTop && currentScroll > 80) {
+                            // Scrolling down & past threshold - hide header
+                            nav.classList.add('navbar-hidden');
+                        } else if (currentScroll < lastScrollTop) {
+                            // Scrolling up - show header
+                            nav.classList.remove('navbar-hidden');
+                        }
+                        
+                        // Always show header at top of page
+                        if (currentScroll <= 80) {
+                            nav.classList.remove('navbar-hidden');
+                        }
+                        
+                        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                    }, 10); // Small delay for smoothness
+                } else {
+                    // Always show header on desktop
+                    nav.classList.remove('navbar-hidden');
                 }
                 
                 // Parallax effect for stars

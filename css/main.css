@@ -138,7 +138,11 @@ body {
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     z-index: 1000;
-    transition: all var(--transition-normal);
+    transition: transform 0.3s ease, all var(--transition-normal);
+}
+
+.navbar.navbar-hidden {
+    transform: translateY(-100%);
 }
 
 .navbar.scrolled {

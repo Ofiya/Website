@@ -744,13 +744,36 @@
                 });
             });
 
-            // Navbar scroll effect
+            // Track scroll position for mobile header hide/show
+            let lastScrollTop = 0;
+            let scrollTimeout;
+            
+            // Navbar scroll effect with mobile hide/show
             window.addEventListener('scroll', () => {
                 const nav = document.querySelector('.navbar');
-                if (window.scrollY > 100) {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (currentScroll > 100) {
                     nav.classList.add('scrolled');
                 } else {
                     nav.classList.remove('scrolled');
+                }
+                
+                if (window.innerWidth <= 768) {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        if (currentScroll > lastScrollTop && currentScroll > 80) {
+                            nav.classList.add('navbar-hidden');
+                        } else if (currentScroll < lastScrollTop) {
+                            nav.classList.remove('navbar-hidden');
+                        }
+                        if (currentScroll <= 80) {
+                            nav.classList.remove('navbar-hidden');
+                        }
+                        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                    }, 10);
+                } else {
+                    nav.classList.remove('navbar-hidden');
                 }
             });
         });
