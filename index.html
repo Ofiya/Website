@@ -92,7 +92,7 @@
             position: relative;
             overflow: hidden;
             padding: 3rem;
-            padding-top: calc(80px + 3rem);
+            padding-top: calc(180px + 3rem);
             margin-top: 0;
             background-color: var(--ivory-main);
         }
@@ -672,21 +672,7 @@
         .project-chip i { color: var(--sage-green); }
 
         /* ===== NAVIGATION - CENTERED DESIGN ===== */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: transparent;
-            z-index: 1000;
-            transition: all var(--transition-normal);
-        }
-
-        .navbar.scrolled {
-            background: rgba(255, 255, 240, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+        /* Navbar base styles moved to main.css for consistency */
 
         .navbar .container {
             display: flex;
@@ -1076,6 +1062,9 @@
         <video id="heroVideo2" class="hero-video-bg hidden" muted playsinline preload="none">
             <source src="public/videos/thanksgiving.mp4" type="video/mp4">
         </video>
+        <video id="heroVideo3" class="hero-video-bg hidden" muted playsinline preload="none">
+            <source src="public/videos/ope.mp4" type="video/mp4">
+        </video>
         <div class="hero-content-enhanced floating">
             <h2 class="hero-subtitle">Welcome to</h2>
             <h1 class="hero-title">Celestial Church of Christ<br>Redemption Parish Winnipeg</h1>
@@ -1277,13 +1266,15 @@
             `;
             document.body.insertBefore(celestialBg, document.body.firstChild);
             
-            // Hero video rotation with dual videos for seamless transitions
-            const video1 = document.getElementById('heroVideo1'); // thanksgiving
-            const video2 = document.getElementById('heroVideo2'); // hero
+            // Hero video rotation with 3 videos for seamless transitions
+            const video1 = document.getElementById('heroVideo1'); // hero
+            const video2 = document.getElementById('heroVideo2'); // thanksgiving
+            const video3 = document.getElementById('heroVideo3'); // ope
             
-            if (video1 && video2) {
-                let currentVideo = 1; // 1 = thanksgiving (video1), 2 = hero (video2)
+            if (video1 && video2 && video3) {
+                let currentVideo = 1; // 1 = hero, 2 = thanksgiving, 3 = ope
                 let video2Loaded = false;
+                let video3Loaded = false;
                 
                 // Preload video2 after a short delay to prioritize initial page load
                 setTimeout(() => {
@@ -1292,6 +1283,15 @@
                         video2Loaded = true;
                     }
                 }, 2000);
+                
+                // Preload video3 after another delay
+                setTimeout(() => {
+                    if (!video3Loaded) {
+                        video3.load();
+                        video3.currentTime = 20;
+                        video3Loaded = true;
+                    }
+                }, 4000);
                 
                 const crossfadeToVideo2 = () => {
                     // Ensure video2 is loaded
@@ -1303,17 +1303,39 @@
                     // Fade out video1 (hero), fade in video2 (thanksgiving)
                     video1.classList.add('hidden');
                     video2.classList.remove('hidden');
+                    video3.classList.add('hidden');
                     video2.currentTime = 0;
                     video2.play().catch(e => console.log('Video2 play error:', e));
                     currentVideo = 2;
                     
-                    // Switch back to hero after 6 seconds
-                    setTimeout(crossfadeToVideo1, 6000);
+                    // Switch to ope after 6 seconds
+                    setTimeout(crossfadeToVideo3, 6000);
+                };
+                
+                const crossfadeToVideo3 = () => {
+                    // Ensure video3 is loaded
+                    if (!video3Loaded) {
+                        video3.load();
+                        video3.currentTime = 20;
+                        video3Loaded = true;
+                    }
+                    
+                    // Fade out video2 (thanksgiving), fade in video3 (ope)
+                    video1.classList.add('hidden');
+                    video2.classList.add('hidden');
+                    video3.classList.remove('hidden');
+                    video3.currentTime = 20;
+                    video3.play().catch(e => console.log('Video3 play error:', e));
+                    currentVideo = 3;
+                    
+                    // Switch back to hero after 5 seconds (20-25 secs clip)
+                    setTimeout(crossfadeToVideo1, 5000);
                 };
                 
                 const crossfadeToVideo1 = () => {
-                    // Fade out video2 (thanksgiving), fade in video1 (hero)
+                    // Fade out other videos, fade in video1 (hero)
                     video2.classList.add('hidden');
+                    video3.classList.add('hidden');
                     video1.classList.remove('hidden');
                     video1.currentTime = 0;
                     video1.play().catch(e => console.log('Video1 play error:', e));
@@ -1328,6 +1350,13 @@
                 // Backup check for thanksgiving duration (6 seconds)
                 video2.addEventListener('timeupdate', () => {
                     if (currentVideo === 2 && video2.currentTime >= 6) {
+                        crossfadeToVideo3();
+                    }
+                });
+                
+                // Backup check for ope duration (5 seconds, playing 20-25)
+                video3.addEventListener('timeupdate', () => {
+                    if (currentVideo === 3 && video3.currentTime >= 25) {
                         crossfadeToVideo1();
                     }
                 });
@@ -1361,31 +1390,25 @@
                     nav.classList.remove('scrolled');
                 }
                 
-                // Mobile header hide/show on scroll (only for mobile devices)
-                if (window.innerWidth <= 768) {
-                    // Clear timeout to debounce
-                    clearTimeout(scrollTimeout);
+                // Header hide/show on scroll (all screen sizes)
+                clearTimeout(scrollTimeout);
+                
+                scrollTimeout = setTimeout(() => {
+                    if (currentScroll > lastScrollTop && currentScroll > 180) {
+                        // Scrolling down & past threshold - hide header
+                        nav.classList.add('navbar-hidden');
+                    } else if (currentScroll < lastScrollTop) {
+                        // Scrolling up - show header
+                        nav.classList.remove('navbar-hidden');
+                    }
                     
-                    scrollTimeout = setTimeout(() => {
-                        if (currentScroll > lastScrollTop && currentScroll > 80) {
-                            // Scrolling down & past threshold - hide header
-                            nav.classList.add('navbar-hidden');
-                        } else if (currentScroll < lastScrollTop) {
-                            // Scrolling up - show header
-                            nav.classList.remove('navbar-hidden');
-                        }
-                        
-                        // Always show header at top of page
-                        if (currentScroll <= 80) {
-                            nav.classList.remove('navbar-hidden');
-                        }
-                        
-                        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-                    }, 10); // Small delay for smoothness
-                } else {
-                    // Always show header on desktop
-                    nav.classList.remove('navbar-hidden');
-                }
+                    // Always show header at top of page
+                    if (currentScroll <= 180) {
+                        nav.classList.remove('navbar-hidden');
+                    }
+                    
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                }, 10); // Small delay for smoothness
                 
                 // Parallax effect for stars
                 const stars = document.querySelector('.stars');

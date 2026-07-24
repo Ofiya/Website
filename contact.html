@@ -626,9 +626,10 @@
             We're here to listen, pray with you, and help you connect with our community
         </p>
         
-        <form id="contactForm" action="https://formsubmit.co/cccredemptionparishwpg@gmail.com" method="POST">
+        <form id="contactForm" action="https://formsubmit.co/wunmiofi@gmail.com" method="POST">
             <!-- FormSubmit Configuration -->
             <input type="hidden" name="_subject" value="New message from CCC Redemption Parish Website">
+            <input type="hidden" name="_next" value="https://cccredemptionwpg.org/thank-you.html">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
             <input type="text" name="_honey" style="display:none">
@@ -788,31 +789,27 @@
                 }
             });
 
-            // Track scroll position for mobile header hide/show
+            // Track scroll position for header hide/show
             let lastScrollTop = 0;
             let scrollTimeout;
             
-            // Navbar scroll effect with mobile hide/show (separate listener for mobile behavior)
+            // Navbar scroll effect with hide/show on scroll (all screen sizes)
             window.addEventListener('scroll', () => {
                 const nav = document.querySelector('.navbar');
                 const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
                 
-                if (window.innerWidth <= 768) {
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        if (currentScroll > lastScrollTop && currentScroll > 80) {
-                            nav.classList.add('navbar-hidden');
-                        } else if (currentScroll < lastScrollTop) {
-                            nav.classList.remove('navbar-hidden');
-                        }
-                        if (currentScroll <= 80) {
-                            nav.classList.remove('navbar-hidden');
-                        }
-                        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-                    }, 10);
-                } else {
-                    nav.classList.remove('navbar-hidden');
-                }
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (currentScroll > lastScrollTop && currentScroll > 180) {
+                        nav.classList.add('navbar-hidden');
+                    } else if (currentScroll < lastScrollTop) {
+                        nav.classList.remove('navbar-hidden');
+                    }
+                    if (currentScroll <= 180) {
+                        nav.classList.remove('navbar-hidden');
+                    }
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                }, 10);
             });
 
             // Parallax effect for celestial background

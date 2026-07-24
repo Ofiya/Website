@@ -1198,7 +1198,7 @@
             let lastScrollTop = 0;
             let scrollTimeout;
             
-            // Navbar scroll effect with mobile hide/show
+            // Navbar scroll effect with hide/show on scroll (all screen sizes)
             window.addEventListener('scroll', () => {
                 const nav = document.querySelector('.navbar');
                 const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -1209,22 +1209,18 @@
                     nav.classList.remove('scrolled');
                 }
                 
-                if (window.innerWidth <= 768) {
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        if (currentScroll > lastScrollTop && currentScroll > 80) {
-                            nav.classList.add('navbar-hidden');
-                        } else if (currentScroll < lastScrollTop) {
-                            nav.classList.remove('navbar-hidden');
-                        }
-                        if (currentScroll <= 80) {
-                            nav.classList.remove('navbar-hidden');
-                        }
-                        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-                    }, 10);
-                } else {
-                    nav.classList.remove('navbar-hidden');
-                }
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (currentScroll > lastScrollTop && currentScroll > 180) {
+                        nav.classList.add('navbar-hidden');
+                    } else if (currentScroll < lastScrollTop) {
+                        nav.classList.remove('navbar-hidden');
+                    }
+                    if (currentScroll <= 180) {
+                        nav.classList.remove('navbar-hidden');
+                    }
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                }, 10);
             });
 
             // Interactive hover effects

@@ -62,16 +62,7 @@
         }
 
         /* Center the navigation */
-        .navbar {
-            background: rgba(255, 255, 240, 0.98);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(139, 125, 107, 0.2);
-            transition: transform 0.3s ease;
-        }
-        
-        .navbar.navbar-hidden {
-            transform: translateY(-100%) !important;
-        }
+        /* Navbar styles moved to main.css for consistency */
 
         .watch-live-btn {
             display: inline-flex;
@@ -137,28 +128,24 @@
         .events-hero {
             min-height: 70vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+            justify-content: flex-start;
             position: relative;
             overflow: hidden;
-            padding: 6rem 2rem;
-            margin-top: 80px;
-            text-align: center;
+            padding: 3rem;
+            padding-top: calc(180px + 3rem);
+            margin-top: 0;
             background-color: var(--ivory-main);
         }
 
         .events-hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            padding: 4rem;
-            background: rgba(255, 255, 240, 0.85);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            border: 1px solid rgba(139, 125, 107, 0.2);
-            box-shadow: 
-                0 20px 40px rgba(139, 125, 107, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            text-align: left;
+            max-width: 900px;
+            padding: 0;
+            background: transparent;
+            animation: fadeInUp 1.2s ease-out;
         }
 
         .events-title {
@@ -187,6 +174,59 @@
             font-weight: 400;
             letter-spacing: 1px;
             text-shadow: 0 1px 2px rgba(255, 255, 240, 0.8);
+        }
+        
+        /* Hero text styles matching home page */
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.3rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin: 0.5rem 0 0 0;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-title:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), 0 3px 6px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Events Video Background */
+        .events-video-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .events-video-bg.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .events-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.35));
+            z-index: 1;
+            pointer-events: none;
         }
 
         /* Regular Events */
@@ -481,6 +521,190 @@
             border-radius: 16px;
             box-shadow: var(--shadow-medium);
         }
+        
+        /* Featured Harvest Events Styles */
+        .featured-harvest-events {
+            margin: 3rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .harvest-event-detail-card {
+            background: linear-gradient(135deg, var(--ivory-light), var(--ivory-main));
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-medium);
+            border: 2px solid rgba(218, 165, 32, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .harvest-event-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--goldenrod);
+        }
+        
+        .harvest-event-detail-card.highlight-event {
+            border: 3px solid var(--goldenrod);
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.05), var(--ivory-main));
+        }
+        
+        .harvest-event-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(218, 165, 32, 0.1), transparent);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+        
+        .event-badge {
+            background: var(--gold-gradient);
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-glow);
+            font-family: 'Cinzel', serif;
+        }
+        
+        .event-detail-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .event-detail-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--text-illuminated);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .event-detail-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--goldenrod-dark);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        .event-scripture {
+            background: rgba(138, 154, 91, 0.1);
+            border-left: 4px solid var(--sage-green);
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .event-scripture p {
+            margin: 0;
+            color: var(--sage-green-dark);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .event-detail-info {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .event-detail-info p {
+            margin: 0.7rem 0;
+            color: var(--text-ivory);
+            font-size: 1rem;
+        }
+        
+        .event-detail-info i {
+            color: var(--goldenrod);
+            margin-right: 0.7rem;
+            width: 20px;
+        }
+        
+        .event-speakers, .event-artists {
+            margin-top: 1.5rem;
+        }
+        
+        .event-speakers p strong, .event-artists p strong {
+            font-family: 'Cinzel', serif;
+            color: var(--text-illuminated);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+        
+        .event-speakers ul, .event-artists ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .event-speakers li, .event-artists li {
+            padding: 0.6rem 0;
+            color: var(--text-muted);
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(139, 125, 107, 0.1);
+        }
+        
+        .event-speakers li:last-child, .event-artists li:last-child {
+            border-bottom: none;
+        }
+        
+        .event-artists li i {
+            color: var(--goldenrod);
+            margin-right: 0.8rem;
+            width: 20px;
+        }
+        
+        .event-social {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed rgba(218, 165, 32, 0.3);
+        }
+        
+        .event-social p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        .event-social i {
+            color: var(--goldenrod);
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .harvest-event-detail-card {
+                padding: 1.5rem;
+            }
+            
+            .event-detail-title {
+                font-size: 1.5rem;
+            }
+            
+            .event-detail-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .event-badge {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+        
         @media (max-width: 640px) {
             .harvest-feature { padding: 1.5rem; }
             .harvest-feature-header { flex-direction: column; text-align: center; }
@@ -592,10 +816,23 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .floating {
             animation: float 3s ease-in-out infinite;
         }
+        
+        /* Container styles inherited from main.css */
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 1024px) {
@@ -637,11 +874,20 @@
             }
             
             .events-hero {
-                padding: 4rem 1rem;
+                padding: 2.5rem 1.5rem;
             }
             
             .events-hero-content {
-                padding: 3rem 2rem;
+                padding: 0;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 3px;
             }
             
             .events-title {
@@ -652,7 +898,7 @@
             .upcoming-events-section,
             .event-signup-section {
                 padding: 3rem 2rem;
-                margin: 2rem 1rem;
+                margin: 2rem auto;
             }
             
             .event-card-enhanced {
@@ -771,63 +1017,34 @@
 
     <!-- Events Hero -->
     <header class="events-hero">
+        <!-- Video Background Overlay -->
+        <video id="eventsVideo1" class="events-video-bg" muted playsinline preload="metadata">
+            <source src="public/videos/Praise galore 2025.mp4" type="video/mp4">
+        </video>
+        <video id="eventsVideo2" class="events-video-bg hidden" muted playsinline preload="none">
+            <source src="public/videos/Harmony.mp4" type="video/mp4">
+        </video>
+        <video id="eventsVideo3" class="events-video-bg hidden" muted playsinline preload="none">
+            <source src="public/videos/Harmony.mp4" type="video/mp4">
+        </video>
+        <video id="eventsVideo4" class="events-video-bg hidden" muted playsinline preload="none">
+            <source src="public/videos/Praise galore 2025.mp4" type="video/mp4">
+        </video>
+        
         <div class="events-hero-content floating">
-            <h1 class="events-title">Our Events & Services</h1>
-            <p class="events-subtitle">
-                Join us for worship, fellowship, and divine gatherings that uplift the spirit
-            </p>
+            <h2 class="hero-subtitle">Our Events &</h2>
+            <h1 class="hero-title">Services</h1>
         </div>
     </header>
 
-    <!-- Regular Weekly Events -->
-    <section class="regular-events-section">
-        <div class="regular-events-content">
-            <h2 class="celestial-title">Regular Weekly Events</h2>
-            <p class="celestial-subtitle">
-                These events happen regularly throughout the year. All are welcome to join us!
-            </p>
-            
-            <div class="regular-events-grid">
-                <div class="regular-event-card">
-                    <div class="regular-event-icon">
-                        <i class="fas fa-church"></i>
-                    </div>
-                    <h3>Sunday Worship Service</h3>
-                    <p><i class="fas fa-clock"></i> Every Sunday, 10:00 AM - 2:00 PM (CT)</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
-                    <p>Our main weekly worship service with sermon, hymns, and prayers.</p>
-                </div>
-                
-                <div class="regular-event-card">
-                    <div class="regular-event-icon">
-                        <i class="fas fa-pray"></i>
-                    </div>
-                    <h3>Seeker Service</h3>
-                    <p><i class="fas fa-clock"></i> Every Wednesday, 9:00 AM - 10:00 AM (CT)</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
-                    <p>Morning prayer service for spiritual renewal and favor.</p>
-                </div>
-                
-                <div class="regular-event-card">
-                    <div class="regular-event-icon">
-                        <i class="fas fa-hands-praying"></i>
-                    </div>
-                    <h3>Mercy Day Service</h3>
-                    <p><i class="fas fa-clock"></i> Every Wednesday, 6:00 PM - 7:30 PM (CT)</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
-                    <p>Mid-week spiritual renewal focusing on God's mercy and grace.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Upcoming Special Events -->
     <section class="upcoming-events-section">
-        <div class="regular-events-content">
-            <h2 class="celestial-title">Upcoming Celestial Events</h2>
-            <p class="celestial-subtitle">
-                Join us for these special gatherings and celebrations
-            </p>
+        <div class="container">
+            <div class="regular-events-content">
+                <h2 class="celestial-title">Upcoming Celestial Events</h2>
+                <p class="celestial-subtitle">
+                    Join us for these special gatherings and celebrations
+                </p>
             
             <div class="events-list-enhanced">
                 <div class="harvest-feature">
@@ -867,64 +1084,82 @@
                     <img class="harvest-flyer" src="public/images/events/harvest-flyer.jpg" alt="9th Adult Harvest &amp; Thanksgiving Service flyer" onerror="this.style.display='none'">
                 </div>
 
-                <div class="event-card-enhanced">
-                    <div class="event-date-enhanced">
-                        <!-- <span class="month">MAR</span>
-                        <span class="day">15</span> -->
+                <!-- Featured Harvest Events with Details -->
+                <div class="featured-harvest-events">
+                    <!-- Women's Ministry Symposium -->
+                    <div class="harvest-event-detail-card">
+                        <div class="event-badge">AUG 10</div>
+                        <div class="event-detail-content">
+                            <h3 class="event-detail-title">Women's Ministry Symposium</h3>
+                            <h4 class="event-detail-subtitle">Living a Life of Purpose: Church, Motherhood & Career</h4>
+                            <div class="event-detail-info">
+                                <p><i class="fas fa-calendar-alt"></i> Monday, August 10, 2026</p>
+                                <p><i class="fas fa-clock"></i> 7:00 PM (CT) / 1:00 AM Tuesday, Aug 11 (W.A.T)</p>
+                                <p><i class="fas fa-map-marker-alt"></i> Church Auditorium & Zoom</p>
+                                <p><i class="fas fa-video"></i> Meeting ID: 87935253853 | Passcode: cccrpwpg</p>
+                            </div>
+                            <div class="event-speakers">
+                                <p><strong>Speakers:</strong></p>
+                                <ul>
+                                    <li>Sis. Olutosin Akinola</li>
+                                    <li>L/S/E/Sis Olatomi Famuyiwa</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="event-details-enhanced">
-                        <h3>Juvenile Harvest</h3>
-                        <p><i class="fas fa-clock"></i> Sunday, June 7, 9:00 AM (CT) prompt</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
-                        <p>Join us for fellowship to honor children, foster their spiritual growth, and celebrate their role in the church.</p>
-                    </div>
-                </div>
-                
-                <div class="event-card-enhanced">
-                    <div class="event-date-enhanced">
-                        <!-- <span class="month">MAR</span>
-                        <span class="day">22</span> -->
-                    </div>
-                    <div class="event-details-enhanced">
-                        <h3>Youth Bible Study Session</h3>
-                        <p><i class="fas fa-clock"></i> Friday, 6:00 PM - 8:00 PM (CT)</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Online Session</p>
-                        <p>Special interactive Bible study designed for our youth members to explore faith together.</p>
-                    </div>
-                </div>
-                
-                <div class="event-card-enhanced">
-                    <div class="event-date-enhanced">
-                        <!-- <span class="month">APR</span>
-                        <span class="day">05</span> -->
-                    </div>
-                    <div class="event-details-enhanced">
-                        <h3>Easter Sunday Celebration</h3>
-                        <p><i class="fas fa-clock"></i> Sunday, 9:00 AM - 12:00 PM (CT)</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Main Sanctuary</p>
-                        <p>Special Easter celebration service with Holy Communion. Rejoice in the resurrection of our Lord.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Monthly New Moon Service -->
-    <section class="monthly-event-highlight">
-        <div class="monthly-event-content">
-            <div class="monthly-icon">
-                <i class="fas fa-moon"></i>
+                    <!-- Lecture Event -->
+                    <div class="harvest-event-detail-card">
+                        <div class="event-badge">AUG 11</div>
+                        <div class="event-detail-content">
+                            <h3 class="event-detail-title">Lecture</h3>
+                            <h4 class="event-detail-subtitle">The Revelation of Christ in C.C.C. Hymns: A Scriptural Exposition</h4>
+                            <div class="event-detail-info">
+                                <p><i class="fas fa-calendar-alt"></i> Tuesday, August 11, 2026</p>
+                                <p><i class="fas fa-clock"></i> 7:00 PM (CT) / 1:00 AM Wednesday, Aug 12 (W.A.T)</p>
+                                <p><i class="fas fa-video"></i> Zoom Only</p>
+                                <p><i class="fas fa-key"></i> Meeting ID: 34041277629 | Password: cccrpwpg</p>
+                            </div>
+                            <div class="event-speakers">
+                                <p><strong>Speaker:</strong> Ven. Sup. Evang. Yemi Adesiyan</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Praise Galore 2.0 -->
+                    <div class="harvest-event-detail-card highlight-event">
+                        <div class="event-badge">AUG 14</div>
+                        <div class="event-detail-content">
+                            <h3 class="event-detail-title">Praise Galore 2.0</h3>
+                            <h4 class="event-detail-subtitle">An Evening of Extraordinary Praise and Dance!</h4>
+                            <div class="event-scripture">
+                                <p><em>"Praise him with the timbrel and dance..." - Psalm 30:11</em></p>
+                            </div>
+                            <div class="event-detail-info">
+                                <p><i class="fas fa-calendar-alt"></i> Friday, August 14, 2026</p>
+                                <p><i class="fas fa-clock"></i> 8:00 PM (CT)</p>
+                                <p><i class="fas fa-map-marker-alt"></i> FSG Winnipeg Event Hall</p>
+                                <p><i class="fas fa-location-arrow"></i> 49 Euclid Ave, Winnipeg, MB R2W 2N4</p>
+                            </div>
+                            <div class="event-artists">
+                                <p><strong>Guest Artists:</strong></p>
+                                <ul>
+                                    <li><i class="fas fa-music"></i> Moses Harmony (Guest Artiste)</li>
+                                    <li><i class="fas fa-guitar"></i> King Yonder (Guest Artiste)</li>
+                                    <li><i class="fas fa-microphone"></i> Aanu Anita (Guest Artiste)</li>
+                                    <li><i class="fas fa-saxophone"></i> Hemmy Sax (Guest Artiste)</li>
+                                    <li><i class="fas fa-star"></i> Olabisi (Guest Artiste)</li>
+                                    <li><i class="fas fa-cross"></i> True Spirituality Network (Guest Artiste)</li>
+                                </ul>
+                            </div>
+                            <div class="event-social">
+                                <p><i class="fas fa-hashtag"></i> Follow us: @ccredemptionparish</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 style="color: var(--text-illuminated); margin-bottom: 1rem;">Monthly New Moon Service</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-                <strong>When:</strong> First Thursday of every month, 11:00 PM (CT)<br>
-                <strong>Where:</strong> Main Sanctuary<br>
-                <strong>Details:</strong> Monthly New Moon service for spiritual cleansing, renewal, and prayers for the new month.
-            </p>
-            <p style="color: var(--text-muted); font-style: italic;">
-                "And God said, Let there be lights in the firmament of the heaven to divide the day from the night; 
-                and let them be for signs, and for seasons, and for days, and years." - Genesis 1:14
-            </p>
+            </div>
         </div>
     </section>
 
@@ -982,6 +1217,124 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Events page video rotation with time-specific segments
+            const video1 = document.getElementById('eventsVideo1'); // Praise Galore 0-6s
+            const video2 = document.getElementById('eventsVideo2'); // Harmony 19-28s
+            const video3 = document.getElementById('eventsVideo3'); // Harmony 37-43s
+            const video4 = document.getElementById('eventsVideo4'); // Praise Galore 33-41s
+            
+            if (video1 && video2 && video3 && video4) {
+                let currentVideoIndex = 1; // 1, 2, 3, or 4
+                let video2Loaded = false;
+                let video3Loaded = false;
+                let video4Loaded = false;
+                let isTransitioning = false;
+                
+                // Video segments configuration
+                const videoSegments = {
+                    1: { element: video1, start: 0, end: 6 },   // Praise Galore 0-6s (6 seconds)
+                    2: { element: video2, start: 19, end: 28 }, // Harmony 19-28s (9 seconds)
+                    3: { element: video3, start: 37, end: 43 }, // Harmony 37-43s (6 seconds)
+                    4: { element: video4, start: 33, end: 41 }  // Praise Galore 33-41s (8 seconds)
+                };
+                
+                // Start first video at 0 seconds
+                video1.currentTime = 0;
+                video1.play().catch(e => console.log('Video1 autoplay prevented:', e));
+                
+                // Preload other videos after a short delay
+                setTimeout(() => {
+                    if (!video2Loaded) {
+                        video2.load();
+                        video2.currentTime = 19;
+                        video2Loaded = true;
+                    }
+                }, 3000);
+                
+                setTimeout(() => {
+                    if (!video3Loaded) {
+                        video3.load();
+                        video3.currentTime = 37;
+                        video3Loaded = true;
+                    }
+                }, 5000);
+                
+                setTimeout(() => {
+                    if (!video4Loaded) {
+                        video4.load();
+                        video4.currentTime = 33;
+                        video4Loaded = true;
+                    }
+                }, 7000);
+                
+                // Function to switch to next video
+                const switchToNextVideo = () => {
+                    if (isTransitioning) return;
+                    isTransitioning = true;
+                    
+                    const currentVideo = videoSegments[currentVideoIndex].element;
+                    const nextIndex = (currentVideoIndex % 4) + 1; // Cycle through 1, 2, 3, 4
+                    const nextVideo = videoSegments[nextIndex].element;
+                    const nextStart = videoSegments[nextIndex].start;
+                    
+                    // Ensure next video is loaded and at correct start time
+                    if (nextIndex === 2 && !video2Loaded) {
+                        video2.load();
+                        video2Loaded = true;
+                    } else if (nextIndex === 3 && !video3Loaded) {
+                        video3.load();
+                        video3Loaded = true;
+                    } else if (nextIndex === 4 && !video4Loaded) {
+                        video4.load();
+                        video4Loaded = true;
+                    }
+                    
+                    nextVideo.currentTime = nextStart;
+                    
+                    // Crossfade effect
+                    currentVideo.classList.add('hidden');
+                    nextVideo.classList.remove('hidden');
+                    nextVideo.play().catch(e => console.log('Next video play error:', e));
+                    
+                    currentVideoIndex = nextIndex;
+                    isTransitioning = false;
+                };
+                
+                // Monitor each video for its end time
+                video1.addEventListener('timeupdate', () => {
+                    if (currentVideoIndex === 1 && video1.currentTime >= videoSegments[1].end) {
+                        switchToNextVideo();
+                    }
+                });
+                
+                video2.addEventListener('timeupdate', () => {
+                    if (currentVideoIndex === 2 && video2.currentTime >= videoSegments[2].end) {
+                        switchToNextVideo();
+                    }
+                });
+                
+                video3.addEventListener('timeupdate', () => {
+                    if (currentVideoIndex === 3 && video3.currentTime >= videoSegments[3].end) {
+                        switchToNextVideo();
+                    }
+                });
+                
+                video4.addEventListener('timeupdate', () => {
+                    if (currentVideoIndex === 4 && video4.currentTime >= videoSegments[4].end) {
+                        switchToNextVideo();
+                    }
+                });
+                
+                // Fallback: if video ends naturally, switch to next
+                [video1, video2, video3, video4].forEach((video, idx) => {
+                    video.addEventListener('ended', () => {
+                        if (currentVideoIndex === (idx + 1)) {
+                            switchToNextVideo();
+                        }
+                    });
+                });
+            }
+            
             // Add floating animation to hero content
             const heroContent = document.querySelector('.events-hero-content');
             if (heroContent) {
@@ -1046,29 +1399,25 @@
                     nav.classList.remove('scrolled');
                 }
                 
-                // Mobile header hide/show on scroll (only for mobile devices)
-                if (window.innerWidth <= 768) {
-                    clearTimeout(scrollTimeout);
+                // Header hide/show on scroll (all screen sizes)
+                clearTimeout(scrollTimeout);
+                
+                scrollTimeout = setTimeout(() => {
+                    const scrollingDown = currentScroll > lastScrollTop;
+                    const pastThreshold = currentScroll > 180;
                     
-                    scrollTimeout = setTimeout(() => {
-                        const scrollingDown = currentScroll > lastScrollTop;
-                        const pastThreshold = currentScroll > 80;
-                        
-                        if (scrollingDown && pastThreshold) {
-                            nav.classList.add('navbar-hidden');
-                        } else if (currentScroll < lastScrollTop) {
-                            nav.classList.remove('navbar-hidden');
-                        }
-                        
-                        if (currentScroll <= 80) {
-                            nav.classList.remove('navbar-hidden');
-                        }
-                        
-                        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-                    }, 10);
-                } else {
-                    nav.classList.remove('navbar-hidden');
-                }
+                    if (scrollingDown && pastThreshold) {
+                        nav.classList.add('navbar-hidden');
+                    } else if (currentScroll < lastScrollTop) {
+                        nav.classList.remove('navbar-hidden');
+                    }
+                    
+                    if (currentScroll <= 180) {
+                        nav.classList.remove('navbar-hidden');
+                    }
+                    
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                }, 10);
             });
 
             // Parallax effect for celestial background
