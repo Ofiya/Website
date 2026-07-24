@@ -4,8 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ===== NAVIGATION ENHANCEMENTS =====
     const navbar = document.querySelector('.navbar');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    const navRight = document.querySelector('.nav-right');
+    const navLinks = document.querySelectorAll('.nav-links a');
     
     // Scroll effect on navbar
     window.addEventListener('scroll', () => {
@@ -16,25 +17,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Mobile menu toggle
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+    // Hamburger menu toggle
+    if (hamburger && navRight) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navRight.classList.toggle('active');
         });
-    }
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            if (menuToggle) {
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navRight.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navRight.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navRight.classList.remove('active');
             }
         });
-    });
+    }
     
     // ===== BACKGROUND CAROUSEL ENHANCEMENT =====
     const backgroundImages = [

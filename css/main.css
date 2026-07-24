@@ -526,7 +526,7 @@ footer {
 .hamburger span {
     width: 25px;
     height: 3px;
-    background: var(--accent-burgundy);
+    background: #8B0000;
     margin: 3px 0;
     transition: all 0.3s ease;
     border-radius: 2px;
