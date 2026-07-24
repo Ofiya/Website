@@ -470,6 +470,17 @@
         }
 
         @media (max-width: 480px) {
+            .nav-links {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                width: 100%;
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                text-align: center;
+                padding: 0.5rem;
+            }
             .contact-title {
                 font-size: 2rem;
             }
@@ -615,7 +626,7 @@
             We're here to listen, pray with you, and help you connect with our community
         </p>
         
-        <form id="contactForm" action="https://formsubmit.co/info@cccredemptionwpg.org" method="POST">
+        <form id="contactForm" action="https://formsubmit.co/media@cccredemptionwpg.org" method="POST">
             <!-- FormSubmit Configuration -->
             <input type="hidden" name="_subject" value="New message from CCC Redemption Parish Website">
             <input type="hidden" name="_captcha" value="false">
