@@ -1038,6 +1038,11 @@
             <a class="logo" href="index.html">
                 <img src="public/images/logo.png" alt="Celestial Church of Christ Redemption Parish logo" class="logo-img">
             </a>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Home</a></li>
@@ -1257,6 +1262,34 @@
     <!-- Enhanced Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navRight = document.querySelector('.nav-right');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            if (hamburger && navRight) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navRight.classList.toggle('active');
+                });
+                
+                // Close menu when clicking on a link
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navRight.classList.remove('active');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!hamburger.contains(e.target) && !navRight.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navRight.classList.remove('active');
+                    }
+                });
+            }
+            
             // Initialize celestial background
             const celestialBg = document.createElement('div');
             celestialBg.className = 'celestial-background';

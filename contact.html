@@ -626,22 +626,18 @@
             We're here to listen, pray with you, and help you connect with our community
         </p>
         
-        <form id="contactForm" action="https://formsubmit.co/wunmiofi@gmail.com" method="POST">
-            <!-- FormSubmit Configuration -->
-            <input type="hidden" name="_subject" value="New message from CCC Redemption Parish Website">
-            <input type="hidden" name="_next" value="https://cccredemptionwpg.org/thank-you.html">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="text" name="_honey" style="display:none">
+        <form id="contactForm">
+            <!-- EmailJS will handle submission via JavaScript -->
+            <input type="hidden" name="to_name" value="CCC Redemption Parish">
             
             <div class="form-group">
                 <label for="name">Your Name <span class="required">*</span></label>
-                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                <input type="text" id="name" name="from_name" required placeholder="Enter your full name">
             </div>
 
             <div class="form-group">
                 <label for="email">Email Address <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                <input type="email" id="email" name="reply_to" required placeholder="Enter your email address">
             </div>
 
             <div class="form-group">
@@ -668,7 +664,12 @@
                 <textarea id="message" name="message" required placeholder="Share your prayer request, inquiry, or message..."></textarea>
             </div>
 
-            <button type="submit" class="btn-celestial">
+            <button type="submit" class="btn-celestial" id="submitBtn">
+                <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+            
+            <div id="formMessage" style="margin-top: 1rem; padding: 1rem; border-radius: 8px; display: none;"></div>
+        </form>
                 <i class="fas fa-paper-plane"></i>
                 Send Message
             </button>
@@ -736,6 +737,32 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navRight = document.querySelector('.nav-right');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            if (hamburger && navRight) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navRight.classList.toggle('active');
+                });
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navRight.classList.remove('active');
+                    });
+                });
+                
+                document.addEventListener('click', (e) => {
+                    if (!hamburger.contains(e.target) && !navRight.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navRight.classList.remove('active');
+                    }
+                });
+            }
+            
             // Add floating animation to hero content
             const heroContent = document.querySelector('.contact-hero-content');
             if (heroContent) {
@@ -823,7 +850,77 @@
                     stainedGlass.style.transform = `translateY(${scrolled * 0.3}px)`;
                 }
             });
+            
+            // EmailJS Form Submission
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    formMessage.style.display = 'none';
+                    
+                    // Get form data
+                    const formData = {
+                        from_name: document.getElementById('name').value,
+                        reply_to: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value || 'Not provided',
+                        subject: document.getElementById('subject').value || 'No subject selected',
+                        message: document.getElementById('message').value,
+                        to_name: 'CCC Redemption Parish'
+                    };
+                    
+                    // Send email using EmailJS
+                    // REPLACE THESE WITH YOUR ACTUAL EMAILJS CREDENTIALS:
+                    // 1. Sign up at https://www.emailjs.com/
+                    // 2. Create an email service
+                    // 3. Create an email template
+                    // 4. Get your Public Key from Account page
+                    // 5. Replace the values below
+                    
+                    emailjs.send(
+                        'YOUR_SERVICE_ID',      // Replace with your EmailJS Service ID
+                        'YOUR_TEMPLATE_ID',     // Replace with your EmailJS Template ID
+                        formData,
+                        'YOUR_PUBLIC_KEY'       // Replace with your EmailJS Public Key
+                    )
+                    .then(function(response) {
+                        // Success
+                        formMessage.innerHTML = '<div style="background: #4caf50; color: white; padding: 1rem; border-radius: 8px;"><i class="fas fa-check-circle"></i> Message sent successfully! We\'ll respond within 24-48 hours.</div>';
+                        formMessage.style.display = 'block';
+                        contactForm.reset();
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                        submitBtn.disabled = false;
+                        
+                        // Redirect to thank you page after 2 seconds
+                        setTimeout(() => {
+                            window.location.href = 'thank-you.html';
+                        }, 2000);
+                    }, function(error) {
+                        // Error
+                        formMessage.innerHTML = '<div style="background: #f44336; color: white; padding: 1rem; border-radius: 8px;"><i class="fas fa-exclamation-circle"></i> Failed to send message. Please try again or email us directly at info@cccredemptionwpg.org</div>';
+                        formMessage.style.display = 'block';
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                        submitBtn.disabled = false;
+                    });
+                });
+            }
         });
+    </script>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // Initialize EmailJS with your Public Key
+            // REPLACE 'YOUR_PUBLIC_KEY' with your actual EmailJS Public Key
+            emailjs.init('YOUR_PUBLIC_KEY');
+        })();
     </script>
 </body>
 </html>

@@ -1168,6 +1168,32 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navRight = document.querySelector('.nav-right');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            if (hamburger && navRight) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navRight.classList.toggle('active');
+                });
+                
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        navRight.classList.remove('active');
+                    });
+                });
+                
+                document.addEventListener('click', (e) => {
+                    if (!hamburger.contains(e.target) && !navRight.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navRight.classList.remove('active');
+                    }
+                });
+            }
+            
             // Timeline animation on scroll
             const timelineItems = document.querySelectorAll('.timeline-item');
             const observer = new IntersectionObserver((entries) => {
