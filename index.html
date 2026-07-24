@@ -106,6 +106,7 @@
             object-fit: cover;
             z-index: 0;
             transition: opacity 0.5s ease-in-out;
+            will-change: opacity;
         }
         .hero-video-bg.hidden {
             opacity: 0;
@@ -1065,10 +1066,10 @@
             <source src="public/videos/hero.mp4" type="video/mp4">
         </video>
         <video id="heroVideo2" class="hero-video-bg hidden" muted playsinline preload="none">
-            <source src="public/videos/thanksgiving.mp4" type="video/mp4">
+            <source src="public/videos/thanksgiving (2).mp4" type="video/mp4">
         </video>
         <video id="heroVideo3" class="hero-video-bg hidden" muted playsinline preload="none">
-            <source src="public/videos/ope.mp4" type="video/mp4">
+            <source src="public/videos/ope (2).mp4" type="video/mp4">
         </video>
         <div class="hero-content-enhanced floating">
             <h2 class="hero-subtitle">Welcome to</h2>
@@ -1281,66 +1282,82 @@
                 let video2Loaded = false;
                 let video3Loaded = false;
                 
-                // Preload video2 after a short delay to prioritize initial page load
-                setTimeout(() => {
-                    if (!video2Loaded) {
+                // Preload video2 when video1 is halfway through (smarter preloading)
+                video1.addEventListener('timeupdate', function preloadVideo2() {
+                    if (!video2Loaded && video1.currentTime >= video1.duration / 2) {
                         video2.load();
                         video2Loaded = true;
+                        video1.removeEventListener('timeupdate', preloadVideo2);
                     }
-                }, 2000);
+                }, { once: false });
                 
-                // Preload video3 after another delay
-                setTimeout(() => {
+                // Preload video3 when video2 starts playing
+                const preloadVideo3WhenNeeded = () => {
                     if (!video3Loaded) {
-                        video3.load();
-                        video3.currentTime = 20;
-                        video3Loaded = true;
+                        setTimeout(() => {
+                            video3.load();
+                            video3Loaded = true;
+                        }, 3000); // Load after 3 seconds of video2 playing
                     }
-                }, 4000);
+                };
                 
                 const crossfadeToVideo2 = () => {
+                    if (currentVideo === 2) return; // Prevent multiple transitions
+                    
+                    // Pause and hide other videos
+                    video1.pause();
+                    video1.classList.add('hidden');
+                    video3.pause();
+                    video3.classList.add('hidden');
+                    
                     // Ensure video2 is loaded
                     if (!video2Loaded) {
                         video2.load();
                         video2Loaded = true;
                     }
                     
-                    // Fade out video1 (hero), fade in video2 (thanksgiving)
-                    video1.classList.add('hidden');
+                    // Play video2 (thanksgiving)
                     video2.classList.remove('hidden');
-                    video3.classList.add('hidden');
                     video2.currentTime = 0;
                     video2.play().catch(e => console.log('Video2 play error:', e));
                     currentVideo = 2;
                     
-                    // Switch to ope after 6 seconds
-                    setTimeout(crossfadeToVideo3, 6000);
+                    // Start preloading video3
+                    preloadVideo3WhenNeeded();
                 };
                 
                 const crossfadeToVideo3 = () => {
+                    if (currentVideo === 3) return; // Prevent multiple transitions
+                    
+                    // Pause and hide other videos
+                    video1.pause();
+                    video1.classList.add('hidden');
+                    video2.pause();
+                    video2.classList.add('hidden');
+                    
                     // Ensure video3 is loaded
                     if (!video3Loaded) {
                         video3.load();
-                        video3.currentTime = 20;
                         video3Loaded = true;
                     }
                     
-                    // Fade out video2 (thanksgiving), fade in video3 (ope)
-                    video1.classList.add('hidden');
-                    video2.classList.add('hidden');
+                    // Play video3 (ope) from start
                     video3.classList.remove('hidden');
-                    video3.currentTime = 20;
+                    video3.currentTime = 0;
                     video3.play().catch(e => console.log('Video3 play error:', e));
                     currentVideo = 3;
-                    
-                    // Switch back to hero after 5 seconds (20-25 secs clip)
-                    setTimeout(crossfadeToVideo1, 5000);
                 };
                 
                 const crossfadeToVideo1 = () => {
-                    // Fade out other videos, fade in video1 (hero)
+                    if (currentVideo === 1) return; // Prevent multiple transitions
+                    
+                    // Pause and hide other videos
+                    video2.pause();
                     video2.classList.add('hidden');
+                    video3.pause();
                     video3.classList.add('hidden');
+                    
+                    // Play video1 (hero) from start
                     video1.classList.remove('hidden');
                     video1.currentTime = 0;
                     video1.play().catch(e => console.log('Video1 play error:', e));
@@ -1349,19 +1366,21 @@
                 
                 // When hero video (video1) ends, switch to thanksgiving
                 video1.addEventListener('ended', () => {
-                    crossfadeToVideo2();
+                    if (currentVideo === 1) {
+                        crossfadeToVideo2();
+                    }
                 });
                 
-                // Backup check for thanksgiving duration (6 seconds)
-                video2.addEventListener('timeupdate', () => {
-                    if (currentVideo === 2 && video2.currentTime >= 6) {
+                // When video2 ends, switch to video3
+                video2.addEventListener('ended', () => {
+                    if (currentVideo === 2) {
                         crossfadeToVideo3();
                     }
                 });
                 
-                // Backup check for ope duration (5 seconds, playing 20-25)
-                video3.addEventListener('timeupdate', () => {
-                    if (currentVideo === 3 && video3.currentTime >= 25) {
+                // When video3 ends, switch back to video1
+                video3.addEventListener('ended', () => {
+                    if (currentVideo === 3) {
                         crossfadeToVideo1();
                     }
                 });

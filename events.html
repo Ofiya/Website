@@ -1023,17 +1023,14 @@
     <!-- Events Hero -->
     <header class="events-hero">
         <!-- Video Background Overlay -->
-        <video id="eventsVideo1" class="events-video-bg" muted playsinline preload="metadata">
-            <source src="public/videos/Praise galore 2025.mp4" type="video/mp4">
+        <video id="eventsVideo1" class="events-video-bg" autoplay muted playsinline preload="metadata">
+            <source src="public/videos/Praise galore 2025 (2).mp4" type="video/mp4">
         </video>
         <video id="eventsVideo2" class="events-video-bg hidden" muted playsinline preload="none">
-            <source src="public/videos/Harmony.mp4" type="video/mp4">
+            <source src="public/videos/Harmony 2.mp4" type="video/mp4">
         </video>
         <video id="eventsVideo3" class="events-video-bg hidden" muted playsinline preload="none">
-            <source src="public/videos/Harmony.mp4" type="video/mp4">
-        </video>
-        <video id="eventsVideo4" class="events-video-bg hidden" muted playsinline preload="none">
-            <source src="public/videos/Praise galore 2025.mp4" type="video/mp4">
+            <source src="public/videos/Praise (2).mp4" type="video/mp4">
         </video>
         
         <div class="events-hero-content floating">
@@ -1222,121 +1219,99 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Events page video rotation with time-specific segments
-            const video1 = document.getElementById('eventsVideo1'); // Praise Galore 0-6s
-            const video2 = document.getElementById('eventsVideo2'); // Harmony 19-28s
-            const video3 = document.getElementById('eventsVideo3'); // Harmony 37-43s
-            const video4 = document.getElementById('eventsVideo4'); // Praise Galore 33-41s
+            // Events page video rotation - simplified for full clips
+            const video1 = document.getElementById('eventsVideo1'); // Praise Galore
+            const video2 = document.getElementById('eventsVideo2'); // Harmony
+            const video3 = document.getElementById('eventsVideo3'); // Praise
             
-            if (video1 && video2 && video3 && video4) {
-                let currentVideoIndex = 1; // 1, 2, 3, or 4
+            if (video1 && video2 && video3) {
+                let currentVideoIndex = 1; // 1, 2, or 3
                 let video2Loaded = false;
                 let video3Loaded = false;
-                let video4Loaded = false;
-                let isTransitioning = false;
                 
-                // Video segments configuration
-                const videoSegments = {
-                    1: { element: video1, start: 0, end: 6 },   // Praise Galore 0-6s (6 seconds)
-                    2: { element: video2, start: 19, end: 28 }, // Harmony 19-28s (9 seconds)
-                    3: { element: video3, start: 37, end: 43 }, // Harmony 37-43s (6 seconds)
-                    4: { element: video4, start: 33, end: 41 }  // Praise Galore 33-41s (8 seconds)
-                };
-                
-                // Start first video at 0 seconds
-                video1.currentTime = 0;
+                // Start first video
                 video1.play().catch(e => console.log('Video1 autoplay prevented:', e));
                 
-                // Preload other videos after a short delay
+                // Preload video2 after a short delay
                 setTimeout(() => {
                     if (!video2Loaded) {
                         video2.load();
-                        video2.currentTime = 19;
                         video2Loaded = true;
                     }
-                }, 3000);
-                
-                setTimeout(() => {
-                    if (!video3Loaded) {
-                        video3.load();
-                        video3.currentTime = 37;
-                        video3Loaded = true;
-                    }
-                }, 5000);
-                
-                setTimeout(() => {
-                    if (!video4Loaded) {
-                        video4.load();
-                        video4.currentTime = 33;
-                        video4Loaded = true;
-                    }
-                }, 7000);
+                }, 2000);
                 
                 // Function to switch to next video
-                const switchToNextVideo = () => {
-                    if (isTransitioning) return;
-                    isTransitioning = true;
+                const switchToVideo2 = () => {
+                    if (currentVideoIndex === 2) return;
                     
-                    const currentVideo = videoSegments[currentVideoIndex].element;
-                    const nextIndex = (currentVideoIndex % 4) + 1; // Cycle through 1, 2, 3, 4
-                    const nextVideo = videoSegments[nextIndex].element;
-                    const nextStart = videoSegments[nextIndex].start;
+                    video1.pause();
+                    video1.classList.add('hidden');
+                    video3.pause();
+                    video3.classList.add('hidden');
                     
-                    // Ensure next video is loaded and at correct start time
-                    if (nextIndex === 2 && !video2Loaded) {
+                    if (!video2Loaded) {
                         video2.load();
                         video2Loaded = true;
-                    } else if (nextIndex === 3 && !video3Loaded) {
-                        video3.load();
-                        video3Loaded = true;
-                    } else if (nextIndex === 4 && !video4Loaded) {
-                        video4.load();
-                        video4Loaded = true;
                     }
                     
-                    nextVideo.currentTime = nextStart;
+                    video2.classList.remove('hidden');
+                    video2.currentTime = 0;
+                    video2.play().catch(e => console.log('Video2 play error:', e));
+                    currentVideoIndex = 2;
                     
-                    // Crossfade effect
-                    currentVideo.classList.add('hidden');
-                    nextVideo.classList.remove('hidden');
-                    nextVideo.play().catch(e => console.log('Next video play error:', e));
-                    
-                    currentVideoIndex = nextIndex;
-                    isTransitioning = false;
+                    // Preload video3
+                    if (!video3Loaded) {
+                        setTimeout(() => {
+                            video3.load();
+                            video3Loaded = true;
+                        }, 2000);
+                    }
                 };
                 
-                // Monitor each video for its end time
-                video1.addEventListener('timeupdate', () => {
-                    if (currentVideoIndex === 1 && video1.currentTime >= videoSegments[1].end) {
-                        switchToNextVideo();
+                const switchToVideo3 = () => {
+                    if (currentVideoIndex === 3) return;
+                    
+                    video1.pause();
+                    video1.classList.add('hidden');
+                    video2.pause();
+                    video2.classList.add('hidden');
+                    
+                    if (!video3Loaded) {
+                        video3.load();
+                        video3Loaded = true;
                     }
+                    
+                    video3.classList.remove('hidden');
+                    video3.currentTime = 0;
+                    video3.play().catch(e => console.log('Video3 play error:', e));
+                    currentVideoIndex = 3;
+                };
+                
+                const switchToVideo1 = () => {
+                    if (currentVideoIndex === 1) return;
+                    
+                    video2.pause();
+                    video2.classList.add('hidden');
+                    video3.pause();
+                    video3.classList.add('hidden');
+                    
+                    video1.classList.remove('hidden');
+                    video1.currentTime = 0;
+                    video1.play().catch(e => console.log('Video1 play error:', e));
+                    currentVideoIndex = 1;
+                };
+                
+                // Use ended events for smooth transitions
+                video1.addEventListener('ended', () => {
+                    if (currentVideoIndex === 1) switchToVideo2();
                 });
                 
-                video2.addEventListener('timeupdate', () => {
-                    if (currentVideoIndex === 2 && video2.currentTime >= videoSegments[2].end) {
-                        switchToNextVideo();
-                    }
+                video2.addEventListener('ended', () => {
+                    if (currentVideoIndex === 2) switchToVideo3();
                 });
                 
-                video3.addEventListener('timeupdate', () => {
-                    if (currentVideoIndex === 3 && video3.currentTime >= videoSegments[3].end) {
-                        switchToNextVideo();
-                    }
-                });
-                
-                video4.addEventListener('timeupdate', () => {
-                    if (currentVideoIndex === 4 && video4.currentTime >= videoSegments[4].end) {
-                        switchToNextVideo();
-                    }
-                });
-                
-                // Fallback: if video ends naturally, switch to next
-                [video1, video2, video3, video4].forEach((video, idx) => {
-                    video.addEventListener('ended', () => {
-                        if (currentVideoIndex === (idx + 1)) {
-                            switchToNextVideo();
-                        }
-                    });
+                video3.addEventListener('ended', () => {
+                    if (currentVideoIndex === 3) switchToVideo1();
                 });
             }
             
