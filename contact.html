@@ -743,30 +743,8 @@
                 heroContent.classList.add('floating');
             }
             
-            // Contact form handling - show loading state
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    
-                    // Validate required fields
-                    const name = document.getElementById('name').value.trim();
-                    const email = document.getElementById('email').value.trim();
-                    const message = document.getElementById('message').value.trim();
-                    
-                    if (!name || !email || !message) {
-                        e.preventDefault();
-                        alert('❌ Please fill in all required fields');
-                        return;
-                    }
-                    
-                    // Show loading state
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending Message...';
-                    submitBtn.disabled = true;
-                    
-                    // Form will submit naturally to FormSubmit
-                });
-            }
+            // Contact form handling - validation handled in Azure Logic App submission below
+            // (Duplicate event listener removed to prevent conflicts)
             
             // Add interactive effects to contact cards
             const contactCards = document.querySelectorAll('.contact-info-card');
