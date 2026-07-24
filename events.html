@@ -66,6 +66,11 @@
             background: rgba(255, 255, 240, 0.98);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(139, 125, 107, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar.navbar-hidden {
+            transform: translateY(-100%) !important;
         }
 
         .watch-live-btn {
@@ -998,25 +1003,31 @@
             // Event countdown functionality
             const upcomingEvents = document.querySelectorAll('.event-date-enhanced');
             upcomingEvents.forEach(eventDate => {
-                const month = eventDate.querySelector('.month').textContent;
-                const day = parseInt(eventDate.querySelector('.day').textContent);
+                const monthEl = eventDate.querySelector('.month');
+                const dayEl = eventDate.querySelector('.day');
                 
-                // Add year based on current date
-                const currentDate = new Date();
-                const currentYear = currentDate.getFullYear();
-                let eventYear = currentYear;
-                
-                // Create event date
-                const eventDateObj = new Date(`${month} ${day}, ${eventYear}`);
-                
-                // If event date has passed, set to next year
-                if (eventDateObj < currentDate) {
-                    eventYear = currentYear + 1;
+                // Only process if elements exist
+                if (monthEl && dayEl) {
+                    const month = monthEl.textContent;
+                    const day = parseInt(dayEl.textContent);
+                    
+                    // Add year based on current date
+                    const currentDate = new Date();
+                    const currentYear = currentDate.getFullYear();
+                    let eventYear = currentYear;
+                    
+                    // Create event date
+                    const eventDateObj = new Date(`${month} ${day}, ${eventYear}`);
+                    
+                    // If event date has passed, set to next year
+                    if (eventDateObj < currentDate) {
+                        eventYear = currentYear + 1;
+                    }
+                    
+                    // You could add countdown functionality here
+                    // For now, we'll just log the dates
+                    console.log(`Event on: ${month} ${day}, ${eventYear}`);
                 }
-                
-                // You could add countdown functionality here
-                // For now, we'll just log the dates
-                console.log(`Event on: ${month} ${day}, ${eventYear}`);
             });
 
             // Track scroll position for mobile header hide/show
@@ -1040,7 +1051,10 @@
                     clearTimeout(scrollTimeout);
                     
                     scrollTimeout = setTimeout(() => {
-                        if (currentScroll > lastScrollTop && currentScroll > 80) {
+                        const scrollingDown = currentScroll > lastScrollTop;
+                        const pastThreshold = currentScroll > 80;
+                        
+                        if (scrollingDown && pastThreshold) {
                             nav.classList.add('navbar-hidden');
                         } else if (currentScroll < lastScrollTop) {
                             nav.classList.remove('navbar-hidden');
