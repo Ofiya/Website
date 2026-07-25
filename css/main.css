@@ -516,6 +516,37 @@ footer {
     }
 }
 
+/* Portrait mobile "Request Desktop Site" optimization (very narrow screens) */
+@media (min-width: 400px) and (max-width: 768px) {
+    .navbar .container {
+        padding: 0.5rem 0.5rem;
+    }
+    
+    .logo-img {
+        height: 80px !important;
+    }
+    
+    .nav-links {
+        gap: 0.4rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.4rem;
+    }
+    
+    .nav-right {
+        gap: 0.5rem;
+    }
+    
+    .watch-live-btn {
+        font-size: 0.65rem !important;
+        padding: 0.4rem 0.6rem !important;
+        display: inline-flex !important;
+        visibility: visible !important;
+    }
+}
+
 /* Mobile landscape / "Request Desktop Site" optimization */
 @media (min-width: 769px) and (max-width: 950px) {
     .navbar .container {
