@@ -516,6 +516,31 @@ footer {
     }
 }
 
+/* Mobile landscape / "Request Desktop Site" optimization */
+@media (min-width: 769px) and (max-width: 950px) {
+    .navbar .container {
+        padding: 1rem 1rem;
+    }
+    
+    .nav-links {
+        gap: 0.8rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .nav-right {
+        gap: 1rem;
+    }
+    
+    .watch-live-btn {
+        font-size: 0.75rem !important;
+        padding: 0.5rem 0.8rem !important;
+    }
+}
+
 /* Hamburger Menu Button */
 .hamburger {
     display: none;
