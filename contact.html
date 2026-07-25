@@ -646,7 +646,7 @@
 
             <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone">
+                <input type="tel" id="phone" name="phone" pattern="[0-9+\-\s()]*" title="Please enter a valid phone number (numbers, spaces, +, -, () only)">
             </div>
 
             <div class="form-group">
@@ -838,14 +838,14 @@
                         
                         if (response.ok) {
                             // Success
-                            formMessage.innerHTML = '<div style="background: #4caf50; color: white; padding: 1rem; border-radius: 8px;"><i class="fas fa-check-circle"></i> Message sent successfully! We\'ll respond within 24-48 hours.</div>';
+                            formMessage.innerHTML = '<div style="background: #4caf50; color: white; padding: 1rem; border-radius: 8px;"><i class="fas fa-check-circle"></i> Message sent successfully!</div>';
                             formMessage.style.display = 'block';
                             contactForm.reset();
                             
-                            // Redirect to thank you page after 2 seconds
+                            // Hide message after 5 seconds
                             setTimeout(() => {
-                                window.location.href = 'thank-you.html';
-                            }, 2000);
+                                formMessage.style.display = 'none';
+                            }, 5000);
                         } else {
                             throw new Error('Submission failed');
                         }

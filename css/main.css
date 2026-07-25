@@ -544,6 +544,20 @@ footer {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
+/* Ensure Watch Live button is always visible on desktop */
+@media (min-width: 769px) {
+    .watch-live-btn {
+        display: inline-flex !important;
+        visibility: visible !important;
+    }
+    
+    .nav-right {
+        display: flex !important;
+        position: static !important;
+        flex-direction: row !important;
+    }
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
