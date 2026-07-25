@@ -928,17 +928,80 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .container {
-                padding: 0 1.5rem;
+            .hamburger {
+                display: flex;
+            }
+            
+            .navbar .container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 1rem;
+                min-height: 120px;
+            }
+            
+            .logo {
+                text-align: left;
+            }
+            
+            .logo-img {
+                height: 100px;
+                max-height: 100px;
+            }
+            
+            .navbar {
+                height: auto;
+                min-height: 120px;
+            }
+            
+            .nav-right {
+                position: fixed;
+                top: 120px;
+                right: -100%;
+                width: 70%;
+                height: calc(100vh - 180px);
+                background: rgba(255, 255, 240, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                overflow-y: auto;
+            }
+            
+            .nav-right.active {
+                right: 0;
             }
             
             .nav-links {
-                gap: 1rem;
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+                display: flex !important;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                border-bottom: 1px solid rgba(138, 154, 91, 0.2);
             }
             
             .nav-links a {
-                font-size: 0.9rem;
-                padding: 0.5rem 0.75rem;
+                width: 100%;
+                padding: 1rem;
+                font-size: 1rem;
+                text-align: left;
+                display: block;
+            }
+            
+            .watch-live-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
             }
             
             .hero-content-enhanced {
@@ -1057,7 +1120,7 @@
         }
 
         /* Ensure Watch Live button is always visible on desktop view */
-        @media (min-width: 769px) {
+        @media (min-width: 1025px) {
             .watch-live-btn {
                 display: inline-flex !important;
                 visibility: visible !important;
@@ -1067,63 +1130,6 @@
                 display: flex !important;
                 position: static !important;
                 flex-direction: row !important;
-            }
-        }
-
-        /* Portrait mobile "Request Desktop Site" optimization (very narrow screens) */
-        @media (min-width: 400px) and (max-width: 768px) {
-            .navbar .container {
-                padding: 0.5rem 0.25rem;
-            }
-            
-            .logo-img {
-                height: 60px !important;
-            }
-            
-            .nav-links {
-                gap: 0.3rem;
-            }
-            
-            .nav-links a {
-                font-size: 0.6rem;
-                padding: 0.2rem 0.3rem;
-            }
-            
-            .nav-right {
-                gap: 0.3rem;
-            }
-            
-            .watch-live-btn {
-                font-size: 0.6rem !important;
-                padding: 0.35rem 0.5rem !important;
-                display: inline-flex !important;
-                visibility: visible !important;
-                white-space: nowrap !important;
-            }
-        }
-
-        /* Mobile landscape / "Request Desktop Site" optimization */
-        @media (min-width: 769px) and (max-width: 950px) {
-            .navbar .container {
-                padding: 1rem 1rem;
-            }
-            
-            .nav-links {
-                gap: 0.8rem;
-            }
-            
-            .nav-links a {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.6rem;
-            }
-            
-            .nav-right {
-                gap: 1rem;
-            }
-            
-            .watch-live-btn {
-                font-size: 0.75rem !important;
-                padding: 0.5rem 0.8rem !important;
             }
         }
     </style>

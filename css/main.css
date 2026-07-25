@@ -505,72 +505,6 @@ footer {
     .container {
         padding: 0 1.5rem;
     }
-    
-    .nav-links {
-        gap: 1.2rem;
-    }
-    
-    .nav-links a {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.7rem;
-    }
-}
-
-/* Portrait mobile "Request Desktop Site" optimization (very narrow screens) */
-@media (min-width: 400px) and (max-width: 768px) {
-    .navbar .container {
-        padding: 0.5rem 0.25rem;
-    }
-    
-    .logo-img {
-        height: 60px !important;
-    }
-    
-    .nav-links {
-        gap: 0.3rem;
-    }
-    
-    .nav-links a {
-        font-size: 0.6rem;
-        padding: 0.2rem 0.3rem;
-    }
-    
-    .nav-right {
-        gap: 0.3rem;
-    }
-    
-    .watch-live-btn {
-        font-size: 0.6rem !important;
-        padding: 0.35rem 0.5rem !important;
-        display: inline-flex !important;
-        visibility: visible !important;
-        white-space: nowrap !important;
-    }
-}
-
-/* Mobile landscape / "Request Desktop Site" optimization */
-@media (min-width: 769px) and (max-width: 950px) {
-    .navbar .container {
-        padding: 1rem 1rem;
-    }
-    
-    .nav-links {
-        gap: 0.8rem;
-    }
-    
-    .nav-links a {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.6rem;
-    }
-    
-    .nav-right {
-        gap: 1rem;
-    }
-    
-    .watch-live-btn {
-        font-size: 0.75rem !important;
-        padding: 0.5rem 0.8rem !important;
-    }
 }
 
 /* Hamburger Menu Button */
@@ -606,7 +540,7 @@ footer {
 }
 
 /* Ensure Watch Live button is always visible on desktop */
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
     .watch-live-btn {
         display: inline-flex !important;
         visibility: visible !important;
@@ -619,7 +553,8 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+/* Tablet and "Request Desktop Site" on mobile - show hamburger menu */
+@media (max-width: 1024px) {
     .hamburger {
         display: flex;
     }
