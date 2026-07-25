@@ -76,6 +76,11 @@
             --shadow-blue: 0 4px 30px rgba(138, 154, 91, 0.15);
         }
 
+        /* ===== SCROLLBAR STABILITY ===== */
+        html {
+            overflow-y: scroll;
+        }
+
         /* ===== BASE STYLES WITH IVORY BACKGROUND ===== */
         body {
             background-color: var(--ivory-main);
@@ -675,22 +680,39 @@
         }
         .project-chip i { color: var(--sage-green); }
 
+        /* ===== BASE CONTAINER ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
         /* ===== NAVIGATION - CENTERED DESIGN ===== */
-        /* Navbar base styles moved to main.css for consistency */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background: transparent;
+            backdrop-filter: none;
+            border-bottom: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
         .navbar .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.6rem 2rem;
-            position: relative;
+            padding: 1rem 2rem;
+            min-height: 170px;
         }
 
         .logo {
-            position: static;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
-            gap: 0.65rem;
             text-decoration: none;
         }
 
