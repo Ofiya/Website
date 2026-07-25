@@ -703,10 +703,11 @@
 
         .navbar .container {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
             padding: 1rem 2rem;
             min-height: 170px;
+            gap: 3rem;
         }
 
         .logo {
@@ -931,16 +932,14 @@
         @media (max-width: 1024px) {
             .hamburger {
                 display: flex;
-                margin-left: 1rem;
             }
             
             .navbar .container {
                 flex-direction: row;
-                justify-content: flex-start;
+                justify-content: space-between;
                 align-items: center;
                 padding: 0.5rem 1rem;
                 min-height: 120px;
-                gap: 0;
             }
             
             .logo {
