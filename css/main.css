@@ -568,7 +568,7 @@ footer {
         justify-content: space-between;
         align-items: center;
         padding: 0.5rem 1rem;
-        min-height: 180px;
+        min-height: 120px;
     }
     
     .logo {
@@ -576,18 +576,18 @@ footer {
     }
     
     .logo-img {
-        height: 170px;
-        max-height: 170px;
+        height: 100px;
+        max-height: 100px;
     }
     
     .navbar {
         height: auto;
-        min-height: 180px;
+        min-height: 120px;
     }
     
     .nav-right {
         position: fixed;
-        top: 180px;
+        top: 120px;
         right: -100%;
         width: 70%;
         height: calc(100vh - 180px);
@@ -654,22 +654,22 @@ footer {
     }
     
     .navbar {
-        min-height: 180px;
+        min-height: 120px;
     }
     
     .navbar .container {
         padding: 0.5rem;
-        min-height: 180px;
+        min-height: 120px;
     }
     
     .logo-img {
-        height: 170px;
-        max-height: 170px;
+        height: 100px;
+        max-height: 100px;
     }
     
     .nav-right {
-        top: 180px;
-        height: calc(100vh - 180px);
+        top: 120px;
+        height: calc(100vh - 120px);
         width: 80%;
     }
     
