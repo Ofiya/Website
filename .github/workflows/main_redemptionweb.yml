@@ -7,6 +7,10 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+concurrency:
+  group: azure-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   NODE_VERSION: '20.x'
   AZURE_WEBAPP_NAME: 'RedemptionWeb'
@@ -101,7 +105,8 @@ jobs:
     
     - name: Validate Azure credentials
       run: |
-        if [ -z "${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_80FE6C17A7A44F76874D0B9423490B8E }}" ]; then
+        SECRET_VALUE="${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_80FE6C17A7A44F76874D0B9423490B8E }}"
+        if [ -z "$SECRET_VALUE" ]; then
           echo "❌ Azure publish profile secret not set"
           echo "Please add the publish profile for RedemptionWeb to GitHub secrets"
           exit 1
@@ -115,6 +120,7 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_80FE6C17A7A44F76874D0B9423490B8E }}
         package: .
+        clean: true
     
     - name: Verify deployment
       run: |
