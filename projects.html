@@ -102,7 +102,7 @@
         
         .nav-right {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             gap: 0.75rem;
         }
@@ -518,22 +518,61 @@
             animation: float 3s ease-in-out infinite;
         }
 
+        /* Hamburger Menu Button - Hidden by default */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--sage-green);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger:hover span {
+            background: var(--sage-green-dark);
+        }
+
         /* RESPONSIVE DESIGN - UPDATED FOR 2x2 GRID */
-        @media (max-width: 1024px) {
+        @media (max-width: 1380px) {
             .hamburger {
                 display: flex;
+                margin-left: auto;
+                order: 3;
+                position: absolute !important;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1001;
             }
             
             .navbar .container {
                 flex-direction: row;
-                justify-content: space-between;
+                justify-content: flex-start;
                 align-items: center;
                 padding: 0.5rem 1rem;
-                min-height: 120px;
+                height: 120px;
+                max-height: 120px;
+                gap: 0;
+                position: relative;
             }
             
             .logo {
                 text-align: left;
+                order: 1;
+                position: absolute !important;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
             }
             
             .logo-img {
@@ -542,14 +581,15 @@
             }
             
             .navbar {
-                height: auto;
-                min-height: 120px;
+                height: 120px;
+                max-height: 120px;
             }
             
             .nav-right {
-                position: fixed;
+                position: fixed !important;
                 top: 120px;
-                right: -100%;
+                right: -100% !important;
+                left: auto !important;
                 width: 280px;
                 max-height: 400px;
                 background: rgba(255, 255, 240, 0.98);
@@ -557,15 +597,20 @@
                 flex-direction: column;
                 padding: 0;
                 gap: 0;
-                transition: right 0.3s ease;
+                transition: right 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
                 box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
                 z-index: 1000;
                 overflow-y: auto;
                 border-radius: 0 0 0 8px;
+                visibility: hidden;
+                opacity: 0;
             }
             
             .nav-right.active {
-                right: 0;
+                right: 0 !important;
+                left: auto !important;
+                visibility: visible;
+                opacity: 1;
             }
             
             .nav-links {
@@ -714,7 +759,11 @@
         }
 
         /* Ensure Watch Live button is always visible and below nav links on desktop */
-        @media (min-width: 1025px) {
+        @media (min-width: 1381px) {
+            .hamburger {
+                display: none !important;
+            }
+
             .watch-live-btn {
                 display: inline-flex !important;
                 visibility: visible !important;
@@ -723,7 +772,9 @@
             .nav-right {
                 display: flex !important;
                 position: static !important;
-                flex-direction: column !important;
+                flex-direction: row !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
         }
     </style>
@@ -732,7 +783,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <a class="logo" href="index.html">
+            <a class="logo" href="/">
                 <img src="public/images/logo.png" alt="Celestial Church of Christ Redemption Parish logo" class="logo-img">
             </a>
             <button class="hamburger" aria-label="Toggle menu">
@@ -742,12 +793,12 @@
             </button>
             <div class="nav-right">
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Weekly programs</a></li>
-                    <li><a href="projects.html" class="active">Projects</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="about">About Us</a></li>
+                    <li><a href="services">Weekly programs</a></li>
+                    <li><a href="projects" class="active">Projects</a></li>
+                    <li><a href="events">Events</a></li>
+                    <li><a href="contact">Contact Us</a></li>
                     <li>
                         <a href="https://youtube.com/@cccrpwpg" target="_blank" rel="noopener" class="watch-live-btn">
                             <i class="fas fa-broadcast-tower"></i> LIVE STREAM
