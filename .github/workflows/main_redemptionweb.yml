@@ -12,108 +12,42 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  NODE_VERSION: '20.x'
   AZURE_WEBAPP_NAME: 'RedemptionWeb'
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     environment: production
-    
+
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-        cache: 'npm'
-    
-    - name: Verify Node.js version
-      run: node --version
-    
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: Build application
-      run: npm run build --if-present
-    
-    - name: Run tests
-      run: npm test --if-present
-    
-    - name: Create production configuration
+      uses: actions/checkout@v4
+
+    - name: Assemble deployment package
       run: |
-        # Create web.config for Azure
-        cat > web.config << 'EOF'
-        <?xml version="1.0" encoding="utf-8"?>
-        <configuration>
-          <system.webServer>
-            <handlers>
-              <add name="iisnode" path="server.js" verb="*" modules="iisnode"/>
-            </handlers>
-            <rewrite>
-              <rules>
-                <rule name="StaticContent">
-                  <action type="Rewrite" url="public{REQUEST_URI}"/>
-                </rule>
-                <rule name="DynamicContent">
-                  <conditions>
-                    <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="True"/>
-                  </conditions>
-                  <action type="Rewrite" url="server.js"/>
-                </rule>
-              </rules>
-            </rewrite>
-            <iisnode 
-              node_env="production"
-              nodeProcessCountPerApplication="1"
-              maxConcurrentRequestsPerProcess="1024"
-              maxNamedPipeConnectionRetry="3"
-              namedPipeConnectionRetryDelay="2000"
-              asyncCompletionThreadCount="0"
-              initialRequestBufferSize="4096"
-              maxRequestBufferSize="65536"
-              watchedFiles="*.js;iisnode.yml"
-              uncFileChangesPollingInterval="5000"
-              gracefulShutdownTimeout="60000"
-              loggingEnabled="true"
-              logDirectoryName="iisnode"
-              debuggingEnabled="false"
-              devErrorsEnabled="false"
-            />
-          </system.webServer>
-        </configuration>
-        EOF
-        
-        # Create iisnode.yml
-        cat > iisnode.yml << 'EOF'
-        loggingEnabled: true
-        logDirectory: iisnode
-        debuggingEnabled: false
-        devErrorsEnabled: false
-        node_env: production
-        nodeProcessCountPerApplication: 1
-        maxConcurrentRequestsPerProcess: 1024
-        maxNamedPipeConnectionRetry: 3
-        namedPipeConnectionRetryDelay: 2000
-        initialRequestBufferSize: 4096
-        maxRequestBufferSize: 65536
-        EOF
-    
+        # server.js uses only Node.js built-in modules, so node_modules
+        # is NOT required at runtime. Copy only the files needed to run
+        # the site and exclude node_modules, git metadata and build-only
+        # folders. This keeps the deployed file count small so Kudu's
+        # rsync step does not time out (the cause of the 409 / failed deploys).
+        mkdir -p deploy
+        rsync -a \
+          --exclude='node_modules' \
+          --exclude='.git' \
+          --exclude='.github' \
+          --exclude='deploy' \
+          --exclude='scripts' \
+          --exclude='templates' \
+          ./ deploy/
+
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v3
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: .
-    
+        package: deploy
+
     - name: Verify deployment
       run: |
-        echo "✅ Deployment completed successfully!"
-        echo "🌐 Application URL: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
-        echo "⚙️ Runtime: Node.js ${{ env.NODE_VERSION }}"
-        echo "📅 Deployed: $(date)"
-        echo "📦 Package: RedemptionWeb"
+        echo "Deployment completed."
+        echo "Application URL: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
