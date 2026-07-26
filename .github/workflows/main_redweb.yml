@@ -1,0 +1,51 @@
+name: Deploy Node.js app to Azure Web App - Redweb
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: azure-deploy-redweb-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AZURE_WEBAPP_NAME: 'Redweb'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Assemble deployment package
+      run: |
+        # server.js uses only Node.js built-in modules, so node_modules
+        # is NOT required at runtime. Copy only the files needed to run
+        # the site and exclude node_modules, git metadata and build-only
+        # folders. This keeps the deployed file count small (~100 files
+        # instead of ~32,000) so deployment completes in seconds.
+        mkdir -p deploy
+        rsync -a \
+          --exclude='node_modules' \
+          --exclude='.git' \
+          --exclude='.github' \
+          --exclude='deploy' \
+          --exclude='scripts' \
+          --exclude='templates' \
+          ./ deploy/
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_REDWEB }}
+        package: deploy
+
+    - name: Verify deployment
+      run: |
+        echo "✅ Deployment completed."
+        echo "🌐 Application URL: https://${{ env.AZURE_WEBAPP_NAME }}.azurewebsites.net"
