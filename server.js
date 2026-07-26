@@ -61,8 +61,21 @@ const server = http.createServer((req, res) => {
         pathname = '/index.html';
     }
     
-    // Get file extension
-    const ext = path.extname(pathname).toLowerCase();
+    // Clean URLs: if no extension, try adding .html
+    let ext = path.extname(pathname).toLowerCase();
+    let filePath = path.join(__dirname, pathname);
+    
+    // If no extension, try .html version
+    if (!ext) {
+        const htmlPath = path.join(__dirname, pathname + '.html');
+        // Check if .html version exists
+        if (fs.existsSync(htmlPath)) {
+            filePath = htmlPath;
+            pathname = pathname + '.html';
+            ext = '.html';
+        }
+    }
+    
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
     
     // Security headers
@@ -80,9 +93,6 @@ const server = http.createServer((req, res) => {
     // Cache control
     const cacheControl = CACHE_CONTROL[ext] || 'public, max-age=3600';
     res.setHeader('Cache-Control', cacheControl);
-    
-    // Construct file path
-    let filePath = path.join(__dirname, pathname);
     
     // Check if file exists
     fs.access(filePath, fs.constants.F_OK, (err) => {
