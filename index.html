@@ -705,9 +705,9 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            gap: 3rem;
             padding: 1rem 2rem;
             min-height: 170px;
-            gap: 3rem;
         }
 
         .logo {
@@ -769,7 +769,6 @@
             box-shadow: var(--shadow-glow);
             transition: all var(--transition-normal);
             white-space: nowrap;
-            margin-left: 2rem;
         }
         .watch-live-btn:hover {
             transform: translateY(-2px);
@@ -926,6 +925,27 @@
             margin: 0 auto 3rem;
             text-align: center;
             line-height: 1.8;
+        }
+
+        /* Responsive - Intermediate screen sizes */
+        @media (max-width: 1280px) {
+            .navbar .container {
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.7rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.7rem;
+            }
+            
+            .watch-live-btn {
+                font-size: 0.75rem;
+                padding: 0.35rem 0.9rem;
+            }
         }
 
         /* Responsive */
@@ -1125,10 +1145,12 @@
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="events.html">Events</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <a href="https://youtube.com/@cccrpwpg" target="_blank" rel="noopener" class="watch-live-btn">
+                            <i class="fas fa-broadcast-tower"></i> WATCH LIVE
+                        </a>
+                    </li>
                 </ul>
-                <a href="https://youtube.com/@cccrpwpg" target="_blank" rel="noopener" class="watch-live-btn">
-                    <i class="fas fa-broadcast-tower"></i> WATCH LIVE
-                </a>
             </div>
         </div>
     </nav>
