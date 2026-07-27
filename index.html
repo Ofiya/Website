@@ -1530,6 +1530,29 @@
                         crossfadeToVideo1();
                     }
                 });
+                
+                // iOS-specific: Ensure first video plays on load
+                // iOS Safari sometimes blocks autoplay even with muted+playsinline
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                if (isIOS) {
+                    // Try to play immediately
+                    video1.play().catch(err => {
+                        console.log('iOS autoplay blocked, will retry on user interaction');
+                        
+                        // If autoplay is blocked, play on first user interaction
+                        const playOnInteraction = () => {
+                            video1.play().catch(e => console.log('Video play error:', e));
+                            document.removeEventListener('touchstart', playOnInteraction);
+                            document.removeEventListener('click', playOnInteraction);
+                        };
+                        
+                        document.addEventListener('touchstart', playOnInteraction, { once: true });
+                        document.addEventListener('click', playOnInteraction, { once: true });
+                    });
+                } else {
+                    // For non-iOS, ensure video plays
+                    video1.play().catch(e => console.log('Video play error:', e));
+                }
             }
             
             // Add floating animation to hero content
